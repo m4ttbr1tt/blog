@@ -19,7 +19,7 @@ style = "github-dark"
   info = "homelab | k8s | nvim | tmux | nixos | dvorak | w3m"
   description = "My journey to DevOps"
   keywords = "blog,developer"
-  avatarurl = "images/avatar.jpg"
+  avatarurl = "images/avatar.png"
 
   faviconSVG = "/img/favicon.svg"
   favicon_32 = "/img/favicon-32x32.png"
