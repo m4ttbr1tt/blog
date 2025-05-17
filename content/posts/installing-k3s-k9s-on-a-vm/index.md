@@ -35,7 +35,7 @@ curl -sfL https://get.k3s.io | sh -
 sudo k3s kubectl get node
 ```
 
-![k3s install](/installing-k3s-k9s-on-a-vm/k3s.png)
+![k3s install](/posts/installing-k3s-k9s-on-a-vm/k3s.png)
 
 ### K9S is a CLI application that manages your Kubernetes cluster
 
@@ -49,5 +49,5 @@ k9s --kubeconfig /etc/rancher/k3s/k3s.yaml
 
 K9S showing currently running pods on the newly installed K3S cluster:
 
-![k9s cli application](/installing-k3s-k9s-on-a-vm/k9s.png)
+![k9s cli application](/posts/installing-k3s-k9s-on-a-vm/k9s.png)
 
