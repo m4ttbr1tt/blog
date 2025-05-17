@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Documenting a journey to DevOps - Matt Britt</title>
+    <link>http://localhost:1313/about/</link>
+    <description>Recent content in Abouts on Documenting a journey to DevOps - Matt Britt</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 12 May 2025 20:24:42 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/about/</link>
+      <pubDate>Mon, 12 May 2025 20:24:42 +0200</pubDate>
+      <guid>http://localhost:1313/about/about/</guid>
+      <description>&lt;p&gt;Howzit!&lt;/p&gt;&#xA;&lt;p&gt;My name is Matt Britt, I live in Cape Town, South Africa.&lt;/p&gt;&#xA;&lt;p&gt;You have found my journal of a personal journey of learning. I&amp;rsquo;ve been a software engineer for almost 20 years, and have decided to take on the challenge of getting into DevOps.&lt;/p&gt;&#xA;&lt;p&gt;In a personal capacity I have been using Linux and VIM for the last 10 years. It is 😍.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m always learning.&lt;/p&gt;&#xA;&lt;p&gt;!(nixos.png)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
