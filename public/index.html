@@ -1,242 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <title>Documenting a journey to DevOps - Matt Britt</title>
+<html lang="en" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.146.7"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
 
-
-
-
-<meta name="author" content="Matt Britt">
-<meta name="description" content="My journey to DevOps">
-<meta name="keywords" content="blog,developer">
-
-
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Documenting a journey to DevOps - Matt Britt">
-  <meta name="twitter:description" content="My journey to DevOps">
-
-<meta property="og:url" content="http://localhost:1313/">
+<title>Documenting a journey to DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/">
   <meta property="og:site_name" content="Documenting a journey to DevOps - Matt Britt">
   <meta property="og:title" content="Documenting a journey to DevOps - Matt Britt">
   <meta property="og:description" content="My journey to DevOps">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Documenting a journey to DevOps - Matt Britt">
+  <meta name="twitter:description" content="My journey to DevOps">
 
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
 
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
-<link rel="canonical" href="http://localhost:1313/">
-
-
-<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-
-
-  
-  
-  <link rel="stylesheet" href="/css/coder.css" media="screen">
-
-
-
-
-
-
-  
-    
-    
-    <link rel="stylesheet" href="/css/coder-dark.css" media="screen">
-  
-
-
-
- 
-
-
-
-
-<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
-<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
-
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Documenting a journey to DevOps - Matt Britt" />
-
-
-<meta name="generator" content="Hugo 0.146.7">
-
-
-
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
 </head>
-
-
-
-
-
-
-<body class="preload-transitions colorscheme-auto">
-  
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
-</div>
-
-
-  <main class="wrapper">
-    <nav class="navigation">
-  <section class="container">
-    
-    <a class="navigation-title" href="http://localhost:1313/">
-	Matt Britt
-    </a>
-    
-    
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link " href="/posts/">Blog</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link " href="/about/">About</a>
-            </li>
-          
-        
-        
-      </ul>
-    
-  </section>
-</nav>
-
-
-    <div class="content">
-      
-  <section class="container centered">
-  <div class="about">
-    
-  
-    <div class="avatar"><img src="/images/avatar.png" alt="avatar"></div>
-  
-
-
-
-
-    <h1>Matt Britt</h1>
-
-<h2>homelab | k8s | nvim | tmux | nixos | dvorak | w3m </h2>
-
-
-
-    
-<ul>
-  
-    
-      <li>
-        <a href="https://github.com/mattybritt/" aria-label="GitHub"   >
-          <i class="fa-brands fa-github fa-2x" aria-hidden="true"></i>
-        </a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="https://x.com/m4ttbr1tt" aria-label="X"   >
-          <i class="fa-brands fa-x-twitter fa-2x" aria-hidden="true"></i>
-        </a>
-      </li>
-    
-  
-</ul>
-
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
   </div>
-
-  
-
-</section>
-
-
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="posts/"
+      >Blog</a>
     </div>
+    <div class="nav-item">
+      <a href="about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 
-    <footer class="footer">
-  <section class="container">
-    ©
-    
-      2019 -
-    
-    2025
-     Matt Britt 
-    ·
-    
-    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
-    
-  </section>
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="centered-container"><img style="border: var(--dim-color) 1px solid;border-radius:100%;" width="200px" src="/images/avatar.png" /><h1 class="margin-sm"></h1>
+  <div class="dim" style="width:70%;margin:0 15%;">homelab | k8s | nvim | tmux | nixos | dvorak | w3m</div>
+</div><div style="width:95%;margin:0 auto;">
+    <div class="show-md" style="display:none;"><form onsubmit="searchBarSubmit(event)">
+  <div class="search-bar"><svg style="min-width:16px;" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<input id="searchInput" type="text" placeholder="Search..."/>
+  </div>
+</form>
+
+<script>
+  function searchBarSubmit(event) {
+    event.preventDefault();
+    const relativeUrl = `http:\/\/localhost:1313\/search/?q=${encodeURIComponent(event.target.elements['searchInput'].value)}`;
+    window.location.href = relativeUrl;
+  }
+</script>
+</div><h2>Recent Posts</h2>
+<div class="flat-list"><div class="flat-list-item">
+      <div>
+        <a href="/posts/installing-k3s-and-k9s-on-a-ubuntu-server-vm/">Installing K3S and K9S on an Ubuntu Server VM</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">May 17, 2025</time>
+      </div>
+      <small><p>K3S is a lightweight version of Kubernetes and is used for running on resource constrained environments.</p></small>
+    </div><div class="flat-list-item">
+      <div>
+        <a href="/posts/building-a-personal-brand/">Building a Personal Brand</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">May 13, 2025</time>
+      </div>
+      <small><p>In this post, I&rsquo;ve tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a DevOps engineer, but that doesn&rsquo;t preclude this being used for any other type of career, digital or otherwise.</p></small>
+    </div><div class="flat-list-item">
+      <div>
+        <a href="/about/">About</a>
+        <time class="text-sm dim" style="float: right;" datetime="2023-05-02T00:00:00Z">May 12, 2025</time>
+      </div>
+      <small><p></p></small>
+    </div></div>
+</div></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
 </footer>
+      </div><aside id="side-pane" class=""><form onsubmit="searchBarSubmit(event)">
+  <div class="search-bar"><svg style="min-width:16px;" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<input id="searchInput" type="text" placeholder="Search..."/>
+  </div>
+</form>
 
-  </main>
-
-  
-
-  
-  
-  <script src="/js/coder.js"></script>
-  
-
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+<script>
+  function searchBarSubmit(event) {
+    event.preventDefault();
+    const relativeUrl = `http:\/\/localhost:1313\/search/?q=${encodeURIComponent(event.target.elements['searchInput'].value)}`;
+    window.location.href = relativeUrl;
+  }
+</script>
+<h3>Tags</h3>
+    <ul class="taxonomy-list"><li>
+    <a class="tag" href="http://localhost:1313/tags/brand/">
+      #brand&nbsp<span class="text-sm dim">1</span>
+    </a>
+      </li><li>
+    <a class="tag" href="http://localhost:1313/tags/k3s/">
+      #k3s&nbsp<span class="text-sm dim">1</span>
+    </a>
+      </li><li>
+    <a class="tag" href="http://localhost:1313/tags/k9s/">
+      #k9s&nbsp<span class="text-sm dim">1</span>
+    </a>
+      </li></ul></aside></div>
+  </div>
 </body>
 </html>
