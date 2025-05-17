@@ -31,8 +31,8 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-05-17T17:21:51+02:00">
     <meta property="article:modified_time" content="2025-05-17T17:21:51+02:00">
-    <meta property="article:tag" content="K3s">
-    <meta property="article:tag" content="K9s">
+    <meta property="article:tag" content="K9S">
+    <meta property="article:tag" content="K3S">
 
 
 
@@ -166,11 +166,11 @@
           <div class="tags">
   <i class="fa-solid fa-tag" aria-hidden="true"></i>
     <span class="tag">
-      <a href="/tags/k3s/">K3s</a>
+      <a href="/tags/k9s/">K9S</a>
     </span>
       <span class="separator">•</span>
     <span class="tag">
-      <a href="/tags/k9s/">K9s</a>
+      <a href="/tags/k3s/">K3S</a>
     </span></div>
 
         </div>
@@ -178,7 +178,7 @@
 
       <div class="post-content">
         
-        <p>K3S is a lightweight version of Kubernetes and is used for running on resource constrained environment.</p>
+        <p>K3S is a lightweight version of Kubernetes and is used for running on resource constrained environments.</p>
 <h6 id="to-install-run-the-following">
   To install run the following
   <a class="heading-link" href="#to-install-run-the-following">
@@ -200,7 +200,7 @@
   </a>
 </h6>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo k3s kubectl get node
-</span></span></code></pre></div><p>![[Pasted image 20250516155320.png]]</p>
+</span></span></code></pre></div><p><img src="/installing-k3s-k9s-on-a-vm/k3s.png" alt="k3s install"></p>
 <h3 id="k9s-is-a-cli-application-that-manages-your-kubernetes-cluster">
   K9S is a CLI application that manages your Kubernetes cluster
   <a class="heading-link" href="#k9s-is-a-cli-application-that-manages-your-kubernetes-cluster">
@@ -208,6 +208,7 @@
     <span class="sr-only">Link to heading</span>
   </a>
 </h3>
+<p>Ive install K9S onto my NixOS system (which is beyond the scope of this summary)</p>
 <h6 id="to-start-k9s-run-the-following">
   To start K9S run the following
   <a class="heading-link" href="#to-start-k9s-run-the-following">
@@ -216,8 +217,8 @@
   </a>
 </h6>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>k9s --kubeconfig /etc/rancher/k3s/k3s.yaml
-</span></span></code></pre></div><p>K9S showing currently running pods on the newly installed K3s cluster:</p>
-<p>![[Pasted image 20250517171940.png]]</p>
+</span></span></code></pre></div><p>K9S showing currently running pods on the newly installed K3S cluster:</p>
+<p><img src="/installing-k3s-k9s-on-a-vm/k9s.png" alt="k9s cli application"></p>
 
       </div>
 
