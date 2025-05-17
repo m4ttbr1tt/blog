@@ -55,11 +55,11 @@ style = "github-dark"
 [[menu.main]]
   name = "Blog"
   weight = 1
-  url  = "posts/"
+  url  = "/posts/"
 [[menu.main]]
   name = "About"
   weight = 2
-  url = "about/"
+  url = "/about/"
 
 
 # rusty-typewriter
@@ -80,9 +80,6 @@ style = "github-dark"
   sidePaneSticky = false
   taxonomies = ['tags']
   countTaxonomy = 5
-
-[data.rtwt.content.home]
-  text = "homelab | k8s | nvim | tmux | nixos | dvorak | w3m"
 
 [params.rtwt.side.single]
   sidePaneSticky = true
