@@ -1,7 +1,7 @@
 baseurl = "http://www.mattbritt.com"
 title = "Documenting a journey to DevOps - Matt Britt"
 header = "Matt Britt"
-theme = "rusty-typewriter"
+theme = "default"
 languagecode = "en"
 defaultcontentlanguage = "en"
 
