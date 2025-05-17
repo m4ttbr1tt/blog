@@ -1,21 +1,17 @@
-{{ partial "head/meta-tags.html" . }}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{{ if .Params.canonicalUrl }}
-<link rel="canonical" href="{{ .Params.canonicalUrl }}">
-{{ else }}
-<link rel="canonical" href="{{ .Permalink }}">
-{{ end }}
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" />
 
-{{ partialCached "head/theme-styles.html" . }}
+{{- template "_internal/opengraph.html" . -}}
+{{- template "_internal/twitter_cards.html" . -}}
 
-{{ partialCached "head/color-scheme.html" . }}
+{{- partialCached "head/css.html" . -}}
+{{- partialCached "head/js.html" . -}}
 
-{{ partialCached "head/custom-styles.html" . }}
-
-{{ partialCached "head/custom-icons.html" . }}
-
-{{ partial "head/alternative-output-formats.html" . }}
-
-{{ if .IsHome }}{{ partial "head/hugo-generator.html" . }}{{ end }}
-
-{{ partial "head/extensions.html" . }}
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">

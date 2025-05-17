@@ -1,10 +1,18 @@
-[build]
-publish = "exampleSite/public"
-command = "cd exampleSite && hugo --themesDir=../.. --baseURL $URL"
-
 [build.environment]
-HUGO_VERSION = "0.142.0"
-HUGO_THEME = "repo"
+  BASE_PATH = "demo"
+  HUGO_VERSION = "v0.122.0"
+  NODE_VERSION = "22"
+  TZ = "America/Sao_Paulo"
 
-[context.deploy-preview]
-command = "cd exampleSite &&  hugo --themesDir=../.. --buildFuture --buildDrafts --baseURL $DEPLOY_PRIME_URL"
+[build]
+  base = "exampleSite/"
+  publish = "public"
+  command = """\
+    # dir should have theme name (or else it isn't found)
+    mv ../../{repo,rusty-typewriter} && \
+    hugo --gc --minify -b "$URL/$BASE_PATH" -d "public/$BASE_PATH" && \
+    mv ../../{rusty-typewriter,repo} && \
+    # file 404.html belongs to root dir
+    (mv public/$BASE_PATH/{404.html,sitemap.xml,robots.txt} public || true)
+  """
+
