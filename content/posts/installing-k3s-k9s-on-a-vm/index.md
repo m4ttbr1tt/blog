@@ -39,7 +39,6 @@ sudo k3s kubectl get node
 
 ### K9S is a CLI application that manages your Kubernetes cluster
 
-Ive install K9S onto my NixOS system (which is beyond the scope of this summary)
 
 ###### To start K9S run the following
 
