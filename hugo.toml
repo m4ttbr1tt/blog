@@ -66,6 +66,7 @@ style = "github-dark"
 [params.rtwt]
   sidePane = true
   countPageItems = 7
+  searchPath = 'search'
 
 [params.rtwt.home]
   showBio = true
@@ -88,3 +89,17 @@ style = "github-dark"
   showAttachments = true
   showRelated = true
   countRelated = 5
+
+[outputFormats]
+ [outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "searchindex"
+  isPlainText = true
+  notAlternative = true
+
+[mediaTypes]
+ [mediaTypes."application/json"]
+  suffixes = ["json"]
+
+[outputs]
+ home = ["HTML","RSS", "SearchIndex"]
