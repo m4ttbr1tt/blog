@@ -2,31 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Documenting a journey to DevOps - Matt Britt</title>
-    <link>http://localhost:35953/tags/</link>
+    <link>http://www.mattbritt.com/tags/</link>
     <description>Recent content in Tags on Documenting a journey to DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 17 May 2025 17:21:51 +0200</lastBuildDate>
-    <atom:link href="http://localhost:35953/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 May 2025 16:40:51 +0200</lastBuildDate>
+    <atom:link href="http://www.mattbritt.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bluefin</title>
+      <link>http://www.mattbritt.com/tags/bluefin/</link>
+      <pubDate>Wed, 21 May 2025 16:40:51 +0200</pubDate>
+      <guid>http://www.mattbritt.com/tags/bluefin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>NixOS</title>
+      <link>http://www.mattbritt.com/tags/nixos/</link>
+      <pubDate>Wed, 21 May 2025 16:40:51 +0200</pubDate>
+      <guid>http://www.mattbritt.com/tags/nixos/</guid>
+      <description></description>
+    </item>
     <item>
       <title>K3S</title>
-      <link>http://localhost:35953/tags/k3s/</link>
+      <link>http://www.mattbritt.com/tags/k3s/</link>
       <pubDate>Sat, 17 May 2025 17:21:51 +0200</pubDate>
-      <guid>http://localhost:35953/tags/k3s/</guid>
+      <guid>http://www.mattbritt.com/tags/k3s/</guid>
       <description></description>
     </item>
     <item>
       <title>K9S</title>
-      <link>http://localhost:35953/tags/k9s/</link>
+      <link>http://www.mattbritt.com/tags/k9s/</link>
       <pubDate>Sat, 17 May 2025 17:21:51 +0200</pubDate>
-      <guid>http://localhost:35953/tags/k9s/</guid>
+      <guid>http://www.mattbritt.com/tags/k9s/</guid>
       <description></description>
     </item>
     <item>
       <title>Brand</title>
-      <link>http://localhost:35953/tags/brand/</link>
+      <link>http://www.mattbritt.com/tags/brand/</link>
       <pubDate>Tue, 13 May 2025 15:51:14 +0200</pubDate>
-      <guid>http://localhost:35953/tags/brand/</guid>
+      <guid>http://www.mattbritt.com/tags/brand/</guid>
       <description></description>
     </item>
   </channel>

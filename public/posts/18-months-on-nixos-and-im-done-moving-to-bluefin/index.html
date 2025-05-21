@@ -4,22 +4,22 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Installing K3S and K9S on an Ubuntu Server VM | Documenting a journey to DevOps - Matt Britt</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://www.mattbritt.com/posts/installing-k3s-and-k9s-on-a-ubuntu-server-vm/">
+<title>18 Months on NixOs and Im done! Moving to Bluefin. | Documenting a journey to DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/">
   <meta property="og:site_name" content="Documenting a journey to DevOps - Matt Britt">
-  <meta property="og:title" content="Installing K3S and K9S on an Ubuntu Server VM">
-  <meta property="og:description" content="A summary of the install process for K3S and K9S on a Ubuntu Server VM">
+  <meta property="og:title" content="18 Months on NixOs and Im done! Moving to Bluefin.">
+  <meta property="og:description" content="Why Im leaving NixOS, 18 months on NixOS, I’m moving to Bluefin.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-05-17T17:21:51+02:00">
-    <meta property="article:modified_time" content="2025-05-17T17:21:51+02:00">
-    <meta property="article:tag" content="K9S">
-    <meta property="article:tag" content="K3S">
+    <meta property="article:published_time" content="2025-05-21T16:40:51+02:00">
+    <meta property="article:modified_time" content="2025-05-21T16:40:51+02:00">
+    <meta property="article:tag" content="NixOS">
+    <meta property="article:tag" content="Bluefin">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Installing K3S and K9S on an Ubuntu Server VM">
-  <meta name="twitter:description" content="A summary of the install process for K3S and K9S on a Ubuntu Server VM">
+  <meta name="twitter:title" content="18 Months on NixOs and Im done! Moving to Bluefin.">
+  <meta name="twitter:description" content="Why Im leaving NixOS, 18 months on NixOS, I’m moving to Bluefin.">
 
       <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
       <link rel="stylesheet" href="/css/bundle.min.e139b0e3b3aff8f0e8e0272554b671a06c857a42278b36c539d96c69ddee2ca2.css" integrity="sha256-4Tmw47Ov&#43;PDo4CclVLZxoGyFekInizbFOdlsad3uLKI=" crossorigin="anonymous">
@@ -97,27 +97,27 @@
     </li>
     <span>&nbsp»&nbsp</span>
 </ol>
-<h1>Installing K3S and K9S on an Ubuntu Server VM</h1><time class="dim" datetime="2025-05-17T17:21:51&#43;02:00">May 17, 2025</time><div class="term-container"><div class="tag">
-        <a href="http://www.mattbritt.com/tags/k9s/">#K9S</a>
+<h1>18 Months on NixOs and Im done! Moving to Bluefin.</h1><time class="dim" datetime="2025-05-21T16:40:51&#43;02:00">May 21, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://www.mattbritt.com/tags/nixos/">#NixOS</a>
       </div><div class="tag">
-        <a href="http://www.mattbritt.com/tags/k3s/">#K3S</a>
+        <a href="http://www.mattbritt.com/tags/bluefin/">#Bluefin</a>
       </div></ol></div>
-  <section class="page-section"><p>K3S is a lightweight version of Kubernetes and is used for running on resource constrained environments.</p>
-<h6 id="to-install-run-the-following">To install run the following</h6>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sfL https://get.k3s.io | sh - 
-</span></span></code></pre></div><p>There is an interesting output to note after the install, K3S installs a single binary and creates 3 symlinks.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Installing k3s to /usr/local/bin/k3s
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Creating /usr/local/bin/kubectl symlink to k3s
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Creating /usr/local/bin/crictl symlink to k3s
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Creating /usr/local/bin/ctr symlink to k3s
-</span></span></code></pre></div><h6 id="check-that-the-cluster-is-running">Check that the cluster is running</h6>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo k3s kubectl get node
-</span></span></code></pre></div><p><img src="/posts/installing-k3s-k9s-on-a-vm/k3s.png" alt="k3s install"></p>
-<h3 id="k9s-is-a-cli-application-that-manages-your-kubernetes-cluster">K9S is a CLI application that manages your Kubernetes cluster</h3>
-<h6 id="to-start-k9s-run-the-following">To start K9S run the following</h6>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>k9s --kubeconfig /etc/rancher/k3s/k3s.yaml
-</span></span></code></pre></div><p>K9S showing currently running pods on the newly installed K3S cluster:</p>
-<p><img src="/posts/installing-k3s-k9s-on-a-vm/k9s.png" alt="k9s cli application"></p>
+  <section class="page-section"><p>18 months on NixOS… and I’m done.  I’m moving to Bluefin. I loved the idea of NixOS,  a declarative, reproducible, git tracked OS.</p>
+<p><img src="/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/final.png" alt="final nixos"></p>
+<p>But…</p>
+<ol>
+<li>It distracted me from doing real work</li>
+<li>When I needed flexibility, it refused (or asked for a time investment to get things done)</li>
+<li>The OS is not relevant in the DevOps community, even though the package manager has its uses.</li>
+</ol>
+<p>The final straw was not being able to run DevContainers due to a read-only file system  (I could have persisted to sort it out, but I&rsquo;m done now). Its over.</p>
+<p><img src="/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/error.png" alt="final nixos"></p>
+<p>I&rsquo;m grateful for the time I&rsquo;ve had with the ecosystem, it taught me a lot about what I value in a system.  I&rsquo;ve also come to realise the exorbitant amount of time I&rsquo;ve sunk into &ldquo;just&rdquo; getting my workstation configured, fancy &ldquo;ricing&rdquo; and tweaks every day! I&rsquo;m done now. I need to focus on doing real work.</p>
+<p>I’m now trying out Bluefin. It offers container-first design, sensible defaults, and still feels close to GitOps principles—without being overly rigid.</p>
+<p>No regrets. NixOS taught me a lot, but it’s time for a change. (although Im keeping my github repo still)</p>
+<p>Ill be writing about Bluefin in a future post.</p>
+<p>Some Bluefin Kubernetes CLI goodness&hellip;</p>
+<p><img src="/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/bluefink8s.png" alt="final nixos"></p>
 </section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
@@ -127,21 +127,12 @@
 </div>
 </footer>
       </div><aside id="side-pane" class="side-sticky"><div class="side-details">
-    <span>110 words</span>
-    <span>0 - 1 minutes read</span><div class="side-details-taxonomy">
+    <span>206 words</span>
+    <span>1 - 1 minutes read</span><div class="side-details-taxonomy">
         <small>authors: 
           <span class="details-taxonomy"><a href="http://www.mattbritt.com/authors/matt-britt">Matt Britt</a></span></small>
-      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li></li>
-        <li><a href="#k9s-is-a-cli-application-that-manages-your-kubernetes-cluster">K9S is a CLI application that manages your Kubernetes cluster</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav><h3>Attachments</h3>
-    <ul><li><a href="http://www.mattbritt.com/posts/installing-k3s-and-k9s-on-a-ubuntu-server-vm/k3s.png">k3s.png</a></li><li><a href="http://www.mattbritt.com/posts/installing-k3s-and-k9s-on-a-ubuntu-server-vm/k9s.png">k9s.png</a></li></ul></aside></div>
+      </div></div><h3>Attachments</h3>
+    <ul><li><a href="http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/bluefink8s.png">bluefink8s.png</a></li><li><a href="http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/error.png">error.png</a></li><li><a href="http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/final.png">final.png</a></li></ul></aside></div>
   </div>
 </body>
 </html>
