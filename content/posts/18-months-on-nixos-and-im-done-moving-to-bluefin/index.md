@@ -23,9 +23,10 @@ The final straw was not being able to run DevContainers due to a read-only file 
 
 ![final nixos](/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/error.png)
     
-I'm grateful for the time I've had with the ecosystem, it taught me a lot about what I value in a system.  I've also come to realise the exorbitant amount of time I've sunk into "just" getting my workstation configured, fancy "ricing" and tweaks every day! I'm done now. I need to focus on doing real work.
+I'm grateful for the time I've had with the ecosystem, it taught me a lot about what I value in a system.  
+I've also come to realise the exorbitant amount of time I've sunk into "just" getting my workstation configured, fancy "ricing" and tweaks every day! I'm done now. I need to focus on doing real work.
 
-I’m now trying out Bluefin. It offers container-first design, sensible defaults, and still feels close to GitOps principles—without being overly rigid.
+I’m now trying out Bluefin, which is optimised for containers and cloud-native workflows.
 
 No regrets. NixOS taught me a lot, but it’s time for a change. (although Im keeping my github repo still)
 
