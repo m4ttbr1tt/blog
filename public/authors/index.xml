@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on Documenting a journey to DevOps - Matt Britt</title>
-    <link>http://www.mattbritt.com/authors/</link>
+    <link>http://localhost:1313/authors/</link>
     <description>Recent content in Authors on Documenting a journey to DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 21 May 2025 16:40:51 +0200</lastBuildDate>
-    <atom:link href="http://www.mattbritt.com/authors/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 May 2025 19:39:56 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/authors/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Matt Britt</title>
-      <link>http://www.mattbritt.com/authors/matt-britt/</link>
-      <pubDate>Wed, 21 May 2025 16:40:51 +0200</pubDate>
-      <guid>http://www.mattbritt.com/authors/matt-britt/</guid>
+      <link>http://localhost:1313/authors/matt-britt/</link>
+      <pubDate>Mon, 26 May 2025 19:39:56 +0200</pubDate>
+      <guid>http://localhost:1313/authors/matt-britt/</guid>
       <description></description>
     </item>
   </channel>
