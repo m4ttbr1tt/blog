@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bluefin on Documenting a journey to DevOps - Matt Britt</title>
-    <link>http://www.mattbritt.com/tags/bluefin/</link>
+    <link>http://localhost:1313/tags/bluefin/</link>
     <description>Recent content in Bluefin on Documenting a journey to DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 26 May 2025 19:39:56 +0200</lastBuildDate>
-    <atom:link href="http://www.mattbritt.com/tags/bluefin/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/bluefin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bluefin and dotfiles management changes</title>
-      <link>http://www.mattbritt.com/posts/bluefin-and-dotfiles-management-changes/</link>
+      <link>http://localhost:1313/posts/bluefin-and-dotfiles-management-changes/</link>
       <pubDate>Mon, 26 May 2025 19:39:56 +0200</pubDate>
-      <guid>http://www.mattbritt.com/posts/bluefin-and-dotfiles-management-changes/</guid>
+      <guid>http://localhost:1313/posts/bluefin-and-dotfiles-management-changes/</guid>
       <description>&lt;p&gt;Last week I decided to ditch NixOS, as it was getting in the way of my work. I&amp;rsquo;ve setup a Fedora based distribution called Bluefin, which went smoothly but has taken some getting used to. There are things that have been great, and some not so much, mainly due to the desktop environment, which I&amp;rsquo;ll need to resolve.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve setup a dotfiles management solution that is the best I&amp;rsquo;ve had. Credit to Mischa and Rio. It is highly portable across bare-metal and containers.&lt;/p&gt;</description>
     </item>
     <item>
       <title>18 Months on NixOs and Im done! Moving to Bluefin.</title>
-      <link>http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</link>
+      <link>http://localhost:1313/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</link>
       <pubDate>Wed, 21 May 2025 16:40:51 +0200</pubDate>
-      <guid>http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</guid>
-      <description>&lt;p&gt;18 months on NixOS… and I’m done.  I’m moving to Bluefin. I loved the idea of NixOS,  a declarative, reproducible, git tracked OS.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/final.png&#34; alt=&#34;final nixos&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;But…&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;It distracted me from doing real work&lt;/li&gt;&#xA;&lt;li&gt;When I needed flexibility, it refused (or asked for a time investment to get things done)&lt;/li&gt;&#xA;&lt;li&gt;The OS is not relevant in the DevOps community, even though the package manager has its uses.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The final straw was not being able to run DevContainers due to a read-only file system  (I could have persisted to sort it out, but I&amp;rsquo;m done now). Its over.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</guid>
+      <description>&lt;p&gt;18 months on NixOS… and I’m done.  I’m moving to Bluefin. I loved the idea of NixOS,  a declarative, reproducible, git tracked OS.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/final.png&#34; alt=&#34;final nixos&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;But…&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;It distracted me from doing real work&lt;/li&gt;&#xA;&lt;li&gt;When I needed flexibility, it refused (or asked for a time investment to get things done)&lt;/li&gt;&#xA;&lt;li&gt;The OS is not relevant in the DevOps community, even though the package manager has its uses.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The final straw was not being able to run DevContainers due to a read-only file system  (I could have persisted to sort it out, but I&amp;rsquo;m done now). Its over.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
