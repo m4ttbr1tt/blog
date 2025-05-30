@@ -6,7 +6,7 @@ languagecode = "en"
 defaultcontentlanguage = "en"
 
 [pagination]
-  pagerSize = 20
+pagerSize = 20
 
 # [services]
 # [services.disqus]
@@ -16,90 +16,90 @@ defaultcontentlanguage = "en"
 style = "github-dark"
 
 [params]
-  author = "Matt Britt"
-  info = "homelab | k8s | nvim | tmux | nixos | dvorak | w3m"
-  description = "My journey to DevOps"
-  keywords = "blog,developer"
-  avatarurl = "images/avatar.png"
+author = "Matt Britt"
+info = "homelab | k8s | nvim | tmux | nixos | dvorak | w3m"
+description = "My journey to DevOps"
+keywords = "blog,developer"
+avatarurl = "images/avatar.png"
 
-  faviconSVG = "/img/favicon.svg"
-  favicon_32 = "/img/favicon-32x32.png"
-  favicon_16 = "/img/favicon-16x16.png"
+faviconSVG = "/img/favicon.svg"
+favicon_32 = "/img/favicon-32x32.png"
+favicon_16 = "/img/favicon-16x16.png"
 
-  since = 2019
+since = 2019
 
-  enableTwemoji = true
+enableTwemoji = true
 
-  colorScheme = "auto"
-  hidecolorschemetoggle = false
+colorScheme = "auto"
+hidecolorschemetoggle = false
 
 [taxonomies]
-  category = "categories"
-  series = "series"
-  tag = "tags"
-  author = "authors"
+category = "categories"
+series = "series"
+tag = "tags"
+author = "authors"
 
 # Social links
 [[params.social]]
-  name = "GitHub"
-  icon = "fa-brands fa-github fa-2x"
-  weight = 1
-  url = "https://github.com/mattybritt/"
+name = "GitHub"
+icon = "fa-brands fa-github fa-2x"
+weight = 1
+url = "https://github.com/mattybritt/"
 [[params.social]]
-  name = "X"
-  icon = "fa-brands fa-x-twitter fa-2x"
-  weight = 3
-  url = "https://x.com/m4ttbr1tt"
+name = "X"
+icon = "fa-brands fa-x-twitter fa-2x"
+weight = 3
+url = "https://x.com/m4ttbr1tt"
 
 # Menu links
 [[menu.main]]
-  name = "Blog"
-  weight = 1
-  url  = "/posts/"
+name = "Blog"
+weight = 1
+url = "/posts/"
 [[menu.main]]
-  name = "About"
-  weight = 2
-  url = "/about/"
+name = "About"
+weight = 2
+url = "/about/"
 
 
 # rusty-typewriter
 [params.rtwt]
-  sidePane = true
-  countPageItems = 7
-  searchPath = 'search'
+sidePane = true
+countPageItems = 7
+searchPath = 'search'
 
 [params.rtwt.home]
-  showBio = true
-  showAuthorImg = true
-  sidePaneTags = true
-  showFeatured = true
-  showRecent = true
-  hideRecentWhenFeatured = true
-  countRecent = 3
+showBio = true
+showAuthorImg = true
+sidePaneTags = true
+showFeatured = true
+showRecent = true
+hideRecentWhenFeatured = true
+countRecent = 3
 
 [params.rtwt.side.home]
-  sidePaneSticky = false
-  taxonomies = ['tags']
-  countTaxonomy = 5
+sidePaneSticky = false
+taxonomies = ['tags']
+countTaxonomy = 5
 
 [params.rtwt.side.single]
-  sidePaneSticky = true
-  showDetails = true
-  showTableOfContents = true
-  showAttachments = true
-  showRelated = true
-  countRelated = 5
+sidePaneSticky = false
+showDetails = true
+showTableOfContents = true
+showAttachments = false
+showRelated = true
+countRelated = 5
 
 [outputFormats]
- [outputFormats.SearchIndex]
-  mediaType = "application/json"
-  baseName = "searchindex"
-  isPlainText = true
-  notAlternative = true
+[outputFormats.SearchIndex]
+mediaType = "application/json"
+baseName = "searchindex"
+isPlainText = true
+notAlternative = true
 
 [mediaTypes]
- [mediaTypes."application/json"]
-  suffixes = ["json"]
+[mediaTypes."application/json"]
+suffixes = ["json"]
 
 [outputs]
- home = ["HTML","RSS", "SearchIndex"]
+home = ["HTML", "RSS", "SearchIndex"]
