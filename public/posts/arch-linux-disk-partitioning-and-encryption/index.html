@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arch Linux disk partitioning and encryption | Documenting a journey to DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://www.mattbritt.com/posts/arch-linux-disk-partitioning-and-encryption/">
+  <meta property="og:site_name" content="Documenting a journey to DevOps - Matt Britt">
+  <meta property="og:title" content="Arch Linux disk partitioning and encryption">
+  <meta property="og:description" content="Setting up disk partitioning and encryption for our new Arch Linux system">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-29T18:40:51+02:00">
+    <meta property="article:modified_time" content="2025-05-29T18:40:51+02:00">
+    <meta property="article:tag" content="Arch">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Arch Linux disk partitioning and encryption">
+  <meta name="twitter:description" content="Setting up disk partitioning and encryption for our new Arch Linux system">
+
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.ffb26980ae2df7bdfe47815d8a3f0130f36070ee4a3320a5f22d16842be2537f.css" integrity="sha256-/7JpgK4t973&#43;R4Fdij8BMPNgcO5KMyCl8i0WhCviU38=" crossorigin="anonymous">
+
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://www.mattbritt.com/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://www.mattbritt.com/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://www.mattbritt.com/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Arch Linux disk partitioning and encryption</h1><time class="dim" datetime="2025-05-29T18:40:51&#43;02:00">May 29, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://www.mattbritt.com/tags/arch/">#arch</a>
+      </div></ol></div>
+  <section class="page-section"><p>Yesterday I set out to work through getting disk encryption configured on one of the 5 OptiPlex 7040 Mini PCS that arrived yesterday. I will be setting up my homelab with these machines and want to make sure I have mastered the process of disk partitioning and encryption.</p>
+<p>The layout of the partitions and volumes will look like this:</p>
+<p><img src="/posts/arch-linux-disk-partitioning-and-encryption/plan.png" alt="the planned layout"></p>
+<p>The size of the SSD is 128GB so I&rsquo;ll be arranging the partitions/volumes like below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /proc/meminfo <span style="color:#8b949e;font-style:italic"># how much memory on the system</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># Memtotal 8010000 kB = 8GB
+</span></span><span style="display:flex;"><span># So swap will be 4GB (50%)
+</span></span><span style="display:flex;"><span># sda is 128GB
+</span></span><span style="display:flex;"><span>#     par boot 1GB
+</span></span><span style="display:flex;"><span>#     par swap 4GB
+</span></span><span style="display:flex;"><span>#     par root 24GB
+</span></span><span style="display:flex;"><span>#     par home 90GB
+</span></span></code></pre></div><h3 id="gpt-guid-partition-tableor-mbr--partition-table">GPT (GUID Partition Table)or MBR  partition table</h3>
+<p>GPT (GUID Partition Table) is a newer partition table schema that allows for unlimited partitions and larger drives and is used with UEFI firmware, which is a newer version of BIOS. The older MBR (Master Boot Record) partition table is legacy format.</p>
+<h3 id="check-the-system-boot-type">Check the system boot type</h3>
+<p>We need to verify that the system is using UEFI firmware, which replaces BIOS, and is typically used with GPT partitions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># if the below dir exists its an uefi system</span>
+</span></span><span style="display:flex;"><span>ls /sys/firmware/efi
+</span></span></code></pre></div><p>To determine the current disk partition table we run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fdisk -l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># youll see Disklabel type: gpt or dos(mbr)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># if there is no partition table or you can create a new one</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fdisk /dev/vda
+</span></span><span style="display:flex;"><span>m <span style="color:#8b949e;font-style:italic"># man page</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>g <span style="color:#8b949e;font-style:italic">#to create a new GPT partition table</span>
+</span></span></code></pre></div><h3 id="partitioning-the-disks">Partitioning the Disks</h3>
+<p>We will setup two disk partitions that will be the EFI and LVM partitions. Arch wiki suggests boot partition size of 1GB, and rest of the disk will be for LVM (Logical Volume Manager). LVM allows for more flexible management of disks space and our partitions will be setup within this layer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk <span style="color:#8b949e;font-style:italic"># list block devices (shows current disk layout)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fdisk /dev/vda
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n <span style="color:#8b949e;font-style:italic"># add a new partition</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#default partition number (default): 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#first sector (default) : 2048</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#last sector: </span>
+</span></span><span style="display:flex;"><span> +1G
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#Change the type filesystem type:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t <span style="color:#8b949e;font-style:italic"># change file system type</span>
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">1</span> <span style="color:#8b949e;font-style:italic"># select partition </span>
+</span></span><span style="display:flex;"><span>L <span style="color:#8b949e;font-style:italic"># show partition types</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set partition type to EFI</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># create data partition</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#8b949e;font-style:italic"># new partition</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#default partition number (default): 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#first sector (default) : 20992000</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#last sector (default):  4000797392</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>t <span style="color:#8b949e;font-style:italic"># change file system type</span>
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">2</span> <span style="color:#8b949e;font-style:italic"># select partition </span>
+</span></span><span style="display:flex;"><span>L <span style="color:#8b949e;font-style:italic"># show partition types</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set partition type to Linux LVM </span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a5d6ff">44</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>p <span style="color:#8b949e;font-style:italic"># print partition table  </span>
+</span></span><span style="display:flex;"><span>w <span style="color:#8b949e;font-style:italic"># write changes to the disk</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fdisk -l
+</span></span></code></pre></div><p><img src="/posts/arch-linux-disk-partitioning-and-encryption/disk.png" alt="disk partitions"></p>
+<h3 id="encryption--lvm">Encryption &amp; LVM</h3>
+<p>Using LVM makes managing encryption of the disk more straightforward as you only required one key / password to unlock the data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create the encrypted container on the Linux LVM partition</span>
+</span></span><span style="display:flex;"><span>cryptsetup luksFormat /dev/vda2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>YES
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#Enter the passphrase x 2 and open the disk to setup volumes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cryptsetup open /dev/vda2 cryptlvm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create a PV(physical volume) on-top of the opened luks container</span>
+</span></span><span style="display:flex;"><span>pvcreate /dev/mapper/cryptlvm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Next create a disk volume group (we are naming ours phoenix)</span>
+</span></span><span style="display:flex;"><span>vgcreate phoenix /dev/mapper/cryptlvm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Next create our logical volumes in the volume group</span>
+</span></span><span style="display:flex;"><span>lvcreate -L 4G phoenix -n swap 
+</span></span><span style="display:flex;"><span>lvcreate -L 24G phoenix -n root 
+</span></span><span style="display:flex;"><span>lvcreate -L 90G phoenix -n home 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># show our volumes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lvdisplay
+</span></span></code></pre></div><h3 id="file-systems">File systems</h3>
+<p>Now that we have or disk arranged how we have planned, we need to setup a file system on each logical volume, we will be using ext4.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># setup the file system</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/phoenix/root
+</span></span><span style="display:flex;"><span>mkfs.ext4 /dev/phoenix/home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># and the swap</span>
+</span></span><span style="display:flex;"><span>mkswap /dev/phoenix1/swap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Prepare the boot partition by making a FAT32 file system</span>
+</span></span><span style="display:flex;"><span>mkfs.fat -F32 /dev/vda1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df -h <span style="color:#8b949e;font-style:italic"># outputs file systems you have (-h is human readable format)</span>
+</span></span></code></pre></div><h3 id="mounting-the-volumes">Mounting the volumes</h3>
+<p>For our system to access the new partitions / volumes we need to mount them first.</p>
+<blockquote>
+<p>Order of mount matters we must map root, boot  and then home.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># mnt will be the install systems root / directory</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mount /dev/phoenix/root /mnt
+</span></span><span style="display:flex;"><span>mount --mkdir /dev/vda1 /mnt/boot 
+</span></span><span style="display:flex;"><span>mount /dev/phoenix/home /home
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># activate the swap partition</span>
+</span></span><span style="display:flex;"><span>swapon /dev/phoenix/swap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df -h
+</span></span></code></pre></div><p>And we are done, we can now processed with setting up our Arch Linux system. When you boot the system you will be prompted to enter your configured password, your data is safe!</p>
+</section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>701 words</span>
+    <span>4 - 5 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://www.mattbritt.com/authors/matt-britt">Matt Britt</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gpt-guid-partition-tableor-mbr--partition-table">GPT (GUID Partition Table)or MBR  partition table</a></li>
+        <li><a href="#check-the-system-boot-type">Check the system boot type</a></li>
+        <li><a href="#partitioning-the-disks">Partitioning the Disks</a></li>
+        <li><a href="#encryption--lvm">Encryption &amp; LVM</a></li>
+        <li><a href="#file-systems">File systems</a></li>
+        <li><a href="#mounting-the-volumes">Mounting the volumes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>

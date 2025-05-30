@@ -1,6 +1,6 @@
 +++ 
 draft = false
-date = 2025-05-30T07:21:51+02:00
+date = 2025-05-29T18:40:51+02:00
 title = "Arch Linux disk partitioning and encryption"
 description = "Setting up disk partitioning and encryption for our new Arch Linux system"
 slug = "arch-linux-disk-partitioning-and-encryption"
@@ -30,11 +30,11 @@ cat /proc/meminfo # how much memory on the system
 #     par home 90GB
 ```
 
-##### GPT (GUID Partition Table)or MBR  partition table
+### GPT (GUID Partition Table)or MBR  partition table
 
 GPT (GUID Partition Table) is a newer partition table schema that allows for unlimited partitions and larger drives and is used with UEFI firmware, which is a newer version of BIOS. The older MBR (Master Boot Record) partition table is legacy format.
 
-##### Check the system boot type
+### Check the system boot type
 
 We need to verify that the system is using UEFI firmware, which replaces BIOS, and is typically used with GPT partitions.
 
@@ -58,7 +58,7 @@ m # man page
 g #to create a new GPT partition table
 ```
 
-##### Partitioning the Disks
+### Partitioning the Disks
 
 We will setup two disk partitions that will be the EFI and LVM partitions. Arch wiki suggests boot partition size of 1GB, and rest of the disk will be for LVM (Logical Volume Manager). LVM allows for more flexible management of disks space and our partitions will be setup within this layer.
 
@@ -108,7 +108,7 @@ fdisk -l
 
 ![disk partitions](/posts/arch-linux-disk-partitioning-and-encryption/disk.png)
 
-##### Encryption & LVM
+### Encryption & LVM
 
 Using LVM makes managing encryption of the disk more straightforward as you only required one key / password to unlock the data.
 
@@ -139,7 +139,7 @@ lvdisplay
 
 ```
 
-##### File systems
+### File systems
 
 Now that we have or disk arranged how we have planned, we need to setup a file system on each logical volume, we will be using ext4.
 
@@ -159,7 +159,7 @@ mkfs.fat -F32 /dev/vda1
 df -h # outputs file systems you have (-h is human readable format)
 ```
 
-##### Mounting the volumes
+### Mounting the volumes
 
 For our system to access the new partitions / volumes we need to mount them first.
 
