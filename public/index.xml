@@ -57,5 +57,12 @@
       <guid>http://localhost:1313/search/</guid>
       <description>&lt;p class=&#34;hidden&#34;&gt;It&amp;#39;s necessary to enable Javascript&lt;/p&gt;&#xA;&lt;p class=&#34;search-loading hidden&#34;&gt;Loading...&lt;/p&gt;&#xA;&#xA;&lt;form id=&#34;search-form&#34; class=&#34;search-form&#34; action=&#34;#&#34; method=&#34;post&#34; accept-charset=&#34;UTF-8&#34; role=&#34;search&#34;&gt;&#xA;  &lt;div class=&#34;search-bar&#34;&gt;&#xA;    &lt;label for=&#34;query&#34; class=&#34;hidden&#34;&gt;&lt;/label&gt;&#xA;    &lt;input id=&#34;query&#34; class=&#34;search-text&#34; type=&#34;text&#34; placeholder=&#34;Search...&#34;/&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/form&gt;&#xA;&#xA;&lt;div class=&#34;search-results&#34;&gt;&lt;/div&gt;&#xA;&#xA;&lt;template&gt;&#xA;  &lt;article class=&#34;search-result list-view&#34;&gt;&#xA;    &lt;header&gt;&#xA;      &lt;h2 class=&#34;title&#34;&gt;&lt;a href=&#34;#&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;      &lt;div class=&#34;submitted&#34;&gt;&#xA;        &lt;time class=&#34;created-date&#34;&gt;&lt;/time&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/header&gt;&#xA;    &lt;p class=&#34;content&#34;&gt;&lt;/p&gt;&#xA;  &lt;/article&gt;&#xA;&lt;/template&gt;</description>
     </item>
+    <item>
+      <title>Dvorak - how touch typing changed how I work</title>
+      <link>http://localhost:1313/posts/dvorak-how-touch-typing-changed-how-i-work/</link>
+      <pubDate>Mon, 25 Mar 2019 12:45:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/dvorak-how-touch-typing-changed-how-i-work/</guid>
+      <description>&lt;p&gt;After 14 years as a software developer, I still wasn’t a true touch typist, I would hen-peck my way through my work, I managed but it was not optimal.&lt;/p&gt;&#xA;&lt;p&gt;Whenever I made an effort to touch type, my eyes inevitably always drifted down. The keyboard was there, and the temptation was too strong.&lt;/p&gt;&#xA;&lt;p&gt;I decided to switch to Dvorak and at the same time I bought a Kinesis Advantage 2.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
