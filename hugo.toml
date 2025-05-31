@@ -1,5 +1,5 @@
 baseurl = "http://www.mattbritt.com"
-title = "Documenting a journey to DevOps - Matt Britt"
+title = "Software Engineering & DevOps - Matt Britt"
 header = "Matt Britt"
 theme = "default"
 languagecode = "en"
@@ -18,7 +18,6 @@ style = "github-dark"
 [params]
 author = "Matt Britt"
 info = "homelab | k8s | nvim | tmux | nixos | dvorak | w3m"
-description = "My journey to DevOps"
 keywords = "blog,developer"
 avatarurl = "images/avatar.png"
 

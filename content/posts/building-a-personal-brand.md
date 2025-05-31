@@ -11,7 +11,7 @@ externalLink = ""
 series = []
 +++
 
-In this post, I've tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a DevOps engineer, but that doesn't preclude this being used for any other type of career, digital or otherwise. 
+In this post, I've tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a Software and DevOps engineer, but that doesn't preclude this being used for any other type of career, digital or otherwise. 
 ### Documenting your learning journey through content creation
 
 A learning journey, no matter what the material, would benefit from being documented publicly (if appropriate). It serves as a record for you and the world.

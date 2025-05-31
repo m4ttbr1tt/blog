@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Documenting a journey to DevOps - Matt Britt</title>
+    <title>Software Engineering &amp; DevOps - Matt Britt</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Documenting a journey to DevOps - Matt Britt</description>
+    <description>Recent content on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 29 May 2025 18:40:51 +0200</lastBuildDate>
@@ -41,7 +41,7 @@
       <link>http://localhost:1313/posts/building-a-personal-brand/</link>
       <pubDate>Tue, 13 May 2025 15:51:14 +0200</pubDate>
       <guid>http://localhost:1313/posts/building-a-personal-brand/</guid>
-      <description>&lt;p&gt;In this post, I&amp;rsquo;ve tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a DevOps engineer, but that doesn&amp;rsquo;t preclude this being used for any other type of career, digital or otherwise.&lt;/p&gt;&#xA;&lt;h3 id=&#34;documenting-your-learning-journey-through-content-creation&#34;&gt;Documenting your learning journey through content creation&lt;/h3&gt;&#xA;&lt;p&gt;A learning journey, no matter what the material, would benefit from being documented publicly (if appropriate). It serves as a record for you and the world.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this post, I&amp;rsquo;ve tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a Software and DevOps engineer, but that doesn&amp;rsquo;t preclude this being used for any other type of career, digital or otherwise.&lt;/p&gt;&#xA;&lt;h3 id=&#34;documenting-your-learning-journey-through-content-creation&#34;&gt;Documenting your learning journey through content creation&lt;/h3&gt;&#xA;&lt;p&gt;A learning journey, no matter what the material, would benefit from being documented publicly (if appropriate). It serves as a record for you and the world.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About</title>
