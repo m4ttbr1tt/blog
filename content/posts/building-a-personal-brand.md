@@ -11,14 +11,15 @@ externalLink = ""
 series = []
 +++
 
-In this post, I've tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a Software and DevOps engineer, but that doesn't preclude this being used for any other type of career, digital or otherwise. 
+In this post, I've tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a Software and DevOps engineer, but that doesn't preclude this being used for any other type of career, digital or otherwise.
+
 ### Documenting your learning journey through content creation
 
 A learning journey, no matter what the material, would benefit from being documented publicly (if appropriate). It serves as a record for you and the world.
 
 > Content doesn't need to be complicated or original
 
-As you are going to be posting your content publicly, it will improve the quality of your note taking, and thus your learning and understanding of a topic. The purpose of the content is information transfer not entertainment, there is no need for literary genius or originality. 
+As you are going to be posting your content publicly, it will improve the quality of your note taking, and thus your learning and understanding of a topic. The purpose of the content is information transfer not entertainment, there is no need for literary genius or originality.
 
 > There is no need to be a perfectionist
 
@@ -38,6 +39,6 @@ Being active in the digital world is critical, especially if you are trying to g
 
 In order to build a strong online presence, you need to have a personal brand that shows your value to others. Your personal brand is how you want others to perceive you, and this is facilitated through writing and associated content creation.
 
-A strong personal brand will open opportunities as it will have reach and a large audience.  If executed consistently you will be able to leverage this to your benefit. 
+A strong personal brand will open opportunities as it will have reach and a large audience.  If executed consistently you will be able to leverage this to your benefit.
 
 Jobs will come to you and unexpected things will happen.
