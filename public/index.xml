@@ -58,6 +58,13 @@
       <description>&lt;p class=&#34;hidden&#34;&gt;It&amp;#39;s necessary to enable Javascript&lt;/p&gt;&#xA;&lt;p class=&#34;search-loading hidden&#34;&gt;Loading...&lt;/p&gt;&#xA;&#xA;&lt;form id=&#34;search-form&#34; class=&#34;search-form&#34; action=&#34;#&#34; method=&#34;post&#34; accept-charset=&#34;UTF-8&#34; role=&#34;search&#34;&gt;&#xA;  &lt;div class=&#34;search-bar&#34;&gt;&#xA;    &lt;label for=&#34;query&#34; class=&#34;hidden&#34;&gt;&lt;/label&gt;&#xA;    &lt;input id=&#34;query&#34; class=&#34;search-text&#34; type=&#34;text&#34; placeholder=&#34;Search...&#34;/&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/form&gt;&#xA;&#xA;&lt;div class=&#34;search-results&#34;&gt;&lt;/div&gt;&#xA;&#xA;&lt;template&gt;&#xA;  &lt;article class=&#34;search-result list-view&#34;&gt;&#xA;    &lt;header&gt;&#xA;      &lt;h2 class=&#34;title&#34;&gt;&lt;a href=&#34;#&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&#xA;      &lt;div class=&#34;submitted&#34;&gt;&#xA;        &lt;time class=&#34;created-date&#34;&gt;&lt;/time&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/header&gt;&#xA;    &lt;p class=&#34;content&#34;&gt;&lt;/p&gt;&#xA;  &lt;/article&gt;&#xA;&lt;/template&gt;</description>
     </item>
     <item>
+      <title>Why every engineer should learn vim</title>
+      <link>http://localhost:1313/posts/why-every-engineer-should-learn-vim/</link>
+      <pubDate>Thu, 25 Apr 2019 12:45:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/why-every-engineer-should-learn-vim/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been using vim for close to 10 years, in various forms, vim, nvim, vscode extensions.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re a professional in DevOps or software engineering, Vim should not be optional.&lt;/p&gt;&#xA;&lt;p&gt;That doesn’t mean you need to live inside vim or switch to Neovim overnight.  Just start with Vim motions, they’re built into most editors via extensions.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;You don’t need “full Vim”. Use VSCode with the Vim plugin. That’s more than enough to get the benefits.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Dvorak - how touch typing changed how I work</title>
       <link>http://localhost:1313/posts/dvorak-how-touch-typing-changed-how-i-work/</link>
       <pubDate>Mon, 25 Mar 2019 12:45:39 +0200</pubDate>
