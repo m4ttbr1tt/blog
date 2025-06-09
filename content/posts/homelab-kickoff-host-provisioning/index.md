@@ -58,4 +58,6 @@ ssh matt@192.168.1.51
 
 We are ready to get the cluster installed and running!
 
+I crimped some Cat5e connectors too! Not done that in a while 😀
+
 ![cabinet](/posts/homelab-kickoff-host-provisioning/cabinet.jpeg)
