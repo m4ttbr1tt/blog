@@ -49,11 +49,11 @@ I then applied my changes...
 sudo netplan apply
 ```
 
-and tested ssh connectivity from my main machine. (I still need to setup dns)
+...and tested ssh connectivity from my main machine. (I still need to setup dns)
 
 ```shell
 ssh matt@192.168.1.51
 
 ```
 
-We are ready to get the cluster installed an running!
+We are ready to get the cluster installed and running!
