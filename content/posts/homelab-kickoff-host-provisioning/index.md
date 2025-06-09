@@ -57,3 +57,5 @@ ssh matt@192.168.1.51
 ```
 
 We are ready to get the cluster installed and running!
+
+![cabinet](/posts/homelab-kickoff-host-provisioning/cabinet.jpeg)
