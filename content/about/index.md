@@ -6,15 +6,20 @@ type = 'blank'
 indexable = false
 +++
 
+Howzit, I’m Matt Britt.
 
-Howzit!
+I live in Cape Town, South Africa, and I’ve been working in tech for close to 20 years.
 
-My name is Matt Britt, I live in Cape Town, South Africa.
+My journey began in networking and support, before I took time out to study and moved into software engineering. Over the years, that naturally led me deeper into the world of DevOps, where I’ve found a strong sense of alignment with my interests in systems, automation, and continuous learning.
 
-I've been a software engineer for almost 20 years, and have decided to take on the challenge of getting into DevOps, this blog is a record of that journey.
+#### Why this blog, and why now?
 
-In a personal capacity I have been using Linux and VIM for the last 10 years. It is 😍.
+> I’ve always been driven by curiosity and a desire to improve.
 
-I'm always learning.
+For most of my career, I’ve chosen to stay relatively private. I focused on doing the work, not talking about it. But the industry is changing, and continues to change, faster than ever. With increasing uncertainty and noise, I’ve realised the importance of having a visible, authentic presence and personal brand.
 
-![nixos](/about/nixos.png)
+This blog is where I document what I’m learning, reflect on where I’ve been, and share thoughts on the technologies and practices that matter to me.
+
+Welcome and thanks for your interest 🤩
+
+![arch](/about/arch.png)
