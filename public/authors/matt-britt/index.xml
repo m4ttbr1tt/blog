@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 07 Jun 2025 20:45:39 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/authors/matt-britt/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Homelab Kickoff - host provisioning</title>
+      <title>Homelab kickoff - host provisioning</title>
       <link>http://localhost:1313/posts/homelab-kickoff-host-provisioning/</link>
       <pubDate>Sat, 07 Jun 2025 20:45:39 +0200</pubDate>
       <guid>http://localhost:1313/posts/homelab-kickoff-host-provisioning/</guid>
-      <description>&lt;h3 id=&#34;k3s-on-ubuntu-server&#34;&gt;K3s on Ubuntu Server&lt;/h3&gt;&#xA;&lt;p&gt;To start the homelab Ive completed the installation of Ubuntu Server onto the 5 Dell Optiplex mini-pcs that will be running my Kubernetes homelab.I will be running a K3S cluster initially and then upgrading to used TalosOS at a later stage. Ill be using GitOps to track the state of the cluster, so the migration to Talos should be&#xA;easy.I setup the machines with the below network config (static ip addresses)&lt;/p&gt;</description>
+      <description>&lt;p&gt;To start the homelab Ive completed the installation of Ubuntu Server onto the 5 Dell Optiplex mini-pcs that will be running my Kubernetes homelab.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Arch Linux disk partitioning and encryption</title>
