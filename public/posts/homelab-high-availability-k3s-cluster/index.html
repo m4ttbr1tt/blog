@@ -117,7 +117,7 @@
           <td>molly</td>
           <td>192.168.1.51</td>
           <td>control plane</td>
-          <td><code>--cluster-init</code></td>
+          <td>&ndash;cluster-init</td>
       </tr>
       <tr>
           <td>daisy</td>
@@ -161,12 +161,9 @@
 </span></span></code></pre></div><h3 id="agent-install">Agent install</h3>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sfL https://get.k3s.io | <span style="color:#79c0ff">K3S_TOKEN</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>cat secret<span style="color:#ff7b72">)</span> sh -s - agent --server https://192.168.1.51:6443
 </span></span></code></pre></div><h3 id="connecting-to-cluster">Connecting to cluster</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># remote control plane</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># remote control plane</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo cp /etc/rancher/k3s/k3s.yaml .
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>exit
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># On main system</span>
 </span></span><span style="display:flex;"><span>
@@ -177,13 +174,15 @@
 </span></span><span style="display:flex;"><span>mkdir ~/.kube
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mv k3s.yaml .kube/config
-</span></span></code></pre></div><h3 id="uninstalling">Uninstalling</h3>
+</span></span></code></pre></div><p><img src="/posts/homelab-high-availability-k3s-cluster/cluster.png" alt="cluster"></p>
+<h3 id="uninstalling">Uninstalling</h3>
 <p>In case you need to uninstall..</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># servers</span>
 </span></span><span style="display:flex;"><span>/usr/local/bin/k3s-uninstall.sh
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># agents</span>
 </span></span><span style="display:flex;"><span>/usr/local/bin/k3s-agent-uninstall.sh
-</span></span></code></pre></div><p><img src="/posts/homelab-high-availability-k3s-cluster/cluster.png" alt="cluster"></p></section></main>
+</span></span></code></pre></div><p>Done! 😍</p>
+<p>Next will be setting up Flux for GitOps!</p></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
@@ -192,7 +191,7 @@
 </div>
 </footer>
       </div><aside id="side-pane" class=""><div class="side-details">
-    <span>208 words</span>
+    <span>217 words</span>
     <span>1 - 2 minutes read</span><div class="side-details-taxonomy">
         <small>authors: 
           <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>

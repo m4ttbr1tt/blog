@@ -13,7 +13,7 @@ I've completed the install of a high availability K3S cluster onto the 5 Optiple
 
 | Node  | IP           | Role          | Notes            |
 | ----- | ------------ | ------------- | ---------------- |
-| molly | 192.168.1.51 | control plane | `--cluster-init` |
+| molly | 192.168.1.51 | control plane | --cluster-init   |
 | daisy | 192.168.1.52 | control plane | joins molly      |
 | rosie | 192.168.1.53 | control plane | joins molly      |
 | bessy | 192.168.1.54 | worker        | joins any server |
@@ -54,12 +54,9 @@ curl -sfL https://get.k3s.io | K3S_TOKEN=$(cat secret) sh -s - agent --server ht
 ### Connecting to cluster
 
 ```shell
-
 # remote control plane
 
 sudo cp /etc/rancher/k3s/k3s.yaml .
-
-exit
 
 # On main system
 
@@ -72,6 +69,8 @@ mkdir ~/.kube
 mv k3s.yaml .kube/config
 ```
 
+![cluster](/posts/homelab-high-availability-k3s-cluster/cluster.png)
+
 ### Uninstalling
 
 In case you need to uninstall..
@@ -83,4 +82,6 @@ In case you need to uninstall..
 /usr/local/bin/k3s-agent-uninstall.sh
 ```
 
-![cluster](/posts/homelab-high-availability-k3s-cluster/cluster.png)
+Done! 😍
+
+Next will be setting up Flux for GitOps!
