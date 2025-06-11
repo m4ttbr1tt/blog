@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Software Engineering &amp; DevOps - Matt Britt</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>http://localhost:37673/tags/</link>
     <description>Recent content in Tags on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 07 Jun 2025 20:45:39 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jun 2025 17:45:39 +0200</lastBuildDate>
+    <atom:link href="http://localhost:37673/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Homelab</title>
-      <link>http://localhost:1313/tags/homelab/</link>
-      <pubDate>Sat, 07 Jun 2025 20:45:39 +0200</pubDate>
-      <guid>http://localhost:1313/tags/homelab/</guid>
+      <link>http://localhost:37673/tags/homelab/</link>
+      <pubDate>Tue, 10 Jun 2025 17:45:39 +0200</pubDate>
+      <guid>http://localhost:37673/tags/homelab/</guid>
       <description></description>
     </item>
     <item>
       <title>K3S</title>
-      <link>http://localhost:1313/tags/k3s/</link>
-      <pubDate>Sat, 07 Jun 2025 20:45:39 +0200</pubDate>
-      <guid>http://localhost:1313/tags/k3s/</guid>
+      <link>http://localhost:37673/tags/k3s/</link>
+      <pubDate>Tue, 10 Jun 2025 17:45:39 +0200</pubDate>
+      <guid>http://localhost:37673/tags/k3s/</guid>
       <description></description>
     </item>
     <item>
       <title>Arch</title>
-      <link>http://localhost:1313/tags/arch/</link>
+      <link>http://localhost:37673/tags/arch/</link>
       <pubDate>Thu, 29 May 2025 18:40:51 +0200</pubDate>
-      <guid>http://localhost:1313/tags/arch/</guid>
+      <guid>http://localhost:37673/tags/arch/</guid>
       <description></description>
     </item>
     <item>
       <title>Bluefin</title>
-      <link>http://localhost:1313/tags/bluefin/</link>
+      <link>http://localhost:37673/tags/bluefin/</link>
       <pubDate>Mon, 26 May 2025 19:39:56 +0200</pubDate>
-      <guid>http://localhost:1313/tags/bluefin/</guid>
+      <guid>http://localhost:37673/tags/bluefin/</guid>
       <description></description>
     </item>
     <item>
       <title>Devpod</title>
-      <link>http://localhost:1313/tags/devpod/</link>
+      <link>http://localhost:37673/tags/devpod/</link>
       <pubDate>Mon, 26 May 2025 19:39:56 +0200</pubDate>
-      <guid>http://localhost:1313/tags/devpod/</guid>
+      <guid>http://localhost:37673/tags/devpod/</guid>
       <description></description>
     </item>
     <item>
       <title>NixOS</title>
-      <link>http://localhost:1313/tags/nixos/</link>
+      <link>http://localhost:37673/tags/nixos/</link>
       <pubDate>Wed, 21 May 2025 16:40:51 +0200</pubDate>
-      <guid>http://localhost:1313/tags/nixos/</guid>
+      <guid>http://localhost:37673/tags/nixos/</guid>
       <description></description>
     </item>
     <item>
       <title>K9S</title>
-      <link>http://localhost:1313/tags/k9s/</link>
+      <link>http://localhost:37673/tags/k9s/</link>
       <pubDate>Sat, 17 May 2025 17:21:51 +0200</pubDate>
-      <guid>http://localhost:1313/tags/k9s/</guid>
+      <guid>http://localhost:37673/tags/k9s/</guid>
       <description></description>
     </item>
     <item>
       <title>Brand</title>
-      <link>http://localhost:1313/tags/brand/</link>
+      <link>http://localhost:37673/tags/brand/</link>
       <pubDate>Tue, 13 May 2025 15:51:14 +0200</pubDate>
-      <guid>http://localhost:1313/tags/brand/</guid>
+      <guid>http://localhost:37673/tags/brand/</guid>
       <description></description>
     </item>
   </channel>

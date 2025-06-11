@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Arch on Software Engineering &amp; DevOps - Matt Britt</title>
-    <link>http://localhost:1313/tags/arch/</link>
+    <link>http://localhost:37673/tags/arch/</link>
     <description>Recent content in Arch on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 29 May 2025 18:40:51 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/arch/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:37673/tags/arch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Arch Linux disk partitioning and encryption</title>
-      <link>http://localhost:1313/posts/arch-linux-disk-partitioning-and-encryption/</link>
+      <link>http://localhost:37673/posts/arch-linux-disk-partitioning-and-encryption/</link>
       <pubDate>Thu, 29 May 2025 18:40:51 +0200</pubDate>
-      <guid>http://localhost:1313/posts/arch-linux-disk-partitioning-and-encryption/</guid>
-      <description>&lt;p&gt;Yesterday I set out to work through getting disk encryption configured on one of the 5 OptiPlex 7040 Mini PCS that arrived yesterday. I will be setting up my homelab with these machines and want to make sure I have mastered the process of disk partitioning and encryption.&lt;/p&gt;&#xA;&lt;p&gt;The layout of the partitions and volumes will look like this:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/arch-linux-disk-partitioning-and-encryption/plan.png&#34; alt=&#34;the planned layout&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The size of the SSD is 128GB so I&amp;rsquo;ll be arranging the partitions/volumes like below:&lt;/p&gt;</description>
+      <guid>http://localhost:37673/posts/arch-linux-disk-partitioning-and-encryption/</guid>
+      <description>&lt;p&gt;Yesterday I set out to work through getting disk encryption configured on one of the 5 OptiPlex 7040 Mini PCS that arrived yesterday. I will be setting up my homelab with these machines and want to make sure I have mastered the process of disk partitioning and encryption.&lt;/p&gt;&#xA;&lt;p&gt;The layout of the partitions and volumes will look like this:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:37673/posts/arch-linux-disk-partitioning-and-encryption/plan.png&#34; alt=&#34;the planned layout&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The size of the SSD is 128GB so I&amp;rsquo;ll be arranging the partitions/volumes like below:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
