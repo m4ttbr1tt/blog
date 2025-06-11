@@ -27,7 +27,7 @@
       <link>http://localhost:1313/posts/homelab-kickoff-host-provisioning/</link>
       <pubDate>Sat, 07 Jun 2025 20:45:39 +0200</pubDate>
       <guid>http://localhost:1313/posts/homelab-kickoff-host-provisioning/</guid>
-      <description>&lt;p&gt;To start the homelab Ive completed the installation of Ubuntu Server onto the 5 Dell Optiplex mini-pcs that will be running my Kubernetes homelab.&lt;/p&gt;</description>
+      <description>&lt;p&gt;To start the homelab I&amp;rsquo;ve completed the installation of Ubuntu Server onto the 5 Dell Optiplex mini-pcs that will be running my Kubernetes homelab.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Arch Linux disk partitioning and encryption</title>

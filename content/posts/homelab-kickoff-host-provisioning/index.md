@@ -7,7 +7,7 @@ authors = ["Matt Britt"]
 tags = ["homelab","k3s"]
 +++
 
-To start the homelab Ive completed the installation of Ubuntu Server onto the 5 Dell Optiplex mini-pcs that will be running my Kubernetes homelab.<!--more-->
+To start the homelab I've completed the installation of Ubuntu Server onto the 5 Dell Optiplex mini-pcs that will be running my Kubernetes homelab.<!--more-->
 
 I will be running a K3S cluster initially and then upgrading to used TalosOS at a later stage. Ill be using GitOps to track the state of the cluster, so the migration to Talos should be easy.I setup the machines with the below network config (static ip addresses)
 

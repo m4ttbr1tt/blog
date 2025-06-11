@@ -7,7 +7,6 @@ authors = ["Matt Britt"]
 tags = ["homelab","k3s","GitOps"]
 +++
 
-
 Today I installed Flux onto the cluster in order to implement GitOps for my homelab.
 
 <!--more-->
@@ -24,7 +23,7 @@ When I first used Kubernetes in production in 2018, we did not have GitOps. The 
 
 There are two main tools in this space Flux and Argo.
 
-Ive chosen Flux for the following reasons:
+I've chosen Flux for the following reasons:
 
 - Kustomize is used by default (Application customisation)
 - CLI focused (Argo has a great UI, but Id rather not use that)
