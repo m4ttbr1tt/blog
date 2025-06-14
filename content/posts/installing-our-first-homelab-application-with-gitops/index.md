@@ -150,7 +150,7 @@ Once pushed to git you can check the status by running the below command. Once t
 flux get kustomizations
 ```
 
-![flux](/posts/homelab-installing-our-first-application-with-gitops/flux.png)
+![flux](/posts/installing-our-first-homelab-application-with-gitops/flux.png)
 
 And then port forward to check that the app is running.
 

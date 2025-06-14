@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing our first homelab application with GitOps</title>
-      <link>http://localhost:1313/posts/homelab-installing-our-first-application-with-gitops/</link>
+      <link>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</link>
       <pubDate>Sat, 14 Jun 2025 16:45:39 +0200</pubDate>
-      <guid>http://localhost:1313/posts/homelab-installing-our-first-application-with-gitops/</guid>
+      <guid>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</guid>
       <description>&lt;p&gt;After setting up Flux on the cluster, its time to put it to use! I&amp;rsquo;ll be deploying an app called Linkding, which is a bookmark manager.&lt;/p&gt;</description>
     </item>
     <item>
