@@ -27,7 +27,7 @@ spec:
       storage: 1Gi
 ```
 
-And then alter our deployment to add the volume and mount it the container.
+And then alter our deployment to add the volume and mount it to the container.
 
 ```yaml
 #base/linkding/deployment.yaml
