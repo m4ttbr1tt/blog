@@ -2,89 +2,99 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:36253/authors/</loc>
+    <loc>http://localhost:1313/authors/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/gitops/</loc>
+    <loc>http://localhost:1313/tags/gitops/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/homelab/</loc>
+    <loc>http://localhost:1313/tags/homelab/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/installing-our-first-application-with-gitops/</loc>
+    <loc>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/k3s/</loc>
+    <loc>http://localhost:1313/tags/k3s/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/authors/matt-britt/</loc>
+    <loc>http://localhost:1313/authors/matt-britt/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-06-14T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/homelab-gitops-with-flux/</loc>
+    <loc>http://localhost:1313/posts/homelab-gitops-with-flux/</loc>
     <lastmod>2025-06-11T16:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/homelab-high-availability-k3s-cluster/</loc>
+    <loc>http://localhost:1313/posts/homelab-high-availability-k3s-cluster/</loc>
     <lastmod>2025-06-10T17:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/homelab-kickoff-host-provisioning/</loc>
+    <loc>http://localhost:1313/posts/homelab-kickoff-host-provisioning/</loc>
     <lastmod>2025-06-07T20:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/arch/</loc>
+    <loc>http://localhost:1313/tags/arch/</loc>
     <lastmod>2025-05-29T18:40:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/arch-linux-disk-partitioning-and-encryption/</loc>
+    <loc>http://localhost:1313/posts/arch-linux-disk-partitioning-and-encryption/</loc>
     <lastmod>2025-05-29T18:40:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/bluefin/</loc>
+    <loc>http://localhost:1313/tags/bluefin/</loc>
     <lastmod>2025-05-26T19:39:56+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/bluefin-and-dotfiles-management-changes/</loc>
+    <loc>http://localhost:1313/posts/bluefin-and-dotfiles-management-changes/</loc>
     <lastmod>2025-05-26T19:39:56+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/devpod/</loc>
+    <loc>http://localhost:1313/tags/devpod/</loc>
     <lastmod>2025-05-26T19:39:56+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</loc>
+    <loc>http://localhost:1313/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</loc>
     <lastmod>2025-05-21T16:40:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/nixos/</loc>
+    <loc>http://localhost:1313/tags/nixos/</loc>
     <lastmod>2025-05-21T16:40:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/installing-k3s-and-k9s-on-a-ubuntu-server-vm/</loc>
+    <loc>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</loc>
+    <lastmod>2025-05-18T19:45:14+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/homelab/</loc>
+    <lastmod>2025-05-18T19:45:14+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/</loc>
+    <lastmod>2025-05-18T19:45:14+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/storage/</loc>
+    <lastmod>2025-05-18T19:45:14+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/installing-k3s-and-k9s-on-a-ubuntu-server-vm/</loc>
     <lastmod>2025-05-17T17:21:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/k9s/</loc>
+    <loc>http://localhost:1313/tags/k9s/</loc>
     <lastmod>2025-05-17T17:21:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/tags/brand/</loc>
+    <loc>http://localhost:1313/tags/brand/</loc>
     <lastmod>2025-05-13T15:51:14+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/building-a-personal-brand/</loc>
+    <loc>http://localhost:1313/posts/building-a-personal-brand/</loc>
     <lastmod>2025-05-13T15:51:14+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/search/</loc>
+    <loc>http://localhost:1313/search/</loc>
     <lastmod>2025-05-12T20:24:42+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-05-12T20:24:42+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/why-every-engineer-should-learn-vim/</loc>
+    <loc>http://localhost:1313/posts/why-every-engineer-should-learn-vim/</loc>
     <lastmod>2019-04-25T12:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/posts/dvorak-how-touch-typing-changed-how-i-work/</loc>
+    <loc>http://localhost:1313/posts/dvorak-how-touch-typing-changed-how-i-work/</loc>
     <lastmod>2019-03-25T12:45:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:36253/categories/</loc>
-  </url><url>
-    <loc>http://localhost:36253/series/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url>
 </urlset>

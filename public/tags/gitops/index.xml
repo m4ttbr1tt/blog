@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GitOps on Software Engineering &amp; DevOps - Matt Britt</title>
-    <link>http://localhost:36253/tags/gitops/</link>
+    <link>http://localhost:1313/tags/gitops/</link>
     <description>Recent content in GitOps on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 14 Jun 2025 16:45:39 +0200</lastBuildDate>
-    <atom:link href="http://localhost:36253/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Installing our first homelab application with GitOps</title>
-      <link>http://localhost:36253/posts/installing-our-first-application-with-gitops/</link>
+      <link>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</link>
       <pubDate>Sat, 14 Jun 2025 16:45:39 +0200</pubDate>
-      <guid>http://localhost:36253/posts/installing-our-first-application-with-gitops/</guid>
+      <guid>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</guid>
       <description>&lt;p&gt;After setting up Flux on the cluster, its time to put it to use! I&amp;rsquo;ll be deploying an app called Linkding, which is a bookmark manager.&lt;/p&gt;</description>
     </item>
     <item>
       <title>GitOps with Flux</title>
-      <link>http://localhost:36253/posts/homelab-gitops-with-flux/</link>
+      <link>http://localhost:1313/posts/homelab-gitops-with-flux/</link>
       <pubDate>Wed, 11 Jun 2025 16:45:39 +0200</pubDate>
-      <guid>http://localhost:36253/posts/homelab-gitops-with-flux/</guid>
+      <guid>http://localhost:1313/posts/homelab-gitops-with-flux/</guid>
       <description>&lt;p&gt;Today I installed Flux onto the cluster in order to implement GitOps for my homelab.&lt;/p&gt;</description>
     </item>
   </channel>
