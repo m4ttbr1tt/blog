@@ -130,10 +130,6 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">selector</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">matchLabels</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">app</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">volumes</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span>- <span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding-pv-storage</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">persistentVolumeClaim</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">        </span><span style="color:#7ee787">claimName</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding-pv-claim</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">template</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">labels</span>:<span style="color:#6e7681">
@@ -144,9 +140,13 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">image</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">sissbruecker/linkding:1.31.0</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">ports</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">            </span>- <span style="color:#7ee787">containerPort</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">9090</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">volumeMounts</span>:<span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">        </span>- <span style="color:#7ee787">mountPath</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;/usr/share/linkding&#34;</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding-pv-storage</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">volumeMounts</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">            </span>- <span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding-data</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">              </span><span style="color:#7ee787">mountPath</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;/etc/linkding/data&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">volumes</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">        </span>- <span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding-data</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">persistentVolumeClaim</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">            </span><span style="color:#7ee787">claimName</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding-data-pvc</span><span style="color:#6e7681">
 </span></span></span></code></pre></div><p>With Flux running in our cluster all we need to do is to commit and push our changes to the homelab repo! 💥</p></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>

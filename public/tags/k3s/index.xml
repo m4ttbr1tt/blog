@@ -6,8 +6,22 @@
     <description>Recent content in K3s on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Jun 2025 16:45:39 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jun 2025 12:45:39 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/k3s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exposing our application to the internet</title>
+      <link>http://localhost:1313/posts/exposing-our-application-to-the-internet/</link>
+      <pubDate>Sat, 21 Jun 2025 12:45:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/exposing-our-application-to-the-internet/</guid>
+      <description>&lt;p&gt;The linkding app is now running or our cluster, but in our to make it useful it would be good to expose it to the internet.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Adding storage to our homelab application</title>
+      <link>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</link>
+      <pubDate>Wed, 18 Jun 2025 18:45:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</guid>
+      <description>&lt;p&gt;In order to persist any data that will be generated be linkding, we need to make sure that we have persistent storage.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Installing our first homelab application with GitOps</title>
       <link>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</link>

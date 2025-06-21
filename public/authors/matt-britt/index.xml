@@ -6,8 +6,22 @@
     <description>Recent content in Matt Britt on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Jun 2025 16:45:39 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jun 2025 12:45:39 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/authors/matt-britt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exposing our application to the internet</title>
+      <link>http://localhost:1313/posts/exposing-our-application-to-the-internet/</link>
+      <pubDate>Sat, 21 Jun 2025 12:45:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/exposing-our-application-to-the-internet/</guid>
+      <description>&lt;p&gt;The linkding app is now running or our cluster, but in our to make it useful it would be good to expose it to the internet.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Adding storage to our homelab application</title>
+      <link>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</link>
+      <pubDate>Wed, 18 Jun 2025 18:45:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</guid>
+      <description>&lt;p&gt;In order to persist any data that will be generated be linkding, we need to make sure that we have persistent storage.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Installing our first homelab application with GitOps</title>
       <link>http://localhost:1313/posts/installing-our-first-homelab-application-with-gitops/</link>
@@ -56,13 +70,6 @@
       <pubDate>Wed, 21 May 2025 16:40:51 +0200</pubDate>
       <guid>http://localhost:1313/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/</guid>
       <description>&lt;p&gt;18 months on NixOS… and I’m done.  I’m moving to Bluefin. I loved the idea of NixOS,  a declarative, reproducible, git tracked OS.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/final.png&#34; alt=&#34;final nixos&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;But…&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;It distracted me from doing real work&lt;/li&gt;&#xA;&lt;li&gt;When I needed flexibility, it refused (or asked for a time investment to get things done)&lt;/li&gt;&#xA;&lt;li&gt;The OS is not relevant in the DevOps community, even though the package manager has its uses.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The final straw was not being able to run DevContainers due to a read-only file system  (I could have persisted to sort it out, but I&amp;rsquo;m done now). Its over.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Adding storage to our homelab application.</title>
-      <link>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</link>
-      <pubDate>Sun, 18 May 2025 19:45:14 +0200</pubDate>
-      <guid>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</guid>
-      <description>&lt;p&gt;In order to persist or data that will be generate be linkding, we need to make sure that we have persistent storage.&#xA;&amp;lt;&amp;ndash;more&amp;ndash;&amp;gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;apiVersion&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a5d6ff&#34;&gt;v1&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;kind&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a5d6ff&#34;&gt;PersistentVolumeClaim&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;metadata&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;name&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a5d6ff&#34;&gt;linkding-pv-claim&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;namespace&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a5d6ff&#34;&gt;linkding&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;spec&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;accessModes&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#a5d6ff&#34;&gt;ReadWriteOnce&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;resources&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;requests&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#7ee787&#34;&gt;storage&lt;/span&gt;:&lt;span style=&#34;color:#6e7681&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a5d6ff&#34;&gt;1Gi&lt;/span&gt;&lt;span style=&#34;color:#6e7681&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Installing K3S and K9S on an Ubuntu Server VM</title>
