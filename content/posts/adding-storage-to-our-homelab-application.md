@@ -40,10 +40,6 @@ spec:
   selector:
     matchLabels:
       app: linkding
-  volumes:
-    - name: linkding-pv-storage
-      persistentVolumeClaim:
-        claimName: linkding-pv-claim
   template:
     metadata:
       labels:
@@ -54,10 +50,13 @@ spec:
           image: sissbruecker/linkding:1.31.0
           ports:
             - containerPort: 9090
-      volumeMounts:
-        - mountPath: "/usr/share/linkding"
-          name: linkding-pv-storage
-
+          volumeMounts:
+            - name: linkding-data
+              mountPath: "/etc/linkding/data"
+      volumes:
+        - name: linkding-data
+          persistentVolumeClaim:
+            claimName: linkding-data-pvc
 ```
 
 With Flux running in our cluster all we need to do is to commit and push our changes to the homelab repo! 💥
