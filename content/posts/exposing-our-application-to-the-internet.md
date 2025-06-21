@@ -128,5 +128,3 @@ data:
 ```
 
 When we push these changes to our repo, Flux will provision and setup the tunnel, we are live!
-
-[https://links.mattbritt.com](https://links.mattbritt.com)
