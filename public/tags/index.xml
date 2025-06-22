@@ -71,5 +71,26 @@
       <guid>http://localhost:1313/tags/brand/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Architecture</title>
+      <link>http://localhost:1313/tags/architecture/</link>
+      <pubDate>Mon, 27 Jan 2020 12:21:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/architecture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DDD</title>
+      <link>http://localhost:1313/tags/ddd/</link>
+      <pubDate>Mon, 27 Jan 2020 12:21:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/ddd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Design</title>
+      <link>http://localhost:1313/tags/design/</link>
+      <pubDate>Mon, 27 Jan 2020 12:21:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/design/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

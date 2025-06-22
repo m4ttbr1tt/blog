@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/exposing-our-application-to-the-internet/</link>
       <pubDate>Sat, 21 Jun 2025 12:45:39 +0200</pubDate>
       <guid>http://localhost:1313/posts/exposing-our-application-to-the-internet/</guid>
-      <description>&lt;p&gt;The linkding app is now running or our cluster, but in our to make it useful it would be good to expose it to the internet.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The linkding app is now running on our cluster, but in order to make it useful it would be good to expose it to the internet.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Adding storage to our homelab application</title>
@@ -84,6 +84,13 @@
       <pubDate>Tue, 13 May 2025 15:51:14 +0200</pubDate>
       <guid>http://localhost:1313/posts/building-a-personal-brand/</guid>
       <description>&lt;p&gt;In this post, I&amp;rsquo;ve tried to outline the purpose of building an online presence and personal brand.  My goals are to grow my brand as a Software and DevOps engineer, but that doesn&amp;rsquo;t preclude this being used for any other type of career, digital or otherwise.&lt;/p&gt;&#xA;&lt;h3 id=&#34;documenting-your-learning-journey-through-content-creation&#34;&gt;Documenting your learning journey through content creation&lt;/h3&gt;&#xA;&lt;p&gt;A learning journey, no matter what the material, would benefit from being documented publicly (if appropriate). It serves as a record for you and the world.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CQRS - how it can simplify your software and your job</title>
+      <link>http://localhost:1313/posts/cqrs-how-it-can-simplify-your-software-and-your-job/</link>
+      <pubDate>Mon, 27 Jan 2020 12:21:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cqrs-how-it-can-simplify-your-software-and-your-job/</guid>
+      <description>&lt;p&gt;CQRS can help you break up your solutions into logical parts that reduce the contextual burden, making your software more understandable and your job easier.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Why every engineer should learn vim</title>

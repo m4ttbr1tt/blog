@@ -83,6 +83,18 @@
     <loc>http://localhost:1313/about/</loc>
     <lastmod>2025-05-12T20:24:42+02:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/architecture/</loc>
+    <lastmod>2020-01-27T12:21:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/cqrs-how-it-can-simplify-your-software-and-your-job/</loc>
+    <lastmod>2020-01-27T12:21:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ddd/</loc>
+    <lastmod>2020-01-27T12:21:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/design/</loc>
+    <lastmod>2020-01-27T12:21:51+02:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/why-every-engineer-should-learn-vim/</loc>
     <lastmod>2019-04-25T12:45:39+02:00</lastmod>
   </url><url>

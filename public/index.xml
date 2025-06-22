@@ -100,6 +100,13 @@
       <description>&lt;p&gt;Howzit, I’m Matt Britt. I live in Cape Town, South Africa 🇿🇦😍. I’ve been working in tech for close to 20 years.&lt;/p&gt;&#xA;&lt;p&gt;My journey began in networking and support, before I took time out to study and moved into software engineering. Over the years I was naturally drawn into the world of DevOps, where I’ve found a strong sense of alignment with my interests in systems, automation, and continuous learning.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>CQRS - how it can simplify your software and your job</title>
+      <link>http://localhost:1313/posts/cqrs-how-it-can-simplify-your-software-and-your-job/</link>
+      <pubDate>Mon, 27 Jan 2020 12:21:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/cqrs-how-it-can-simplify-your-software-and-your-job/</guid>
+      <description>&lt;p&gt;CQRS can help you break up your solutions into logical parts that reduce the contextual burden, making your software more understandable and your job easier.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Why every engineer should learn vim</title>
       <link>http://localhost:1313/posts/why-every-engineer-should-learn-vim/</link>
       <pubDate>Thu, 25 Apr 2019 12:45:39 +0200</pubDate>

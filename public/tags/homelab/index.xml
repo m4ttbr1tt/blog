@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/exposing-our-application-to-the-internet/</link>
       <pubDate>Sat, 21 Jun 2025 12:45:39 +0200</pubDate>
       <guid>http://localhost:1313/posts/exposing-our-application-to-the-internet/</guid>
-      <description>&lt;p&gt;The linkding app is now running or our cluster, but in our to make it useful it would be good to expose it to the internet.&lt;/p&gt;</description>
+      <description>&lt;p&gt;The linkding app is now running on our cluster, but in order to make it useful it would be good to expose it to the internet.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Adding storage to our homelab application</title>
