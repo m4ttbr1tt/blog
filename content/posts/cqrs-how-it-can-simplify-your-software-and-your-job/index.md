@@ -16,7 +16,7 @@ CQRS stands for Command Query Responsibility Segregation. Ok, but what is it and
 
 At it's core CQRS is about splitting out your systems reads and writes, and having clearly delineated modules in your software that are responsible for  each of these elements.
 
-If we had to simplify an explanation, about the work we do as software engineers, we take data from a data source,  display it to our users in some way, and then save changes back to our data source.  Sounds simple but there is complexity in business and domains that can quickly get unwieldy, so any means of reducing the cognitive complexity of any piece of code you are working on, can be very beneficial.
+As software engineers (at a high level) we take data from a data source,  display it to our users in some way, and then save changes back to our data source.  Sounds simple but there is complexity in business and domains that can quickly get unwieldy, so any means of reducing the cognitive complexity of any piece of code you are working on, can be very beneficial.
 
 ### Halve your contextual understanding requirement
 
