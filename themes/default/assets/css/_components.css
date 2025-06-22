@@ -189,3 +189,37 @@
 .search-result {
   border-top: 1px var(--dim-color) solid;
 }
+
+
+.social-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  padding-top: 10px;
+  margin: 0;
+  justify-content: center;
+}
+
+.social-links li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links li a {
+  color: #333; /* default icon color */
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.social-links i {
+  font-size: 1.5rem;
+}
+
+.social-links li a:hover,
+.social-links li a:focus {
+  color: var(--primary-color);
+}
+  
+

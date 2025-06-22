@@ -7,5 +7,14 @@
   <h1 class="margin-sm">{{- site.Data.rtwt.content.home.greetings -}}</h1>
   <div class="dim" style="width:70%;margin:0 15%;">{{- site.Data.rtwt.content.home.text -}}
   </div>
+  <ul class="social-links">
+    {{ range sort site.Params.social "weight" }}
+      <li>
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}">
+          <i class="{{ .icon }}"></i>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
 </div>
 {{- end -}}
