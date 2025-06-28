@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Managing homelab secrets | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/managing-homelab-secrets/">
+  <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
+  <meta property="og:title" content="Managing homelab secrets">
+  <meta property="og:description" content="In the last post we manually created a Cloudflare secret directly using kubectl, which goes against what we are trying to achieve with GitOps…">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-25T18:45:39+02:00">
+    <meta property="article:modified_time" content="2025-06-25T18:45:39+02:00">
+    <meta property="article:tag" content="Homelab">
+    <meta property="article:tag" content="K3s">
+    <meta property="article:tag" content="GitOps">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Managing homelab secrets">
+  <meta name="twitter:description" content="In the last post we manually created a Cloudflare secret directly using kubectl, which goes against what we are trying to achieve with GitOps…">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
+
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Managing homelab secrets</h1><time class="dim" datetime="2025-06-25T18:45:39&#43;02:00">June 25, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://localhost:1313/tags/homelab/">#homelab</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/k3s/">#k3s</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/gitops/">#GitOps</a>
+      </div></ol></div>
+  <section class="page-section"><p>In the last post we manually created a Cloudflare secret directly using kubectl, which goes against what we are trying to achieve with GitOps&hellip;</p>
+<p>I want to be able to destroy and recreate the cluster all from one repository, so the secrets need to be stored in git, and thus we will need to store the secrets in
+a secure way.</p>
+<p>I am using sops (with age encryption) <a href="https://github.com/getsops/sops">https://github.com/getsops/sops</a></p>
+<p>First setup sops and age, for me thats&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo pacman -S sops age
+</span></span></code></pre></div><p>Then generate a key pair and  save to your password manager. (we will be deleting the age.agekey file after we are done)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>age-keygen -o age.agekey
+</span></span><span style="display:flex;"><span>cat age.agekey
+</span></span></code></pre></div><p>The contents of the file will look something like this&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Public key: age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># created: 2025-06-24T10:04:52+02:00</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># public key: age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv</span>
+</span></span><span style="display:flex;"><span>AGE-SECRET-KEY-13HMN4HPFLZ60ECZUHHYT5JW75WNG3AL3JCYJ36H90209PKRRYWHQ0320ZS
+</span></span></code></pre></div><p>Make sure you set an environment variable with your public key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">AGE_PUBLIC</span><span style="color:#ff7b72;font-weight:bold">=</span>age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv
+</span></span></code></pre></div><p>Next we will generate a secret manifest that uses our points to our Cloudflare credentials file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret generic tunnel-credentials <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>credentials.json<span style="color:#ff7b72;font-weight:bold">=</span>58c97568-9eda-4dbf-9857-b6cf9cf91259.json <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--dry-run<span style="color:#ff7b72;font-weight:bold">=</span>client -o yaml &gt; cloudflare-secret.yaml
+</span></span></code></pre></div><blockquote>
+<p>Kubernetes secrets are NOT secret. We have to enrcypt the content still.</p></blockquote>
+<p>The below command references your env variable with the public key, targets the specifice section of your yaml with regex, and makes an in-place edit of the secret file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sops --age<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">$AGE_PUBLIC</span> <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--encrypt --encrypted-regex <span style="color:#a5d6ff">&#39;^(data|stringData)$&#39;</span> --in-place cloudflare-secret.yaml
+</span></span></code></pre></div><p>If you cat the file you will now see the contents of the credintials file have been encrypted in place</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">data</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">credentials.json</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">ENC[AES256_GCM,data:aHXoMNZSR1mzMrnWMrpwNVJ65MF3axL43OanZnmdjYKViSphDBl491s+tMhI0G3xeQiFBKcBFsHmKT7c8PaV+WgfJG7yg6J36QtJxLz7xG87d9Z5PkWfSo390tPxSr8GLpbi3Qgr+AVxvwjY3F3E8H19uFEyJQQxWDS/sTSNm/wDIdhpIsuTzqUZvVuZLlJmV4Unj5TaZUk1/divBvivShLLdPh1smFjqdH+r1f5uTb2lr6sM82U5do0A89FOOwM+yd6J2c7P9kGQJ+yMktEW0hF/gJkSYRjsB/8YEAZ+JvhEkE69Njoxtmu4jDSbZSN5Ndr13yhYWNviVZwnMUNa1x/fGv6JoA4A2VVGT65OYY4jZvl/xQBsD8uuq1YvtGz8tmGoZHIjFT8U0MGY8Mu6l5uN8sB44k8LhEHTq2+HC+34o6GqYZX7y5zQWJlrJ2NOW4fFVZCr+U6YvWr1BxCdhX6rk6GOMnZ18zWvY6LNHr+RaUH+AR50fmW+IO19NC2v3spxrSjBHH+oSmdksXVU4FVxLJskwyCbNXfcTVG9OIH3FnB3lilxvvy6b1CA5WA6Z5LXSNUxLEi99IqDjQz5SyY7LclRXOgJxz3kh4Zq0m+RaAMJTaSO4JKPoTpDtfbECYnMxYWeJhrKdOVQLNuOZWIg6S9O6CuxmOOezkq/9M=,iv:2h/BVKyWDyQIRYarBlYYraXjD2hENDyA9HfjMnu5eg0=,tag:bMC3lUKS/9gnX4BJT9Q/qQ==,type:str]</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Secret</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">creationTimestamp</span>:<span style="color:#6e7681"> </span><span style="color:#79c0ff">null</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">tunnel-credentials</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">sops</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">age</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">        </span>- <span style="color:#7ee787">recipient</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv </span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">enc</span>:<span style="color:#6e7681"> </span>|<span style="color:#a5d6ff">
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            -----BEGIN AGE ENCRYPTED FILE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBESUtsT2dvWkJFdTJCaGgr
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            azNvOXl1NjFCWU1wTi8rb0RLRjhYeFM2QTFBCkdZVitlVUlCNkxvQlBWVnJZUUlG
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            SDQ2R1NZMkZVY0FuVUhpT05nbkc4bUEKLS0tIEwwK3FZN1lrK05pcHhpOGlldVN2
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            Sk1zdnRTdWd1QmhFZXZRWlZKMHJEQnMKyIMSF5qOq6z7AF/4vTVczlYS0P6mV3q2
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            WBq/t/UVAmts0TCn8t5xv4M+EXghs1QBkr35A2ClYBYgjd7qQLSZgw==
+</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">            -----END AGE ENCRYPTED FILE-----</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">lastmodified</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">&#34;2025-06-28T08:23:19Z&#34;</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">mac</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">ENC[AES256_GCM,data:af++553y8OX+VAy7Ygg0zIYdMdEPUfwI6mSzoCqgTa2/Uqp//o94NwUicjp7ZGUmoX6BM6gK5ULd5k8Du1ncj5K5e2boFeTBk099accVeYtVwiknAWViVw4DD2Mnm9vCmDJJMNacB4Ax6i/Z0+D/MNy/076xUMyq23tqmPK98KA=,iv:LPa9LpP+iJmzrdKqpzysQdXtYHPwoHHuZqLhSIF7LiI=,tag:jU1NX0fo4mlxezAh7CourQ==,type:str]</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">encrypted_regex</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">^(data|stringData)$</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">version</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">3.10.2</span><span style="color:#6e7681">
+</span></span></span></code></pre></div><p>In order for sops do decrypt our secret it needs the private key (this is a manual step when setting up your cluster)</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat age.agekey |
+</span></span><span style="display:flex;"><span>kubectl create secret generic sops-age <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--namespace<span style="color:#ff7b72;font-weight:bold">=</span>flux-system <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>age.agekey<span style="color:#ff7b72;font-weight:bold">=</span>/dev/stdin
+</span></span></code></pre></div><p>The last thing is to amend our apps.yaml file to include sops  for decryption.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># update spec of apps.yaml so decryption works</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"> </span><span style="color:#7ee787">decryption</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">provider</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">sops</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">secretRef</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">sops-age</span><span style="color:#6e7681">
+</span></span></span></code></pre></div><p>Push to git and flux will reconcile and decrypt your secret! 💥</p></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>356 words</span>
+    <span>4 - 5 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+      </div></div><h3>Related</h3>
+    <ul><li><a href="/posts/exposing-our-application-to-the-internet/">Exposing our application to the internet</a></li><li><a href="/posts/adding-storage-to-our-homelab-application/">Adding storage to our homelab application</a></li><li><a href="/posts/installing-our-first-homelab-application-with-gitops/">Installing our first homelab application with GitOps</a></li><li><a href="/posts/homelab-gitops-with-flux/">GitOps with Flux</a></li><li><a href="/posts/homelab-high-availability-k3s-cluster/">Homelab high availability K3S cluster install</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
