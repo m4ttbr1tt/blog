@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 25 Jun 2025 18:45:39 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 27 Jun 2025 19:15:39 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Monitoring with Prometheus &amp; Grafana</title>
+      <link>http://localhost:1313/posts/monitoring-with-prometheus-and-grafana/</link>
+      <pubDate>Fri, 27 Jun 2025 19:15:39 +0200</pubDate>
+      <guid>http://localhost:1313/posts/monitoring-with-prometheus-and-grafana/</guid>
+      <description>&lt;p&gt;Visibility and monitoring of our homelab will be done by installing a helm chart called kube-prometheus-stack.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Managing homelab secrets</title>
       <link>http://localhost:1313/posts/managing-homelab-secrets/</link>
