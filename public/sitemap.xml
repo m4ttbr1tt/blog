@@ -3,30 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/authors/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/exposing-our-application-to-the-internet/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <loc>http://localhost:1313/posts/automatic-image-updates-with-renovate/</loc>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/gitops/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/homelab/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/k3s/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/authors/matt-britt/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-06-21T12:45:39+02:00</lastmod>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-06-30T19:15:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/ingress-with-traefik/</loc>
+    <lastmod>2025-06-28T11:15:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/monitoring-with-prometheus-and-grafana/</loc>
+    <lastmod>2025-06-27T19:15:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/managing-homelab-secrets/</loc>
+    <lastmod>2025-06-25T18:45:39+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/exposing-our-application-to-the-internet/</loc>
     <lastmod>2025-06-21T12:45:39+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/adding-storage-to-our-homelab-application/</loc>

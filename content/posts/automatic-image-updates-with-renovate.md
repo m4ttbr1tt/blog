@@ -1,5 +1,5 @@
 +++
-date = '2025-06-30T18:15:39+02:00'
+date = '2025-06-30T19:15:39+02:00'
 draft = false
 title = 'Automatic image updates with Renovate'
 authors = ["Matt Britt"]
