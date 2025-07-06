@@ -30,6 +30,27 @@
       <description></description>
     </item>
     <item>
+      <title>Certificates</title>
+      <link>http://localhost:1313/tags/certificates/</link>
+      <pubDate>Sun, 01 Jun 2025 18:05:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/certificates/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LFCS</title>
+      <link>http://localhost:1313/tags/lfcs/</link>
+      <pubDate>Sun, 01 Jun 2025 18:05:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/lfcs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
+      <pubDate>Sun, 01 Jun 2025 18:05:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Arch</title>
       <link>http://localhost:1313/tags/arch/</link>
       <pubDate>Thu, 29 May 2025 18:40:51 +0200</pubDate>

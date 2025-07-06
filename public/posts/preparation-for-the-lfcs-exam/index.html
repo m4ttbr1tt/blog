@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preparation for the LFCS exam | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/preparation-for-the-lfcs-exam/">
+  <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
+  <meta property="og:title" content="Preparation for the LFCS exam">
+  <meta property="og:description" content="The Linux Foundation Certified System Administrator (LFCS) exam is a 2 hour performance based exam in which you solve multiple issues from the command line.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-01T18:05:51+02:00">
+    <meta property="article:modified_time" content="2025-07-01T18:05:51+02:00">
+    <meta property="article:tag" content="LFCS">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Certificates">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Preparation for the LFCS exam">
+  <meta name="twitter:description" content="The Linux Foundation Certified System Administrator (LFCS) exam is a 2 hour performance based exam in which you solve multiple issues from the command line.">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
+
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Preparation for the LFCS exam</h1><time class="dim" datetime="2025-07-01T18:05:51&#43;02:00">July 1, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://localhost:1313/tags/lfcs/">#LFCS</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/linux/">#Linux</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/certificates/">#Certificates</a>
+      </div></ol></div>
+  <section class="page-section"><p>The Linux Foundation Certified System Administrator (LFCS) exam is a 2 hour performance based exam in which you solve multiple issues from the command line.</p>
+<p>Whist I have been using Linux for almost a decade, I would like to formalise my knowledge and make sure all areas are covered.  Learning Linux is an essential part of DevOps and SRE roles, so understanding its inner workings and how to manage a Linux system is essential.</p>
+<p><a href="https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/">https://training.linuxfoundation.org/certification/linux-foundation-certified-sysadmin-lfcs/</a></p>
+<p>There are other Linux certifications, namely the Linux Professional Institute LPIC-1 (101 &amp; 102) certifications. These are multiple choice exams, and whilst this is still valuable, I feel the performance based tests will be a better reflection of knowledge and skill. I will likely still study the free LPIC content in future.</p>
+<p><a href="https://www.lpi.org/our-certifications/lpic-1-overview/">https://www.lpi.org/our-certifications/lpic-1-overview/</a></p>
+<p>There is also a really valuable YouTube series that will assist in preparation <a href="https://www.youtube.com/watch?v=AKkNUvEHXhk&amp;list=PLFOYXCPEqdNUU55Xvgst8wGTWnz_sd-cj">LPIC 1 - Video Series</a></p>
+<p>The exam is broken up into the following sections:</p>
+<ul>
+<li>Essential Commands (20%)</li>
+<li>Operations Deployment (25%)</li>
+<li>Users and Groups (10%)</li>
+<li>Networking (25%)</li>
+<li>Storage(20%)</li>
+</ul>
+<h4 id="getting-help-directly-on-linux">Getting help directly on Linux</h4>
+<p>Whilst information can be gleaned from the web, its an important skill to master being able to source answers locally (ie. on the system you are running on). Here are some of the most useful and common commands.</p>
+<h4 id="man-pages">Man Pages</h4>
+<p>Man pages provide all the information you need. You can search specific sections depending on the documentation you require.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># will list the sections</span>
+</span></span><span style="display:flex;"><span>man man
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># examples of getting information</span>
+</span></span><span style="display:flex;"><span>ls --help
+</span></span><span style="display:flex;"><span>man ls
+</span></span><span style="display:flex;"><span>man <span style="color:#a5d6ff">1</span> printf
+</span></span><span style="display:flex;"><span>man <span style="color:#a5d6ff">3</span> printf
+</span></span></code></pre></div><h4 id="apropos-command">Apropos command</h4>
+<p>The apropos command searches all man pages related to a keyword or phrase. So if you are not sure where you should be searching this is a great tool.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># searches man pages if you dont know what you need</span>
+</span></span><span style="display:flex;"><span>sudo mandb <span style="color:#8b949e;font-style:italic"># create apropos db (man database)</span>
+</span></span><span style="display:flex;"><span>apropos tar <span style="color:#8b949e;font-style:italic"># search for occurences of tar in manpages</span>
+</span></span><span style="display:flex;"><span>apropos -s 1,3 tar <span style="color:#8b949e;font-style:italic"># sections</span>
+</span></span></code></pre></div><p>Finding all executables (man section 1) with the term archiv</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>homelab on  master took 3s ⬢ <span style="color:#ff7b72;font-weight:bold">[</span>Docker<span style="color:#ff7b72;font-weight:bold">]</span> ❯  apropos -s <span style="color:#a5d6ff">1</span> archiv
+</span></span><span style="display:flex;"><span>apt-ftparchive <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>   - Utility to generate index files
+</span></span><span style="display:flex;"><span>ar <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>               - create, modify, and extract from archives
+</span></span><span style="display:flex;"><span>dpkg-deb <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>         - Debian package archive <span style="color:#ff7b72;font-weight:bold">(</span>.deb<span style="color:#ff7b72;font-weight:bold">)</span> manipulation tool
+</span></span><span style="display:flex;"><span>dpkg-split <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>       - Debian package archive split/join tool
+</span></span><span style="display:flex;"><span>funzip <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>           - filter <span style="color:#ff7b72">for</span> extracting from a ZIP archive in a pipe
+</span></span><span style="display:flex;"><span>git-archive <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>      - Create an archive of files from a named tree
+</span></span><span style="display:flex;"><span>git-bundle <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>       - Move objects and refs by archive
+</span></span><span style="display:flex;"><span>git-diagnose <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>     - Generate a zip archive of diagnostic information
+</span></span><span style="display:flex;"><span>git-get-tar-commit-id <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - Extract commit ID from an archive created using git-archive
+</span></span><span style="display:flex;"><span>git-index-pack <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>   - Build pack index file <span style="color:#ff7b72">for</span> an existing packed archive
+</span></span><span style="display:flex;"><span>git-pack-objects <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - Create a packed archive of objects
+</span></span><span style="display:flex;"><span>git-show-index <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>   - Show packed archive index
+</span></span><span style="display:flex;"><span>git-unpack-objects <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - Unpack objects from a packed archive
+</span></span><span style="display:flex;"><span>git-upload-archive <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - Send archive back to git-archive
+</span></span><span style="display:flex;"><span>git-verify-pack <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>  - Validate packed Git archive files
+</span></span><span style="display:flex;"><span>gp-archive <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>       - archive gprofng experiment data
+</span></span><span style="display:flex;"><span>gpg-zip <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>          - encrypt or sign files into an archive
+</span></span><span style="display:flex;"><span>gpgtar <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>           - Encrypt or sign files into an archive
+</span></span><span style="display:flex;"><span>ptardiff <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>         - program that diffs an extracted archive against an unextracted one
+</span></span><span style="display:flex;"><span>ptargrep <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>         - Apply pattern matching to the contents of files in a tar archive
+</span></span><span style="display:flex;"><span>ranlib <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>           - generate an index to an archive
+</span></span><span style="display:flex;"><span>tar <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>              - an archiving utility
+</span></span><span style="display:flex;"><span>tarcat <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>           - concatenates the pieces of a GNU tar multi-volume archive
+</span></span><span style="display:flex;"><span>unzip <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>            - list, test and extract compressed files in a ZIP archive
+</span></span><span style="display:flex;"><span>unzipsfx <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>         - self-extracting stub <span style="color:#ff7b72">for</span> prepending to ZIP archives
+</span></span><span style="display:flex;"><span>x86_64-linux-gnu-ar <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - create, modify, and extract from archives
+</span></span><span style="display:flex;"><span>x86_64-linux-gnu-gp-archive <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - archive gprofng experiment data
+</span></span><span style="display:flex;"><span>x86_64-linux-gnu-ranlib <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span> - generate an index to an archive
+</span></span><span style="display:flex;"><span>zip <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>              - package and compress <span style="color:#ff7b72;font-weight:bold">(</span>archive<span style="color:#ff7b72;font-weight:bold">)</span> files
+</span></span><span style="display:flex;"><span>zipgrep <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>          - search files in a ZIP archive <span style="color:#ff7b72">for</span> lines matching a pattern
+</span></span><span style="display:flex;"><span>zipinfo <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>          - list detailed information about a ZIP archive
+</span></span></code></pre></div><p><img src="/posts/preparation-for-the-lfcs-exam/apropos-archive.png" alt="apropos"></p>
+<h4 id="tldr-pages">Tldr-pages</h4>
+<p>Man pages can sometimes be hard to digest, a simpler tool is tldr-pages, which is a collection of community-maintained help pages - which gives examples of how the tool is used.</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install tldr
+</span></span><span style="display:flex;"><span>tldr tar
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>homelab on  master took 3s ⬢ <span style="color:#ff7b72;font-weight:bold">[</span>Docker<span style="color:#ff7b72;font-weight:bold">]</span> ❯  tldr tar
+</span></span><span style="display:flex;"><span>Downloading tldr pages to /home/vscode/.local/share/tldr
+</span></span><span style="display:flex;"><span>tar
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Archiving utility.
+</span></span><span style="display:flex;"><span>Often combined with a compression method, such as gzip or bzip2.
+</span></span><span style="display:flex;"><span>More information: https://www.gnu.org/software/tar.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - <span style="color:#ff7b72;font-weight:bold">[</span>c<span style="color:#ff7b72;font-weight:bold">]</span>reate an archive and write it to a <span style="color:#ff7b72;font-weight:bold">[</span>f<span style="color:#ff7b72;font-weight:bold">]</span>ile:
+</span></span><span style="display:flex;"><span>   tar cf path/to/target.tar path/to/file1 path/to/file2 ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - <span style="color:#ff7b72;font-weight:bold">[</span>c<span style="color:#ff7b72;font-weight:bold">]</span>reate a g<span style="color:#ff7b72;font-weight:bold">[</span>z<span style="color:#ff7b72;font-weight:bold">]</span>ipped archive and write it to a <span style="color:#ff7b72;font-weight:bold">[</span>f<span style="color:#ff7b72;font-weight:bold">]</span>ile:
+</span></span><span style="display:flex;"><span>   tar czf path/to/target.tar.gz path/to/file1 path/to/file2 ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - <span style="color:#ff7b72;font-weight:bold">[</span>c<span style="color:#ff7b72;font-weight:bold">]</span>reate a g<span style="color:#ff7b72;font-weight:bold">[</span>z<span style="color:#ff7b72;font-weight:bold">]</span>ipped <span style="color:#ff7b72;font-weight:bold">(</span>compressed<span style="color:#ff7b72;font-weight:bold">)</span> archive from a directory using relative paths:
+</span></span><span style="display:flex;"><span>   tar czf path/to/target.tar.gz --directory<span style="color:#ff7b72;font-weight:bold">=</span>path/to/directory .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - E<span style="color:#ff7b72;font-weight:bold">[</span>x<span style="color:#ff7b72;font-weight:bold">]</span>tract a <span style="color:#ff7b72;font-weight:bold">(</span>compressed<span style="color:#ff7b72;font-weight:bold">)</span> archive <span style="color:#ff7b72;font-weight:bold">[</span>f<span style="color:#ff7b72;font-weight:bold">]</span>ile into the current directory <span style="color:#ff7b72;font-weight:bold">[</span>v<span style="color:#ff7b72;font-weight:bold">]</span>erbosely:
+</span></span><span style="display:flex;"><span>   tar xvf path/to/source.tar<span style="color:#ff7b72;font-weight:bold">[</span>.gz|.bz2|.xz<span style="color:#ff7b72;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - E<span style="color:#ff7b72;font-weight:bold">[</span>x<span style="color:#ff7b72;font-weight:bold">]</span>tract a <span style="color:#ff7b72;font-weight:bold">(</span>compressed<span style="color:#ff7b72;font-weight:bold">)</span> archive <span style="color:#ff7b72;font-weight:bold">[</span>f<span style="color:#ff7b72;font-weight:bold">]</span>ile into the target directory:
+</span></span><span style="display:flex;"><span>   tar xf path/to/source.tar<span style="color:#ff7b72;font-weight:bold">[</span>.gz|.bz2|.xz<span style="color:#ff7b72;font-weight:bold">]</span> --directory<span style="color:#ff7b72;font-weight:bold">=</span>path/to/directory
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - <span style="color:#ff7b72;font-weight:bold">[</span>c<span style="color:#ff7b72;font-weight:bold">]</span>reate a compressed archive and write it to a <span style="color:#ff7b72;font-weight:bold">[</span>f<span style="color:#ff7b72;font-weight:bold">]</span>ile, using the file extension to <span style="color:#ff7b72;font-weight:bold">[</span>a<span style="color:#ff7b72;font-weight:bold">]</span>utomatically determine the compression program:
+</span></span><span style="display:flex;"><span>   tar caf path/to/target.tar.xz path/to/file1 path/to/file2 ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> - Lis<span style="color:#ff7b72;font-weight:bold">[</span>t<span style="color:#ff7b72;font-weight:bold">]</span> the contents of a tar <span style="color:#ff7b72;font-weight:bold">[</span>f<span style="color:#ff7b72;font-weight:bold">]</span>ile <span style="color:#ff7b72;font-weight:bold">[</span>v<span style="color:#ff7b72;font-weight:bold">]</span>erbosely:
+</span></span><span style="display:flex;"><span>   tar tvf path/to/source.tar
+</span></span></code></pre></div><p><a href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p>
+<p><img src="/posts/preparation-for-the-lfcs-exam/tar-tldr-pages.png" alt="tldr"></p></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>837 words</span>
+    <span>5 - 6 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav></aside></div>
+  </div>
+</body>
+</html>
