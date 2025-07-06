@@ -28,11 +28,11 @@ The exam is broken up into the following sections:
 - Networking (25%)
 - Storage(20%)
 
-#### Getting help directly on Linux
+### Getting help directly on Linux
 
 Whilst information can be gleaned from the web, its an important skill to master being able to source answers locally (ie. on the system you are running on). Here are some of the most useful and common commands.
 
-#### Man Pages
+### Man Pages
 
 Man pages provide all the information you need. You can search specific sections depending on the documentation you require.
 
@@ -47,7 +47,7 @@ man 1 printf
 man 3 printf
 ```
 
-#### Apropos command
+### Apropos command
 
 The apropos command searches all man pages related to a keyword or phrase. So if you are not sure where you should be searching this is a great tool.
 
@@ -98,7 +98,7 @@ zipinfo (1)          - list detailed information about a ZIP archive
 
 ![apropos](/posts/preparation-for-the-lfcs-exam/apropos-archive.png)
 
-#### Tldr-pages
+### Tldr-pages
 
 Man pages can sometimes be hard to digest, a simpler tool is tldr-pages, which is a collection of community-maintained help pages - which gives examples of how the tool is used.
 

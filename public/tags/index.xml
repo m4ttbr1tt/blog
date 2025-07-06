@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 Jun 2025 19:15:39 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jul 2025 18:05:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Certificates</title>
+      <link>http://localhost:1313/tags/certificates/</link>
+      <pubDate>Tue, 01 Jul 2025 18:05:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/certificates/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LFCS</title>
+      <link>http://localhost:1313/tags/lfcs/</link>
+      <pubDate>Tue, 01 Jul 2025 18:05:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/lfcs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>http://localhost:1313/tags/linux/</link>
+      <pubDate>Tue, 01 Jul 2025 18:05:51 +0200</pubDate>
+      <guid>http://localhost:1313/tags/linux/</guid>
+      <description></description>
+    </item>
     <item>
       <title>GitOps</title>
       <link>http://localhost:1313/tags/gitops/</link>
@@ -27,27 +48,6 @@
       <link>http://localhost:1313/tags/k3s/</link>
       <pubDate>Mon, 30 Jun 2025 19:15:39 +0200</pubDate>
       <guid>http://localhost:1313/tags/k3s/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Certificates</title>
-      <link>http://localhost:1313/tags/certificates/</link>
-      <pubDate>Sun, 01 Jun 2025 18:05:51 +0200</pubDate>
-      <guid>http://localhost:1313/tags/certificates/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LFCS</title>
-      <link>http://localhost:1313/tags/lfcs/</link>
-      <pubDate>Sun, 01 Jun 2025 18:05:51 +0200</pubDate>
-      <guid>http://localhost:1313/tags/lfcs/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
-      <pubDate>Sun, 01 Jun 2025 18:05:51 +0200</pubDate>
-      <guid>http://localhost:1313/tags/linux/</guid>
       <description></description>
     </item>
     <item>

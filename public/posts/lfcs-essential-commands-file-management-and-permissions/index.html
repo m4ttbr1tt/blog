@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LFCS - Essential Commands - File management and permissions | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/lfcs-essential-commands-file-management-and-permissions/">
+  <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
+  <meta property="og:title" content="LFCS - Essential Commands - File management and permissions">
+  <meta property="og:description" content="A summary of the commands learnt in the essentials section of the LFCS course preparation.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-04T20:05:51+02:00">
+    <meta property="article:modified_time" content="2025-07-04T20:05:51+02:00">
+    <meta property="article:tag" content="LFCS">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Certificates">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LFCS - Essential Commands - File management and permissions">
+  <meta name="twitter:description" content="A summary of the commands learnt in the essentials section of the LFCS course preparation.">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
+
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>LFCS - Essential Commands - File management and permissions</h1><time class="dim" datetime="2025-07-04T20:05:51&#43;02:00">July 4, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://localhost:1313/tags/lfcs/">#LFCS</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/linux/">#Linux</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/certificates/">#Certificates</a>
+      </div></ol></div>
+  <section class="page-section"><p>A summary of the commands learnt in the essentials section of the LFCS course preparation.</p>
+<h3 id="file-management">File management</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd - <span style="color:#8b949e;font-style:italic"># goes back to previous dir</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#8b949e;font-style:italic"># goes to home dir</span>
+</span></span><span style="display:flex;"><span>cp -r <span style="color:#ff7b72;font-weight:bold">[</span>source<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#ff7b72;font-weight:bold">[</span>dest<span style="color:#ff7b72;font-weight:bold">]</span> <span style="color:#8b949e;font-style:italic"># copy dir with all its contents</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Good idea to prepend directories with /</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cp -r testdir/ anotherdir/ <span style="color:#8b949e;font-style:italic"># copies recursively to anotherdir</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#Hard links</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>stat someimage.jpg <span style="color:#8b949e;font-style:italic"># file info, will show link count (can be multiple)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ln ./target_file ./link_file <span style="color:#8b949e;font-style:italic"># hard link</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#Soft links</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#Hard links point to inodes, softlinks point to a path</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ln -s ./target_file ./link_file <span style="color:#8b949e;font-style:italic"># soft link</span>
+</span></span><span style="display:flex;"><span>ls -l
+</span></span><span style="display:flex;"><span>readlink ./link_file 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#soft link to dirs or different file sytem</span>
+</span></span></code></pre></div><h3 id="owners-groups-and-permissions">Owners, groups and permissions</h3>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ls -l
+</span></span><span style="display:flex;"><span>chgroup group_name fileordir <span style="color:#8b949e;font-style:italic"># changes group</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>groups <span style="color:#8b949e;font-style:italic"># check the groups of user</span>
+</span></span><span style="display:flex;"><span>sudo chown jane file  <span style="color:#8b949e;font-style:italic"># change owner</span>
+</span></span><span style="display:flex;"><span>sudo chown aaron:family file <span style="color:#8b949e;font-style:italic"># change user and group</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#Permissions</span>
+</span></span><span style="display:flex;"><span>chmod permissions file_or_dir <span style="color:#8b949e;font-style:italic"># change mode</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># + is adding permissions</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># - is removing permissions</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># = exact permissions  g=rw (declarative, will remove x if it exists)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># u+   - user</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># g+   - group</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># o+   - other</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod u+w file <span style="color:#8b949e;font-style:italic"># adding to user the write permission</span>
+</span></span><span style="display:flex;"><span>chmod u+rwx file <span style="color:#8b949e;font-style:italic"># adding to user the rwx permissions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod g+w file <span style="color:#8b949e;font-style:italic"># adding to group the write permission</span>
+</span></span><span style="display:flex;"><span>chmod g+rwx file <span style="color:#8b949e;font-style:italic"># adding to group the rwx permissions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># split perm for user group and other</span>
+</span></span><span style="display:flex;"><span>chmod u+r,g<span style="color:#ff7b72;font-weight:bold">=</span>r,o<span style="color:#ff7b72;font-weight:bold">=</span> file <span style="color:#8b949e;font-style:italic"># o has no permissions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># or via decimal eg. 640</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>One decimal <span style="color:#ff7b72">for</span> each permission eg. <span style="color:#a5d6ff">640</span>
+</span></span><span style="display:flex;"><span>u   |  g  | o
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">6</span>   |  <span style="color:#a5d6ff">4</span>  |  <span style="color:#a5d6ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">110</span> | <span style="color:#a5d6ff">100</span> | <span style="color:#a5d6ff">000</span>
+</span></span><span style="display:flex;"><span>rw- | r-- | ---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># SUID bit - Set User Identification bit (set on files)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># when executed will be executed with userid of owner of file not by the person executing</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#a5d6ff">4664</span> suidfile <span style="color:#8b949e;font-style:italic"># first 4 is suid permission</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ls -l suidfile
+</span></span><span style="display:flex;"><span>-rwSrw-r-- <span style="color:#8b949e;font-style:italic"># suid bit is S on the x permission (enabled but no executed permission) lower case s will be suid and x (applied with 4764)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># SGID bit - Set Group Identification bit (set on files)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#a5d6ff">2664</span> sgidfile <span style="color:#8b949e;font-style:italic"># takes a 2 instead of 4 as first perm</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>find . -perm /4000   <span style="color:#8b949e;font-style:italic"># searching suid files</span>
+</span></span><span style="display:flex;"><span>find . -perm /2000   <span style="color:#8b949e;font-style:italic"># searching sgid files</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#a5d6ff">6664</span> both <span style="color:#8b949e;font-style:italic"># 4 (suid) &amp; 2 (sguid) is 6 (for both)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>find . -perm /6000
+</span></span><span style="display:flex;"><span>./sgidfile
+</span></span><span style="display:flex;"><span>./both
+</span></span><span style="display:flex;"><span>./suidfile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#sticky bit for directories - for shared dirs - only people that can remove the file is owner and root</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod +t stickydir
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#or </span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#a5d6ff">1777</span> stickydir <span style="color:#8b949e;font-style:italic"># takes a 1 for sticky dir</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ls -ld  
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># t or T on end of permissions</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod u+s,g+s,o+t file <span style="color:#8b949e;font-style:italic"># sets sgid suid and sticky</span>
+</span></span></code></pre></div></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>454 words</span>
+    <span>2 - 2 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#file-management">File management</a></li>
+        <li><a href="#owners-groups-and-permissions">Owners, groups and permissions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/preparation-for-the-lfcs-exam/">Preparation for the LFCS exam</a></li></ul></aside></div>
+  </div>
+</body>
+</html>

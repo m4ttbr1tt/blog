@@ -121,9 +121,9 @@
 <li>Networking (25%)</li>
 <li>Storage(20%)</li>
 </ul>
-<h4 id="getting-help-directly-on-linux">Getting help directly on Linux</h4>
+<h3 id="getting-help-directly-on-linux">Getting help directly on Linux</h3>
 <p>Whilst information can be gleaned from the web, its an important skill to master being able to source answers locally (ie. on the system you are running on). Here are some of the most useful and common commands.</p>
-<h4 id="man-pages">Man Pages</h4>
+<h3 id="man-pages">Man Pages</h3>
 <p>Man pages provide all the information you need. You can search specific sections depending on the documentation you require.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># will list the sections</span>
 </span></span><span style="display:flex;"><span>man man
@@ -133,7 +133,7 @@
 </span></span><span style="display:flex;"><span>man ls
 </span></span><span style="display:flex;"><span>man <span style="color:#a5d6ff">1</span> printf
 </span></span><span style="display:flex;"><span>man <span style="color:#a5d6ff">3</span> printf
-</span></span></code></pre></div><h4 id="apropos-command">Apropos command</h4>
+</span></span></code></pre></div><h3 id="apropos-command">Apropos command</h3>
 <p>The apropos command searches all man pages related to a keyword or phrase. So if you are not sure where you should be searching this is a great tool.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># searches man pages if you dont know what you need</span>
 </span></span><span style="display:flex;"><span>sudo mandb <span style="color:#8b949e;font-style:italic"># create apropos db (man database)</span>
@@ -173,7 +173,7 @@
 </span></span><span style="display:flex;"><span>zipgrep <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>          - search files in a ZIP archive <span style="color:#ff7b72">for</span> lines matching a pattern
 </span></span><span style="display:flex;"><span>zipinfo <span style="color:#ff7b72;font-weight:bold">(</span>1<span style="color:#ff7b72;font-weight:bold">)</span>          - list detailed information about a ZIP archive
 </span></span></code></pre></div><p><img src="/posts/preparation-for-the-lfcs-exam/apropos-archive.png" alt="apropos"></p>
-<h4 id="tldr-pages">Tldr-pages</h4>
+<h3 id="tldr-pages">Tldr-pages</h3>
 <p>Man pages can sometimes be hard to digest, a simpler tool is tldr-pages, which is a collection of community-maintained help pages - which gives examples of how the tool is used.</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install tldr
 </span></span><span style="display:flex;"><span>tldr tar
@@ -223,7 +223,10 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#getting-help-directly-on-linux">Getting help directly on Linux</a></li>
+        <li><a href="#man-pages">Man Pages</a></li>
+        <li><a href="#apropos-command">Apropos command</a></li>
+        <li><a href="#tldr-pages">Tldr-pages</a></li>
       </ul>
     </li>
   </ul>
