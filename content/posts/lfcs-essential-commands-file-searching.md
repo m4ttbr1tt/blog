@@ -4,6 +4,7 @@ date = 2025-07-06T17:35:51+02:00
 title = "LFCS - Essential Commands - File searching"
 authors = ["Matt Britt"]
 tags = ["LFCS", "Linux", "Certificates"]
+series = ["LFCS"]
 +++
 
 
@@ -11,7 +12,7 @@ This post covers the commands for finding files on your system and searching the
 
 <!--more-->
 
-### Search for files 
+### Search for files
 
 ```shell
 find [path] [params]
@@ -41,7 +42,7 @@ find -perm u=rw,g=rw,o=r # exactly 664 permission
 find \! -perm -o=r # files others cannot read
 ```
 
-###  Grep in files
+### Grep in files
 
 ```shell
 grep [options] 'search_pattern' ./file # options are optional
@@ -54,7 +55,7 @@ grep -w 'password' ./file # word search (exact word)
 grep -o 'password' ./file # only matching (just shows match not rest of line)
 ```
 
-###  Regex 
+### Regex
 
 ```shell
 # operatiors
@@ -76,7 +77,7 @@ grep '/.*/' ./file # period any character * is any number of times, so this will
 grep -r '0\+' ./dir # need to escape the + (unless using extended regex)
 ```
 
-###  Extended Regex 
+### Extended Regex
 
 ```shell
 # You dont have to escape characters with Extended Regex
@@ -96,4 +97,4 @@ egrep -r 'https[^:]' /etc/  # negated ranges
 egrep -r 'http[^s:]' /etc/  # negated range set will only match http
 ```
 
-https://regexr.com/
+<https://regexr.com/>

@@ -4,6 +4,7 @@ date = 2025-07-04T20:05:51+02:00
 title = "LFCS - Essential Commands - File management and permissions"
 authors = ["Matt Britt"]
 tags = ["LFCS", "Linux", "Certificates"]
+series = ["LFCS"]
 +++
 A summary of the commands learnt in the essentials section of the LFCS course preparation.
 <!--more-->
@@ -34,7 +35,7 @@ readlink ./link_file
 #soft link to dirs or different file sytem
 ```
 
-###  Owners, groups and permissions
+### Owners, groups and permissions
 
 ```shell
 ls -l
@@ -104,4 +105,3 @@ ls -ld
 
 chmod u+s,g+s,o+t file # sets sgid suid and sticky
 ```
-

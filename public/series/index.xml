@@ -6,6 +6,14 @@
     <description>Recent content in Series on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <lastBuildDate>Tue, 08 Jul 2025 17:35:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFCS</title>
+      <link>http://localhost:1313/series/lfcs/</link>
+      <pubDate>Tue, 08 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/series/lfcs/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

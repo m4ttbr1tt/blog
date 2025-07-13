@@ -6,8 +6,29 @@
     <description>Recent content on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 06 Jul 2025 17:35:51 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jul 2025 17:35:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFCS - Operations Deployment - Processes</title>
+      <link>http://localhost:1313/posts/lfcs-operation-deployment-processes/</link>
+      <pubDate>Wed, 09 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operation-deployment-processes/</guid>
+      <description>&lt;p&gt;Managing Linux processes is critical for DevOps and Linux administration!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Essential Commands - File redirecton</title>
+      <link>http://localhost:1313/posts/lfcs-essential-commands-file-redirection/</link>
+      <pubDate>Tue, 08 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-essential-commands-file-redirection/</guid>
+      <description>&lt;p&gt;File redirection is a core part of Linux, this post covers file stdin, stdout, stderr and other commands.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Essential Commands - File content, bundling and compression</title>
+      <link>http://localhost:1313/posts/lfcs-essential-commands-file-content-bundling-and-compression/</link>
+      <pubDate>Mon, 07 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-essential-commands-file-content-bundling-and-compression/</guid>
+      <description>&lt;p&gt;Continuing with the LFCS preparation series, this post covers various commands, including sed (stream editor), bundling and compression.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LFCS - Essential Commands - File searching</title>
       <link>http://localhost:1313/posts/lfcs-essential-commands-file-searching/</link>
