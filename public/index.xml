@@ -6,13 +6,20 @@
     <description>Recent content on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Jul 2025 17:35:51 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 10 Jul 2025 17:35:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>LFCS - Operations Deployment - Log Files</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-log-files/</link>
+      <pubDate>Thu, 10 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-log-files/</guid>
+      <description>&lt;p&gt;Log files give you insight into your system and are very important for SRE and DevOps.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>LFCS - Operations Deployment - Processes</title>
-      <link>http://localhost:1313/posts/lfcs-operation-deployment-processes/</link>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-processes/</link>
       <pubDate>Wed, 09 Jul 2025 17:35:51 +0200</pubDate>
-      <guid>http://localhost:1313/posts/lfcs-operation-deployment-processes/</guid>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-processes/</guid>
       <description>&lt;p&gt;Managing Linux processes is critical for DevOps and Linux administration!&lt;/p&gt;</description>
     </item>
     <item>

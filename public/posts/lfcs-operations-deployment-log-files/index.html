@@ -4,28 +4,28 @@
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LFCS - Essential Commands - File redirecton | Software Engineering &amp; DevOps - Matt Britt</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/lfcs-essential-commands-file-redirection/">
+<title>LFCS - Operations Deployment - Log Files | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/lfcs-operations-deployment-log-files/">
   <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
-  <meta property="og:title" content="LFCS - Essential Commands - File redirecton">
-  <meta property="og:description" content="File redirection is a core part of Linux, this post covers file stdin, stdout, stderr and other commands.">
+  <meta property="og:title" content="LFCS - Operations Deployment - Log Files">
+  <meta property="og:description" content="Log files give you insight into your system and are very important for SRE and DevOps.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-07-08T17:35:51+02:00">
-    <meta property="article:modified_time" content="2025-07-08T17:35:51+02:00">
+    <meta property="article:published_time" content="2025-07-10T17:35:51+02:00">
+    <meta property="article:modified_time" content="2025-07-10T17:35:51+02:00">
     <meta property="article:tag" content="LFCS">
     <meta property="article:tag" content="Linux">
     <meta property="article:tag" content="Certificates">
-      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-log-files/">
       <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-processes/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-redirection/">
       <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-content-bundling-and-compression/">
       <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-searching/">
       <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-management-and-permissions/">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="LFCS - Essential Commands - File redirecton">
-  <meta name="twitter:description" content="File redirection is a core part of Linux, this post covers file stdin, stdout, stderr and other commands.">
+  <meta name="twitter:title" content="LFCS - Operations Deployment - Log Files">
+  <meta name="twitter:description" content="Log files give you insight into your system and are very important for SRE and DevOps.">
 
     <link rel="stylesheet" href="/css/root.css">
     <link rel="stylesheet" href="/css/bundle.css">
@@ -105,53 +105,51 @@
     </li>
     <span>&nbsp»&nbsp</span>
 </ol>
-<h1>LFCS - Essential Commands - File redirecton</h1><time class="dim" datetime="2025-07-08T17:35:51&#43;02:00">July 8, 2025</time><div class="term-container"><div class="tag">
+<h1>LFCS - Operations Deployment - Log Files</h1><time class="dim" datetime="2025-07-10T17:35:51&#43;02:00">July 10, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/lfcs/">#LFCS</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/linux/">#Linux</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/certificates/">#Certificates</a>
       </div></ol></div>
-  <section class="page-section"><p>File redirection is a core part of Linux, this post covers file stdin, stdout, stderr and other commands.</p>
-<h4 id="input-output-redirection">Input-Output Redirection</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># output redirection (file is overwritten)</span>
-</span></span><span style="display:flex;"><span>sort file.txt &gt; sortedfile.txt
-</span></span><span style="display:flex;"><span>sort file.txt 1&gt; sortedfile.txt <span style="color:#8b949e;font-style:italic"># equivalent stdout</span>
+  <section class="page-section"><p>Log files give you insight into your system and are very important for SRE and DevOps.</p>
+<p>Here are some of the most commonly used commands for managing and viewing system log files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># logging daemons</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># /var/log </span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># rsyslog  - rocket-fast system for log processing</span>
+</span></span><span style="display:flex;"><span>su --login
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># appends</span>
-</span></span><span style="display:flex;"><span>sort file.txt &gt;&gt; sortedfile.txt
+</span></span><span style="display:flex;"><span>grep -r <span style="color:#a5d6ff">&#39;ssh&#39;</span> /var/log
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#stdin  &lt; </span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#stdout 1&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#stderror  2&gt;</span>
+</span></span><span style="display:flex;"><span>less /var/log/syslog
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># numbered</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># redirect input </span>
-</span></span><span style="display:flex;"><span>&lt; file.txt
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># redirect to stdout</span>
-</span></span><span style="display:flex;"><span>&gt; file.txt  or 1&gt; file.txt
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># redirect error</span>
-</span></span><span style="display:flex;"><span>2&gt; error.txt
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#live view of log file</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># eg dont show errors with grep</span>
-</span></span><span style="display:flex;"><span>grep -r <span style="color:#a5d6ff">&#39;^The&#39;</span> /etc/ 2&gt;/dev/null <span style="color:#8b949e;font-style:italic"># dev null is a black hole</span>
+</span></span><span style="display:flex;"><span>tail -F /var/log/auth.log <span style="color:#8b949e;font-style:italic"># follow mode</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>grep -r <span style="color:#a5d6ff">&#39;^The&#39;</span> /etc/ 1&gt;output.txt 2&gt;/dev/null <span style="color:#8b949e;font-style:italic"># can redirect to multiple places </span>
-</span></span><span style="display:flex;"><span>grep -r <span style="color:#a5d6ff">&#39;^The&#39;</span> /etc/ 1&gt;&gt;output.txt 2&gt;&gt;/dev/null <span style="color:#8b949e;font-style:italic"># append </span>
-</span></span><span style="display:flex;"><span>grep -r <span style="color:#a5d6ff">&#39;^The&#39;</span> /etc/ 1&gt;alloutput.txt 2&gt;&amp;<span style="color:#a5d6ff">1</span> <span style="color:#8b949e;font-style:italic"># stderror goes into stdout (will all go to alloutput file)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Systemd Journal daemon</span>
+</span></span><span style="display:flex;"><span>which sudo
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># input redirection</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># heredoc</span>
-</span></span><span style="display:flex;"><span>sort <span style="color:#a5d6ff">&lt;&lt;EOF
-</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">
-</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">
-</span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">&gt;EOF</span> <span style="color:#8b949e;font-style:italic"># can be any word here</span>
+</span></span><span style="display:flex;"><span>journalctl /user/bin/sudo <span style="color:#8b949e;font-style:italic"># search logs for an app</span>
+</span></span><span style="display:flex;"><span>journalctl -u ssh.service <span style="color:#8b949e;font-style:italic"># logs generate by ssh.service unit</span>
+</span></span><span style="display:flex;"><span>journalctl -e <span style="color:#8b949e;font-style:italic"># end</span>
+</span></span><span style="display:flex;"><span>journalctl -f <span style="color:#8b949e;font-style:italic"># follow</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># here string</span>
-</span></span><span style="display:flex;"><span>bc <span style="color:#ff7b72;font-weight:bold">&lt;&lt;&lt;</span>1+2+3+4
-</span></span><span style="display:flex;"><span><span style="color:#a5d6ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># info warning err crit</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Piping</span>
-</span></span><span style="display:flex;"><span>grep -v <span style="color:#a5d6ff">&#39;^#&#39;</span> /etc/ | sort | column -t
+</span></span><span style="display:flex;"><span>journalctl -p err
+</span></span><span style="display:flex;"><span>journalctl -p info -g <span style="color:#a5d6ff">&#39;^b&#39;</span> <span style="color:#8b949e;font-style:italic"># grep</span>
+</span></span><span style="display:flex;"><span>journalctl -S 01:00 <span style="color:#8b949e;font-style:italic"># since </span>
+</span></span><span style="display:flex;"><span>journalctl -S 01:00 -U 02:00 <span style="color:#8b949e;font-style:italic"># since until</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>journalctl -b <span style="color:#a5d6ff">0</span> <span style="color:#8b949e;font-style:italic"># boot zero</span>
+</span></span><span style="display:flex;"><span>journalctl -b -1 <span style="color:#8b949e;font-style:italic"># 1 boot ago</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo mkdir /var/log/journal <span style="color:#8b949e;font-style:italic"># will log historical boots</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>last <span style="color:#8b949e;font-style:italic"># last logins</span>
+</span></span><span style="display:flex;"><span>lastlog <span style="color:#8b949e;font-style:italic"># each user last login</span>
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
@@ -161,23 +159,15 @@
 </div>
 </footer>
       </div><aside id="side-pane" class=""><div class="side-details">
-    <span>155 words</span>
+    <span>156 words</span>
     <span>0 - 1 minutes read</span><div class="side-details-taxonomy">
         <small>authors: 
           <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
       </div><div class="side-details-taxonomy">
         <small>series: 
           <span class="details-taxonomy"><a href="http://localhost:1313/series/lfcs">LFCS</a></span></small>
-      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-  </ul>
-</nav><h3>Related</h3>
-    <ul><li><a href="/posts/lfcs-essential-commands-file-content-bundling-and-compression/">LFCS - Essential Commands - File content, bundling and compression</a></li><li><a href="/posts/lfcs-essential-commands-file-searching/">LFCS - Essential Commands - File searching</a></li><li><a href="/posts/lfcs-essential-commands-file-management-and-permissions/">LFCS - Essential Commands - File management and permissions</a></li><li><a href="/posts/preparation-for-the-lfcs-exam/">Preparation for the LFCS exam</a></li></ul></aside></div>
+      </div></div><h3>Related</h3>
+    <ul><li><a href="/posts/lfcs-operations-deployment-processes/">LFCS - Operations Deployment - Processes</a></li><li><a href="/posts/lfcs-essential-commands-file-redirection/">LFCS - Essential Commands - File redirecton</a></li><li><a href="/posts/lfcs-essential-commands-file-content-bundling-and-compression/">LFCS - Essential Commands - File content, bundling and compression</a></li><li><a href="/posts/lfcs-essential-commands-file-searching/">LFCS - Essential Commands - File searching</a></li><li><a href="/posts/lfcs-essential-commands-file-management-and-permissions/">LFCS - Essential Commands - File management and permissions</a></li></ul></aside></div>
   </div>
 </body>
 </html>
