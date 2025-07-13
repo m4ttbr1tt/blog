@@ -6,8 +6,22 @@
     <description>Recent content in Posts on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 10 Jul 2025 17:35:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jul 2025 17:35:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFCS - Operations Deployment - Virtual Machines and Containers</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</link>
+      <pubDate>Sat, 12 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</guid>
+      <description>&lt;p&gt;Understanding VMs and containers, and how to manage them in Linux, is an important skill to master.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Operations Deployment - Task Scheduling</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/</link>
+      <pubDate>Fri, 11 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/</guid>
+      <description>&lt;p&gt;Running periodic tasks can be very helpful with system maintenance, or application development tasks. Linux uses cron jobs for this.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LFCS - Operations Deployment - Log Files</title>
       <link>http://localhost:1313/posts/lfcs-operations-deployment-log-files/</link>

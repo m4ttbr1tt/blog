@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LFCS - Operations Deployment - Virtual Machines and Containers | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/">
+  <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
+  <meta property="og:title" content="LFCS - Operations Deployment - Virtual Machines and Containers">
+  <meta property="og:description" content="Understanding VMs and containers, and how to manage them in Linux, is an important skill to master.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-12T17:35:51+02:00">
+    <meta property="article:modified_time" content="2025-07-12T17:35:51+02:00">
+    <meta property="article:tag" content="LFCS">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Certificates">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-log-files/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-processes/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-redirection/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-content-bundling-and-compression/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-essential-commands-file-searching/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LFCS - Operations Deployment - Virtual Machines and Containers">
+  <meta name="twitter:description" content="Understanding VMs and containers, and how to manage them in Linux, is an important skill to master.">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
+
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>LFCS - Operations Deployment - Virtual Machines and Containers</h1><time class="dim" datetime="2025-07-12T17:35:51&#43;02:00">July 12, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://localhost:1313/tags/lfcs/">#LFCS</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/linux/">#Linux</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/certificates/">#Certificates</a>
+      </div></ol></div>
+  <section class="page-section"><p>Understanding VMs and containers, and how to manage them in Linux, is an important skill to master.</p>
+<p>Here is a list of commands that are useful for managing docker containers and QEMU-KVM VMs.</p>
+<h4 id="create-and-manage-containers">Create and Manage Containers</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker images <span style="color:#8b949e;font-style:italic"># may get a permission denied if not in correct user group</span>
+</span></span><span style="display:flex;"><span>docker search nginx
+</span></span><span style="display:flex;"><span>docker pull nginx
+</span></span><span style="display:flex;"><span>docker pull ubuntu/nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker images <span style="color:#8b949e;font-style:italic"># list</span>
+</span></span><span style="display:flex;"><span>docker rmi ubuntu/nginx <span style="color:#8b949e;font-style:italic"># remove images</span>
+</span></span><span style="display:flex;"><span>docker run nginx <span style="color:#8b949e;font-style:italic"># starts a container, will be inside container</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run --detach --publish 8080:80 --name mycontainer nginx  
+</span></span><span style="display:flex;"><span>docker ps <span style="color:#8b949e;font-style:italic"># lists running containers</span>
+</span></span><span style="display:flex;"><span>docker ps --all <span style="color:#8b949e;font-style:italic"># all</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker start <span style="color:#a5d6ff">2342342343</span> <span style="color:#8b949e;font-style:italic"># container id</span>
+</span></span><span style="display:flex;"><span>docker stop container_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nc localhost <span style="color:#a5d6ff">8080</span> <span style="color:#8b949e;font-style:italic"># connects to port 8080 with netcat</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker rm container_name <span style="color:#8b949e;font-style:italic"># removes container</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># order of cleanup</span>
+</span></span><span style="display:flex;"><span>docker stop mycontainer
+</span></span><span style="display:flex;"><span>docker rm mycontainer
+</span></span><span style="display:flex;"><span>docker rmi nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># container to always restart</span>
+</span></span><span style="display:flex;"><span>docker run --detach --publish 8080:80 --name mywebserver nginx --restart always
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># create an image with Dockerfile</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FROM nginx
+</span></span><span style="display:flex;"><span>COPY index.html /user/share/nginx/html/index.html
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker build --tag mattb/customnginx:1.0 mydir
+</span></span></code></pre></div><h4 id="manage-virtual-machines">Manage Virtual Machines</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># QEMU-KVM</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Quick Emulator - Kernel-based Virtual Machine</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># virsh - manage virtual machines from the command line</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt install virt-manager <span style="color:#8b949e;font-style:italic"># installs other cli utils</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># create an xml config (see online)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>virsh define testmachine.xml
+</span></span><span style="display:flex;"><span>virsh help
+</span></span><span style="display:flex;"><span>virsh list --all
+</span></span><span style="display:flex;"><span>virsh start TestMachine
+</span></span><span style="display:flex;"><span>virsh list
+</span></span><span style="display:flex;"><span>virsh reboot TestMachine
+</span></span><span style="display:flex;"><span>virsh reset TestMachine <span style="color:#8b949e;font-style:italic"># force reset</span>
+</span></span><span style="display:flex;"><span>virsh shutdown TestMachine <span style="color:#8b949e;font-style:italic"># graceful shutdown</span>
+</span></span><span style="display:flex;"><span>virsh destroy TestMachine <span style="color:#8b949e;font-style:italic"># hard power off (does not destroy)</span>
+</span></span><span style="display:flex;"><span>virsh undefine TestMachine <span style="color:#8b949e;font-style:italic"># will remove machine defined</span>
+</span></span><span style="display:flex;"><span>virsh autostart TestMachine <span style="color:#8b949e;font-style:italic"># automstart when server boots</span>
+</span></span><span style="display:flex;"><span>virsh dominfo TestMachine <span style="color:#8b949e;font-style:italic"># shows specs</span>
+</span></span><span style="display:flex;"><span>virsh set <span style="color:#8b949e;font-style:italic"># tab tab</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># set cpus</span>
+</span></span><span style="display:flex;"><span>virsh help setvcpus
+</span></span><span style="display:flex;"><span>virsh setvcpus TestMachine <span style="color:#a5d6ff">2</span> --config
+</span></span><span style="display:flex;"><span>virsh setvcpus TestMachine <span style="color:#a5d6ff">2</span> --config --maximum
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># set memory</span>
+</span></span><span style="display:flex;"><span>virsh setmaxmem TestMachine 2048M --config
+</span></span><span style="display:flex;"><span>virsh setmem TestMachine 2048M --config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># download ubuntu image</span>
+</span></span><span style="display:flex;"><span>wget https://images......./release/ubuntu.img
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>qemu-img info ubuntu.img
+</span></span><span style="display:flex;"><span>qemu-img resize ubuntu.img 10G <span style="color:#8b949e;font-style:italic"># changes the size of the virtual disk</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># add to default storage pools</span>
+</span></span><span style="display:flex;"><span>sudo cp ubuntu.img /var/lib/libvirt/images/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>virt-install
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>virt-install --osinfo list <span style="color:#8b949e;font-style:italic"># lists types of os&#39;s</span>
+</span></span><span style="display:flex;"><span>man virt-install
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># disk images has os preinstalled so we can just import not install!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>virt-install --help
+</span></span><span style="display:flex;"><span>virt-install --osinfo ubuntu24.04 --name ubuntu1 --memory <span style="color:#a5d6ff">3072</span> --vcpus <span style="color:#a5d6ff">1</span> --import --disk /var/lib/libvirt/images/ubuntu.img --graphics none
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt install -y libguestfs-tools <span style="color:#8b949e;font-style:italic"># setting root password</span>
+</span></span><span style="display:flex;"><span>virsh shutdown ubuntu1
+</span></span><span style="display:flex;"><span>sudo virt-customize -a /vir/lib/libvirt/images/ubuntu.img --root-password password:somepassword123
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>virsh start ubuntu1
+</span></span><span style="display:flex;"><span>virsh console ubuntu1 <span style="color:#8b949e;font-style:italic"># reattach to console</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt install libosinfo-bin <span style="color:#8b949e;font-style:italic"># check for latest os support</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>osinfo-query os <span style="color:#8b949e;font-style:italic"># what os are available for the tool</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># install a vm (without having a cloud image file) rather from an iso</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>virt-install --osinfo debian12 --name debian1 --momory <span style="color:#a5d6ff">1024</span> --vcpus <span style="color:#a5d6ff">1</span> --disk <span style="color:#79c0ff">size</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">10</span>  --location /var/lib/libvirt/boot/debian.iso --graphics none --extra-args <span style="color:#a5d6ff">&#34;console=ttyS0&#34;</span> <span style="color:#8b949e;font-style:italic"># serial port</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># or you can use a url instead of iso</span>
+</span></span><span style="display:flex;"><span>virt-install --osinfo debian12 --name debian1 --momory <span style="color:#a5d6ff">1024</span> --vcpus <span style="color:#a5d6ff">1</span> --disk <span style="color:#79c0ff">size</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">10</span>  --location https://deb.debian.org/debian/dists/bookworm/main/installer-amd64/  --graphics none --extra-args <span style="color:#a5d6ff">&#34;console=ttyS0&#34;</span> <span style="color:#8b949e;font-style:italic"># serial port</span>
+</span></span></code></pre></div></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>485 words</span>
+    <span>3 - 4 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+      </div><div class="side-details-taxonomy">
+        <small>series: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/series/lfcs">LFCS</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/lfcs-operations-deployment-task-scheduling/">LFCS - Operations Deployment - Task Scheduling</a></li><li><a href="/posts/lfcs-operations-deployment-log-files/">LFCS - Operations Deployment - Log Files</a></li><li><a href="/posts/lfcs-operations-deployment-processes/">LFCS - Operations Deployment - Processes</a></li><li><a href="/posts/lfcs-essential-commands-file-redirection/">LFCS - Essential Commands - File redirecton</a></li><li><a href="/posts/lfcs-essential-commands-file-content-bundling-and-compression/">LFCS - Essential Commands - File content, bundling and compression</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
