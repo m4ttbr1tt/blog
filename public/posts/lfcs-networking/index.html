@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LFCS - Networking | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/lfcs-networking/">
+  <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
+  <meta property="og:title" content="LFCS - Networking">
+  <meta property="og:description" content="A core part of any SysAdmin, SRE or DevOps role! Networking is up next in my LFCS prep…">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-17T17:35:51+02:00">
+    <meta property="article:modified_time" content="2025-07-17T17:35:51+02:00">
+    <meta property="article:tag" content="LFCS">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Certificates">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-storage/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-users-and-groups/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-log-files/">
+      <meta property="og:see_also" content="http://localhost:1313/posts/lfcs-operations-deployment-processes/">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LFCS - Networking">
+  <meta name="twitter:description" content="A core part of any SysAdmin, SRE or DevOps role! Networking is up next in my LFCS prep…">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
+
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>LFCS - Networking</h1><time class="dim" datetime="2025-07-17T17:35:51&#43;02:00">July 17, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://localhost:1313/tags/lfcs/">#LFCS</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/linux/">#Linux</a>
+      </div><div class="tag">
+        <a href="http://localhost:1313/tags/certificates/">#Certificates</a>
+      </div></ol></div>
+  <section class="page-section"><p>A core part of any SysAdmin, SRE or DevOps role! Networking is up next in my LFCS prep&hellip;</p>
+<p>I have a long history with networking and the topics below, but its good to brush up on these fundamentals, and to learn new things too!</p>
+<h4 id="managing-networking">Managing Networking</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#CIDR - Classes Inner Domain Routing</span>
+</span></span><span style="display:flex;"><span>ip link <span style="color:#8b949e;font-style:italic"># shows networking devices</span>
+</span></span><span style="display:flex;"><span>ip address <span style="color:#8b949e;font-style:italic"># show ip address</span>
+</span></span><span style="display:flex;"><span>ip a -c <span style="color:#8b949e;font-style:italic"># colour</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ip link set dev enp0s8 up
+</span></span><span style="display:flex;"><span>sudo ip addr add 10.0.0.40/24 dev enp0s8
+</span></span><span style="display:flex;"><span>sudo ip addre delete 10.0.0.40/24 dev enp0s8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo netplan get <span style="color:#8b949e;font-style:italic"># ubuntu networking tool</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo cat /ect/netplan/50-cloud-init.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo netplan try
+</span></span><span style="display:flex;"><span>sudo netplan try --timeout <span style="color:#a5d6ff">30</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip route <span style="color:#8b949e;font-style:italic"># routes</span>
+</span></span><span style="display:flex;"><span>resolvectl status <span style="color:#8b949e;font-style:italic"># dns resolvers</span>
+</span></span><span style="display:flex;"><span>vim /etc/systemd/resolved.conf
+</span></span><span style="display:flex;"><span>sudo systemctl restart systemd-resolved.service
+</span></span><span style="display:flex;"><span>resolvectl dns
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vim /etc/hosts <span style="color:#8b949e;font-style:italic"># local ips</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>man netplan
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ls /usr/share/doc/netplan/examples/static.yaml
+</span></span></code></pre></div><h4 id="managing-services">Managing Services</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># sshd daemon</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ss -ltunp <span style="color:#8b949e;font-style:italic"># socket / services util</span>
+</span></span><span style="display:flex;"><span>-l listening
+</span></span><span style="display:flex;"><span>-t tcp
+</span></span><span style="display:flex;"><span>-u udp
+</span></span><span style="display:flex;"><span>-n numeric
+</span></span><span style="display:flex;"><span>-p processes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ss --help
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl status ssh.service
+</span></span><span style="display:flex;"><span>sudo systemctl stop ssh.service
+</span></span><span style="display:flex;"><span>sudo systemctl disable ssh.service
+</span></span><span style="display:flex;"><span>sudo systemctl enable ssh.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ps <span style="color:#a5d6ff">679</span> <span style="color:#8b949e;font-style:italic"># process id from ss command</span>
+</span></span><span style="display:flex;"><span>sudo lsof -p <span style="color:#a5d6ff">679</span> <span style="color:#8b949e;font-style:italic"># files opened by command</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo netstat -ltunp <span style="color:#8b949e;font-style:italic"># formatted differently</span>
+</span></span></code></pre></div><h4 id="configuring-bridge-and-bonding-devices">Configuring Bridge and Bonding Devices</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># virtual network devices</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># bridge &#34;bridges&#34; two network cards so machines on either network can talk to each other as if on the same network</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># bonding is when two physical network cards are logically merged into one (good for failover) </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># bonding modes</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># mode 0 - 6</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 0 - round robin </span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 1 - active backup</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 2 - xor</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 3 - broadcast</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 4 - ieee 802.3ad</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 5 - adaptive transmit load balancing</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># 6 - adaptive load balancing</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ls /usr/share/doc/netplan/examples/bridge.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cp /usr/share/doc/netplan/examples/bridge.yaml /etc/netplan/99-bridge.yaml
+</span></span><span style="display:flex;"><span>ip -c link
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># edit ethernets and interfaces in definitions of 99-bridge.yaml</span>
+</span></span><span style="display:flex;"><span>sudo netplan try
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cp /usr/share/doc/netplan/examples/bonding.yaml /etc/netplan/99-bond.yaml
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#a5d6ff">600</span> /etc/netplan/99-bond.yaml
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># edit yaml to match devices</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo netplan apply
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cat /proc/net/bonding/bond0
+</span></span></code></pre></div><h4 id="configuring-firewalls">Configuring Firewalls</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># packet filtering</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ufw (uncomplicated firewall)</span>
+</span></span><span style="display:flex;"><span>sudo ufw status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw allow <span style="color:#a5d6ff">22</span> <span style="color:#8b949e;font-style:italic"># tcp and udp for ssh</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow 22/tcp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw enable
+</span></span><span style="display:flex;"><span>sudo ufw states verbose
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ss -tn <span style="color:#8b949e;font-style:italic"># active tcp connections</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw allow from 10.0.0.192 to any port <span style="color:#a5d6ff">22</span>
+</span></span><span style="display:flex;"><span>sudo ufw status numbered <span style="color:#8b949e;font-style:italic"># order list of rules</span>
+</span></span><span style="display:flex;"><span>sudo ufw delete <span style="color:#a5d6ff">1</span> <span style="color:#8b949e;font-style:italic"># removes a rule</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw delete allow <span style="color:#a5d6ff">22</span> <span style="color:#8b949e;font-style:italic"># to delete a rule</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># can be a range</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow from 10.0.0.0/24 to any port <span style="color:#a5d6ff">22</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow from 10.0.0.0/24 <span style="color:#8b949e;font-style:italic"># any port</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># all ips except one ip</span>
+</span></span><span style="display:flex;"><span>sudo ufw deny from 10.0.0.37
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw status numbered
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># reorder deny rule</span>
+</span></span><span style="display:flex;"><span>sudo ufw delete <span style="color:#a5d6ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw insert <span style="color:#a5d6ff">1</span> deny from 10.0.0.37 <span style="color:#8b949e;font-style:italic"># adds as first rule</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># apply a rule on an interface</span>
+</span></span><span style="display:flex;"><span>ip link
+</span></span><span style="display:flex;"><span>ping -c <span style="color:#a5d6ff">4</span> 8.8.8.8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo ufw deny out on enp0s3 to 8.8.8.8 <span style="color:#8b949e;font-style:italic"># deny outgoing traffic</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip a
+</span></span><span style="display:flex;"><span>sudo ufw allow in on enp0s3 from 10.0.0.192 to 10.0.0.100 proto tcp
+</span></span><span style="display:flex;"><span>sudo ufw allow out on enp0s3 from 10.0.0.100 to 10.0.0.192 proto tcp
+</span></span><span style="display:flex;"><span>sudo ufw status numbered
+</span></span></code></pre></div><h4 id="port-redirection-and-nat">Port Redirection and NAT</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># enable ip forwarding</span>
+</span></span><span style="display:flex;"><span>/etc/sysctl.conf
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#or</span>
+</span></span><span style="display:flex;"><span>/etc/systctl.d/99-sysctl.conf
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># uncomment relevant lines</span>
+</span></span><span style="display:flex;"><span>sudo sysctl --system
+</span></span><span style="display:flex;"><span>sudo sysctl -a | grep forward <span style="color:#8b949e;font-style:italic"># check if set</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># port redirection</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nft <span style="color:#8b949e;font-style:italic"># net filter framework</span>
+</span></span><span style="display:flex;"><span>iptables <span style="color:#8b949e;font-style:italic"># predecessor</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip -a <span style="color:#8b949e;font-style:italic"># to see ips and subnets</span>
+</span></span><span style="display:flex;"><span>ip -r <span style="color:#8b949e;font-style:italic"># routes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ip table chains</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo iptables -t nat -A PREROUTING -i inp1s0 -s 10.0.0.0./24 -p tcp --dport <span style="color:#a5d6ff">8080</span> -j DNAT --to-destination 192.168.0.5:80
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o enp6s0 -j MASQUERADE <span style="color:#8b949e;font-style:italic"># masquerade is an extension</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo nft list ruleset
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt install iptables-persistent <span style="color:#8b949e;font-style:italic"># to save rules</span>
+</span></span><span style="display:flex;"><span>sudo netfilter-persistent save
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>man ufw-framework
+</span></span><span style="display:flex;"><span>sudo iptables --list-rules --table nat
+</span></span><span style="display:flex;"><span>sudo iptables --flush --table nat <span style="color:#8b949e;font-style:italic"># clear if you made a mistake</span>
+</span></span></code></pre></div><h4 id="reverse-proxy-and-load-balancer">Reverse Proxy and Load Balancer</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo vim /etc/nginx/sites-available/proxy.conf
+</span></span><span style="display:flex;"><span>cat /etc/nginx/proxy_params
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/etc/nginx/sites-enabled/proxy.conf <span style="color:#8b949e;font-style:italic"># enabled configs</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># soft link from available to enabled</span>
+</span></span><span style="display:flex;"><span>sudo ln -s /etc/nginx/sites-available/proxy.conf /etc/nginx/sites-enabled/proxy.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo nginx -t
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># loadbalancer</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># nginx can load balance</span>
+</span></span></code></pre></div><h4 id="set-and-sync-system-time">Set and Sync System Time</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NTP servers (network time protocol)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>timedatectl list-timezones
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo timedatectl set-timezone Africa/Johannesburg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>timedatectl
+</span></span><span style="display:flex;"><span>sudo apt install systemd-timesyncd <span style="color:#8b949e;font-style:italic"># to sync time</span>
+</span></span><span style="display:flex;"><span>sudo timedatectl set-ntp true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>systemctl status systemd-timesyncd.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo vim /etc/systemd/timesynd.conf
+</span></span></code></pre></div><h4 id="configuring-ssh-servers-and-clients">Configuring SSH Servers and Clients</h4>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo vim /etc/ssh/sshd_config <span style="color:#8b949e;font-style:italic">#ssh daemon config</span>
+</span></span><span style="display:flex;"><span>sudo vim /etc/ssh/ssh_config <span style="color:#8b949e;font-style:italic">#ssh client config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>man sshd_config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo systemctl reload ssh.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ls /etc/ssh/sshd_config.d <span style="color:#8b949e;font-style:italic"># check there are no clashing settings</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># clients</span>
+</span></span><span style="display:flex;"><span>ls -la ~/.ssh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>man ssh_config
+</span></span><span style="display:flex;"><span>vim ~/.ssh/config <span style="color:#8b949e;font-style:italic"># edit name so you dont need to remember server name</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#a5d6ff">600</span> ~/.ssh/config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># key gen</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssh-keygen
+</span></span><span style="display:flex;"><span>ls ~/.ssh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssh-copy-id matt@server <span style="color:#8b949e;font-style:italic"># copies public keys to server</span>
+</span></span><span style="display:flex;"><span>cat ~/.ssh/authorized_keys <span style="color:#8b949e;font-style:italic"># will have public key that is authorised (this is on server)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssh-keygen -R 10.0.0.251 <span style="color:#8b949e;font-style:italic"># remove a known_hosts entry</span>
+</span></span></code></pre></div><p>Beautiful! 😍</p></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>805 words</span>
+    <span>4 - 6 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+      </div><div class="side-details-taxonomy">
+        <small>series: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/series/lfcs">LFCS</a></span></small>
+      </div></div><h3>Table Of Contents</h3><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav><h3>Related</h3>
+    <ul><li><a href="/posts/lfcs-users-and-groups/">LFCS - Users and Groups</a></li><li><a href="/posts/lfcs-operations-deployment-virtual-machines-and-containers/">LFCS - Operations Deployment - Virtual Machines and Containers</a></li><li><a href="/posts/lfcs-operations-deployment-task-scheduling/">LFCS - Operations Deployment - Task Scheduling</a></li><li><a href="/posts/lfcs-operations-deployment-log-files/">LFCS - Operations Deployment - Log Files</a></li><li><a href="/posts/lfcs-operations-deployment-processes/">LFCS - Operations Deployment - Processes</a></li></ul></aside></div>
+  </div>
+</body>
+</html>
