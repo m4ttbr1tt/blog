@@ -64,3 +64,5 @@ And then a playbook to execute. This is a simple playbook that will manage the u
         removes: /usr/local/bin/k3s
       tags: uninstall-server
 ```
+
+Now we can quickly uninstall K3S with one command from the host machine. 😍
