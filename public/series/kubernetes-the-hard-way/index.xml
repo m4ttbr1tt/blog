@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>K8S on Software Engineering &amp; DevOps - Matt Britt</title>
-    <link>http://localhost:1313/tags/k8s/</link>
-    <description>Recent content in K8S on Software Engineering &amp; DevOps - Matt Britt</description>
+    <title>Kubernetes the Hard Way on Software Engineering &amp; DevOps - Matt Britt</title>
+    <link>http://localhost:1313/series/kubernetes-the-hard-way/</link>
+    <description>Recent content in Kubernetes the Hard Way on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sat, 19 Jul 2025 18:21:31 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/series/kubernetes-the-hard-way/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes The Hard Way - Preparing machines with Ansible</title>
       <link>http://localhost:1313/posts/kubernetes-the-hard-way-prep-with-ansible/</link>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kubernetes The Hard Way - Preparing machines with Ansible | Software Engineering &amp; DevOps - Matt Britt</title>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/kubernetes-the-hard-way-prep-with-ansible/">
+  <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
+  <meta property="og:title" content="Kubernetes The Hard Way - Preparing machines with Ansible">
+  <meta property="og:description" content="In preparation for working through the “Kubernetes the Hard Way” series, I need to configure my 4 host machines… with Ansible.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-21T15:41:31+02:00">
+    <meta property="article:modified_time" content="2025-07-21T15:41:31+02:00">
+    <meta property="article:tag" content="K8S">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kubernetes The Hard Way - Preparing machines with Ansible">
+  <meta name="twitter:description" content="In preparation for working through the “Kubernetes the Hard Way” series, I need to configure my 4 host machines… with Ansible.">
+
+    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/bundle.css">
+
+      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+<script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="notransition">
+  <div id="container">
+    <header id="main-header"><div role="navigation" aria-label="Main">
+  <div class="nav-left">
+    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+  </div>
+  <div class="nav-right">
+    <div style="position:absolute;width:0px;height:0px;">
+      <div id="nav-dropdown-menu" class="hidden" href="#">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    </div>
+    <a id="nav-dropdown-button" href="#"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+    <div id="nav-menu">
+    <div class="nav-item">
+      <a href="/posts/"
+      >Blog</a>
+    </div>
+    <div class="nav-item">
+      <a href="/about/"
+      >About</a>
+    </div>
+</div>
+    <a id="theme-switcher" href="#">
+<svg class="light-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="dark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</a>
+  </div>
+</div>
+</header>
+    <div class="flex grow">
+      <div id="main-pane">
+        <main id="main-content"><div class="single-header">
+<ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content='1' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="http://localhost:1313/posts/">
+        <span itemprop="name">Posts</span>
+      </a>
+      <meta itemprop="position" content='2' />
+    </li>
+    <span>&nbsp»&nbsp</span>
+</ol>
+<h1>Kubernetes The Hard Way - Preparing machines with Ansible</h1><time class="dim" datetime="2025-07-21T15:41:31&#43;02:00">July 21, 2025</time><div class="term-container"><div class="tag">
+        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+      </div></ol></div>
+  <section class="page-section"><p>In preparation for working through the &ldquo;Kubernetes the Hard Way&rdquo; series, I need to configure my 4 host machines&hellip; with Ansible.</p>
+<p>I&rsquo;m planning on working through the series by Kelsey Hightower, as I&rsquo;d like a deep dive into the workings of Kubernetes. I have 5 machines that I have installed a K3S cluster onto already, so I need to clean that up before proceeding. <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">https://github.com/kelseyhightower/kubernetes-the-hard-way</a></p>
+<p>I thought it would be a good idea to do this with Ansible, as it will save a lot of manual effort, and its a great opportunity to learn something new! 😍</p>
+<p>Ansible is an open-source automation tool used for system configuration management, it is agentless, which means there is nothing to install on the machines you are managing, everything is managed through ssh. <a href="https://docs.ansible.com/">https://docs.ansible.com/</a></p>
+<p>We need an inventory of the machines we are managing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># inventory.ini</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">[all]</span>
+</span></span><span style="display:flex;"><span>node-1 ansible_host<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">192.168.1.51</span>
+</span></span><span style="display:flex;"><span>node-2 ansible_host<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">192.168.1.52</span>
+</span></span><span style="display:flex;"><span>node-3 ansible_host<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">192.168.1.53</span>
+</span></span><span style="display:flex;"><span>node-4 ansible_host<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">192.168.1.54</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">[all:vars]</span>
+</span></span><span style="display:flex;"><span>ansible_user<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">root</span>
+</span></span><span style="display:flex;"><span>ansible_ssh_private_key_file<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">~/.ssh/ansible-key</span>
+</span></span></code></pre></div><p>And then a playbook to execute. This is a simple playbook that will manage the uninstall of K*S from the 4 managed machines:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ssh-keygen -t ed25519 -f ~/.ssh/ansible-key -C &#34;ansible key&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Copy to each target node</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># for host in node-0 node-1 server jump; do</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#   ssh-copy-id -i ~/.ssh/ansible-key.pub root@$host</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># done</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ansible-playbook -i inventory.ini k3s.yml --tags uninstall-server</span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ansible-playbook -i inventory.ini k3s.yml --tags uninstall-agents</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- name: Manage k3s application
+</span></span><span style="display:flex;"><span>  hosts: all
+</span></span><span style="display:flex;"><span>  become: true
+</span></span><span style="display:flex;"><span>  tasks:
+</span></span><span style="display:flex;"><span>    - name: Uninstall K3s Server
+</span></span><span style="display:flex;"><span>      when: inventory_hostname in <span style="color:#ff7b72;font-weight:bold">[</span><span style="color:#a5d6ff">&#39;node-1&#39;</span>, <span style="color:#a5d6ff">&#39;node-2&#39;</span>,<span style="color:#a5d6ff">&#39;node-3&#39;</span><span style="color:#ff7b72;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>      shell: /usr/local/bin/k3s-uninstall.sh
+</span></span><span style="display:flex;"><span>      args:
+</span></span><span style="display:flex;"><span>        removes: /usr/local/bin/k3s
+</span></span><span style="display:flex;"><span>      tags: uninstall-server
+</span></span><span style="display:flex;"><span>    - name: Uninstall K3s Agent
+</span></span><span style="display:flex;"><span>      when: inventory_hostname in <span style="color:#ff7b72;font-weight:bold">[</span><span style="color:#a5d6ff">&#39;node-4&#39;</span><span style="color:#ff7b72;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>      shell: /usr/local/bin/k3s-agent-uninstall.sh
+</span></span><span style="display:flex;"><span>      args:
+</span></span><span style="display:flex;"><span>        removes: /usr/local/bin/k3s
+</span></span><span style="display:flex;"><span>      tags: uninstall-server
+</span></span></code></pre></div></section></main>
+        <footer id="main-footer"><div class="footer">
+  <a href="#">Scroll to Top</a>
+  <div class="footer-copyright">
+    <div class="dim">© 2025 Matt Britt</div>
+  </div>
+</div>
+</footer>
+      </div><aside id="side-pane" class=""><div class="side-details">
+    <span>268 words</span>
+    <span>2 - 2 minutes read</span><div class="side-details-taxonomy">
+        <small>authors: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+      </div><div class="side-details-taxonomy">
+        <small>series: 
+          <span class="details-taxonomy"><a href="http://localhost:1313/series/kubernetes-the-hard-way">Kubernetes The Hard Way</a></span></small>
+      </div></div></aside></div>
+  </div>
+</body>
+</html>
