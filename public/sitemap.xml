@@ -3,36 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/authors/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/certificates/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/series/lfcs/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/lfcs/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/lfcs-essential-commands-file-redirection/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <loc>http://localhost:1313/posts/lfcs-users-and-groups/</loc>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/linux/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/authors/matt-britt/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/series/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-07-08T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</loc>
+    <lastmod>2025-07-12T17:35:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/</loc>
+    <lastmod>2025-07-11T17:35:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-operations-deployment-log-files/</loc>
+    <lastmod>2025-07-10T17:35:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-operations-deployment-processes/</loc>
+    <lastmod>2025-07-09T17:35:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-essential-commands-file-redirection/</loc>
     <lastmod>2025-07-08T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/lfcs-essential-commands-file-content-bundling-and-compression/</loc>

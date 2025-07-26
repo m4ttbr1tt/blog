@@ -6,14 +6,49 @@
     <description>Recent content in Certificates on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Jul 2025 17:35:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 17:35:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/certificates/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFCS - Users and Groups</title>
+      <link>http://localhost:1313/posts/lfcs-users-and-groups/</link>
+      <pubDate>Mon, 14 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-users-and-groups/</guid>
+      <description>&lt;p&gt;Continuing with LFCS prep, we are moving on to user and group management..&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Operations Deployment - Virtual Machines and Containers</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</link>
+      <pubDate>Sat, 12 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</guid>
+      <description>&lt;p&gt;Understanding VMs and containers, and how to manage them in Linux, is an important skill to master.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Operations Deployment - Task Scheduling</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/</link>
+      <pubDate>Fri, 11 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-task-scheduling/</guid>
+      <description>&lt;p&gt;Running periodic tasks can be very helpful with system maintenance, or application development tasks. Linux uses cron jobs for this.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Operations Deployment - Log Files</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-log-files/</link>
+      <pubDate>Thu, 10 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-log-files/</guid>
+      <description>&lt;p&gt;Log files give you insight into your system and are very important for SRE and DevOps.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Operations Deployment - Processes</title>
+      <link>http://localhost:1313/posts/lfcs-operations-deployment-processes/</link>
+      <pubDate>Wed, 09 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-operations-deployment-processes/</guid>
+      <description>&lt;p&gt;Managing Linux processes is critical for DevOps and Linux administration!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LFCS - Essential Commands - File redirecton</title>
       <link>http://localhost:1313/posts/lfcs-essential-commands-file-redirection/</link>
       <pubDate>Tue, 08 Jul 2025 17:35:51 +0200</pubDate>
       <guid>http://localhost:1313/posts/lfcs-essential-commands-file-redirection/</guid>
-      <description>&lt;p&gt;File redirection is a core part of Linux, this post covers file stdin, stdout, stderror and other commands.&lt;/p&gt;</description>
+      <description>&lt;p&gt;File redirection is a core part of Linux, this post covers file stdin, stdout, stderr and other commands.&lt;/p&gt;</description>
     </item>
     <item>
       <title>LFCS - Essential Commands - File content, bundling and compression</title>

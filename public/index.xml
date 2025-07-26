@@ -6,8 +6,15 @@
     <description>Recent content on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 12 Jul 2025 17:35:51 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 17:35:51 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFCS - Users and Groups</title>
+      <link>http://localhost:1313/posts/lfcs-users-and-groups/</link>
+      <pubDate>Mon, 14 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-users-and-groups/</guid>
+      <description>&lt;p&gt;Continuing with LFCS prep, we are moving on to user and group management&amp;hellip;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LFCS - Operations Deployment - Virtual Machines and Containers</title>
       <link>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</link>
