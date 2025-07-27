@@ -33,7 +33,7 @@ ansible_user=root
 ansible_ssh_private_key_file=~/.ssh/ansible-key
 ```
 
-And then a playbook to execute. This is a simple playbook that will manage the uninstall of K*S from the 4 managed machines:
+And then a playbook to execute. This is a simple playbook that will manage the uninstall of K3S from the 4 managed machines:
 
 ```shell
 # ssh-keygen -t ed25519 -f ~/.ssh/ansible-key -C "ansible key"
@@ -62,7 +62,7 @@ And then a playbook to execute. This is a simple playbook that will manage the u
       shell: /usr/local/bin/k3s-agent-uninstall.sh
       args:
         removes: /usr/local/bin/k3s
-      tags: uninstall-server
+      tags: uninstall-agents
 ```
 
 Now we can quickly uninstall K3S with one command from the host machine. 😍

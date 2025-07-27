@@ -116,7 +116,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">[all:vars]</span>
 </span></span><span style="display:flex;"><span>ansible_user<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">root</span>
 </span></span><span style="display:flex;"><span>ansible_ssh_private_key_file<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">~/.ssh/ansible-key</span>
-</span></span></code></pre></div><p>And then a playbook to execute. This is a simple playbook that will manage the uninstall of K*S from the 4 managed machines:</p>
+</span></span></code></pre></div><p>And then a playbook to execute. This is a simple playbook that will manage the uninstall of K3S from the 4 managed machines:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ssh-keygen -t ed25519 -f ~/.ssh/ansible-key -C &#34;ansible key&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Copy to each target node</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
@@ -143,7 +143,7 @@
 </span></span><span style="display:flex;"><span>      shell: /usr/local/bin/k3s-agent-uninstall.sh
 </span></span><span style="display:flex;"><span>      args:
 </span></span><span style="display:flex;"><span>        removes: /usr/local/bin/k3s
-</span></span><span style="display:flex;"><span>      tags: uninstall-server
+</span></span><span style="display:flex;"><span>      tags: uninstall-agents
 </span></span></code></pre></div><p>Now we can quickly uninstall K3S with one command from the host machine. 😍</p></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
