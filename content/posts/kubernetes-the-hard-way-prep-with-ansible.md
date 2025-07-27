@@ -14,9 +14,11 @@ In preparation for working through the "Kubernetes the Hard Way" series, I need 
 
 I'm planning on working through the series by Kelsey Hightower, as I'd like a deep dive into the workings of Kubernetes. I have 5 machines that I have installed a K3S cluster onto already, so I need to clean that up before proceeding. [https://github.com/kelseyhightower/kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 
-I thought it would be a good idea to do this with Ansible, as it will save a lot of manual effort, and its a great opportunity to learn something new! 😍
+I thought it would be a good idea to do this with Ansible, as it will save a lot of manual effort.
 
 Ansible is an open-source automation tool used for system configuration management, it is agentless, which means there is nothing to install on the machines you are managing, everything is managed through ssh. [https://docs.ansible.com/](https://docs.ansible.com/)
+
+I really love its declarative nature, reminds me of using Nix for my system, Im going to setup config of my main machine with Ansible.
 
 We need an inventory of the machines we are managing:
 

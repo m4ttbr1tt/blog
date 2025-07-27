@@ -103,8 +103,9 @@
       </div></ol></div>
   <section class="page-section"><p>In preparation for working through the &ldquo;Kubernetes the Hard Way&rdquo; series, I need to configure my 4 host machines&hellip; with Ansible.</p>
 <p>I&rsquo;m planning on working through the series by Kelsey Hightower, as I&rsquo;d like a deep dive into the workings of Kubernetes. I have 5 machines that I have installed a K3S cluster onto already, so I need to clean that up before proceeding. <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">https://github.com/kelseyhightower/kubernetes-the-hard-way</a></p>
-<p>I thought it would be a good idea to do this with Ansible, as it will save a lot of manual effort, and its a great opportunity to learn something new! 😍</p>
+<p>I thought it would be a good idea to do this with Ansible, as it will save a lot of manual effort.</p>
 <p>Ansible is an open-source automation tool used for system configuration management, it is agentless, which means there is nothing to install on the machines you are managing, everything is managed through ssh. <a href="https://docs.ansible.com/">https://docs.ansible.com/</a></p>
+<p>I really love its declarative nature, reminds me of using Nix for my system, Im going to setup config of my main machine with Ansible.</p>
 <p>We need an inventory of the machines we are managing:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># inventory.ini</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">[all]</span>
@@ -153,7 +154,7 @@
 </div>
 </footer>
       </div><aside id="side-pane" class=""><div class="side-details">
-    <span>282 words</span>
+    <span>297 words</span>
     <span>2 - 2 minutes read</span><div class="side-details-taxonomy">
         <small>authors: 
           <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
