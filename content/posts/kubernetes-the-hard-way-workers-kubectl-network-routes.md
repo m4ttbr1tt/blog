@@ -240,4 +240,4 @@ NODE_NAME=$(kubectl get pods \
 Working through this series has given valuable insight into the underlying workings of Kubernetes. The scripts to get this running are so well written and documented that it was relatively easy to get it running.
 The value of working through this comes from further digging into what is being setup and how it works. Always be curious!
 
-Now that I've got the cluster running... I'm going to delete it 🤣 - and install a TalosOS cluster.
+Now that I've got the cluster running... I'm going to delete it 🤣 - and install a Talos Linux cluster.
