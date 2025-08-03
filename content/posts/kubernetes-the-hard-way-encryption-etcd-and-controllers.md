@@ -12,6 +12,8 @@ Continuing with the series, next is to get encryption setup and to bootstrap the
 
 <!--more-->
 
+Full notes and scripts are available on my [GitHub](https://github.com/m4ttbr1tt/lab/tree/main/kubernetesthehardway)
+
 ### Encryption
 
 ```shell
