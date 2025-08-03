@@ -3,36 +3,60 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/authors/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/certificates/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <loc>http://localhost:1313/tags/k8s/</loc>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/series/lfcs/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <loc>http://localhost:1313/series/kubernetes-the-hard-way/</loc>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/lfcs/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/lfcs-users-and-groups/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/linux/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <loc>http://localhost:1313/posts/kubernetes-the-hard-way-workers-kubectl-network-routes/</loc>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/authors/matt-britt/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/series/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-07-14T17:35:51+02:00</lastmod>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-07-29T19:51:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/kubernetes-the-hard-way-encryption-etcd-and-controllers/</loc>
+    <lastmod>2025-07-27T11:31:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/kubernetes-the-hard-way-resources-certs-and-config/</loc>
+    <lastmod>2025-07-24T18:21:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/kubernetes-the-hard-way-prep-with-ansible/</loc>
+    <lastmod>2025-07-21T15:41:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/certificates/</loc>
+    <lastmod>2025-07-19T18:21:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/lfcs/</loc>
+    <lastmod>2025-07-19T18:21:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/lfcs/</loc>
+    <lastmod>2025-07-19T18:21:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-storage/</loc>
+    <lastmod>2025-07-19T18:21:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/linux/</loc>
+    <lastmod>2025-07-19T18:21:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-networking/</loc>
+    <lastmod>2025-07-17T17:35:51+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/lfcs-users-and-groups/</loc>
     <lastmod>2025-07-14T17:35:51+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/lfcs-operations-deployment-virtual-machines-and-containers/</loc>

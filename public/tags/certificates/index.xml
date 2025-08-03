@@ -6,14 +6,28 @@
     <description>Recent content in Certificates on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Jul 2025 17:35:51 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 19 Jul 2025 18:21:31 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/certificates/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LFCS - Storage</title>
+      <link>http://localhost:1313/posts/lfcs-storage/</link>
+      <pubDate>Sat, 19 Jul 2025 18:21:31 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-storage/</guid>
+      <description>&lt;p&gt;The last module in my LFCS prep&amp;hellip; storage management!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LFCS - Networking</title>
+      <link>http://localhost:1313/posts/lfcs-networking/</link>
+      <pubDate>Thu, 17 Jul 2025 17:35:51 +0200</pubDate>
+      <guid>http://localhost:1313/posts/lfcs-networking/</guid>
+      <description>&lt;p&gt;A core part of any SysAdmin, SRE or DevOps role! Networking is up next in my LFCS prep&amp;hellip;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LFCS - Users and Groups</title>
       <link>http://localhost:1313/posts/lfcs-users-and-groups/</link>
       <pubDate>Mon, 14 Jul 2025 17:35:51 +0200</pubDate>
       <guid>http://localhost:1313/posts/lfcs-users-and-groups/</guid>
-      <description>&lt;p&gt;Continuing with LFCS prep, we are moving on to user and group management..&lt;/p&gt;</description>
+      <description>&lt;p&gt;Continuing with LFCS prep, we are moving on to user and group management&amp;hellip;&lt;/p&gt;</description>
     </item>
     <item>
       <title>LFCS - Operations Deployment - Virtual Machines and Containers</title>

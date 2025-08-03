@@ -6,8 +6,15 @@
     <description>Recent content on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 27 Jul 2025 11:31:31 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jul 2025 19:51:31 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubernetes The Hard Way - Workers, kubectl and Network routes</title>
+      <link>http://localhost:1313/posts/kubernetes-the-hard-way-workers-kubectl-network-routes/</link>
+      <pubDate>Tue, 29 Jul 2025 19:51:31 +0200</pubDate>
+      <guid>http://localhost:1313/posts/kubernetes-the-hard-way-workers-kubectl-network-routes/</guid>
+      <description>&lt;p&gt;The final part of this series is to get the workers running and to configure connections to the cluster via kubectl.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Kubernetes The Hard Way - Encryption, Etcd and Controllers</title>
       <link>http://localhost:1313/posts/kubernetes-the-hard-way-encryption-etcd-and-controllers/</link>
