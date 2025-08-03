@@ -17,7 +17,7 @@ Talos Linux runs Kubernetes in a secure, immutable environment, you are not able
 
 [Talos Linux](https://www.talos.dev/)
 
-I have 5 homelab machines running and on my home network, I'll be installing Talos Linux with the following setup:
+I have 5 homelab machines running on my home network, I'll be installing Talos Linux with the following setup:
 
 | Node  | IP           | Role          |
 | ----- | ------------ | ------------- |
