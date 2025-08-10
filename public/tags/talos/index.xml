@@ -9,11 +9,18 @@
     <lastBuildDate>Thu, 31 Jul 2025 20:11:31 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/talos/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Talos Cluster Setup</title>
+      <title>Talos Linux Cluster Setup</title>
       <link>http://localhost:1313/posts/talos-cluster-setup/</link>
       <pubDate>Thu, 31 Jul 2025 20:11:31 +0200</pubDate>
       <guid>http://localhost:1313/posts/talos-cluster-setup/</guid>
       <description>&lt;p&gt;Its now time to get a production grade cluster running with Talos Linux!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Talos Linux Flux boot and troubleshooting</title>
+      <link>http://localhost:1313/posts/talos-linux-flux-boot-and-troubleshooting/</link>
+      <pubDate>Thu, 31 Jul 2025 20:11:31 +0200</pubDate>
+      <guid>http://localhost:1313/posts/talos-linux-flux-boot-and-troubleshooting/</guid>
+      <description>&lt;p&gt;After setting up the cluster I needed to boot it from the FLux repository. I ran into a few issues with Talos Linux not being healthy.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
