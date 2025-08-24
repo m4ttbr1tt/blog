@@ -1,7 +1,7 @@
 +++
 draft = false
 date = 2025-08-15T19:11:31+02:00
-title = 'Talos Linux Synology NAS storage'
+title = 'Talos Linux Synology storage'
 authors = ["Matt Britt"]
 tags = ["homelab","k8s","Talos", "GitOps"]
 +++
