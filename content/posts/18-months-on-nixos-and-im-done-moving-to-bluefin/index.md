@@ -15,9 +15,11 @@ tags = ["NixOS", "Bluefin"]
 
 But…
 
+
 1.  It distracted me from doing real work
 2. When I needed flexibility, it refused (or asked for a time investment to get things done)
 3.  The OS is not relevant in the DevOps community, even though the package manager has its uses.
+
 
 The final straw was not being able to run DevContainers due to a read-only file system  (I could have persisted to sort it out, but I'm done now). Its over.
 
