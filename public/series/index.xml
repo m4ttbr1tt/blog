@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Software Engineering &amp; DevOps - Matt Britt</title>
-    <link>http://localhost:1313/series/</link>
+    <link>http://www.mattbritt.com/series/</link>
     <description>Recent content in Series on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Tue, 29 Jul 2025 19:51:31 +0200</lastBuildDate>
-    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.mattbritt.com/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes the Hard Way</title>
-      <link>http://localhost:1313/series/kubernetes-the-hard-way/</link>
+      <link>http://www.mattbritt.com/series/kubernetes-the-hard-way/</link>
       <pubDate>Tue, 29 Jul 2025 19:51:31 +0200</pubDate>
-      <guid>http://localhost:1313/series/kubernetes-the-hard-way/</guid>
+      <guid>http://www.mattbritt.com/series/kubernetes-the-hard-way/</guid>
       <description></description>
     </item>
     <item>
       <title>LFCS</title>
-      <link>http://localhost:1313/series/lfcs/</link>
+      <link>http://www.mattbritt.com/series/lfcs/</link>
       <pubDate>Sat, 19 Jul 2025 18:21:31 +0200</pubDate>
-      <guid>http://localhost:1313/series/lfcs/</guid>
+      <guid>http://www.mattbritt.com/series/lfcs/</guid>
       <description></description>
     </item>
   </channel>

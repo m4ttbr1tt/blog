@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Kubernetes The Hard Way - Preparing machines with Ansible | Software Engineering &amp; DevOps - Matt Britt</title>
-<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://localhost:1313/posts/kubernetes-the-hard-way-prep-with-ansible/">
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml" /><meta property="og:url" content="http://www.mattbritt.com/posts/kubernetes-the-hard-way-prep-with-ansible/">
   <meta property="og:site_name" content="Software Engineering & DevOps - Matt Britt">
   <meta property="og:title" content="Kubernetes The Hard Way - Preparing machines with Ansible">
   <meta property="og:description" content="In preparation for working through the “Kubernetes the Hard Way” series, I need to configure my 4 host machines… with Ansible.">
@@ -15,18 +15,18 @@
     <meta property="article:published_time" content="2025-07-21T15:41:31+02:00">
     <meta property="article:modified_time" content="2025-07-21T15:41:31+02:00">
     <meta property="article:tag" content="K8S">
-      <meta property="og:see_also" content="http://localhost:1313/posts/kubernetes-the-hard-way-workers-kubectl-network-routes/">
-      <meta property="og:see_also" content="http://localhost:1313/posts/kubernetes-the-hard-way-encryption-etcd-and-controllers/">
-      <meta property="og:see_also" content="http://localhost:1313/posts/kubernetes-the-hard-way-resources-certs-and-config/">
+      <meta property="og:see_also" content="http://www.mattbritt.com/posts/kubernetes-the-hard-way-workers-kubectl-network-routes/">
+      <meta property="og:see_also" content="http://www.mattbritt.com/posts/kubernetes-the-hard-way-encryption-etcd-and-controllers/">
+      <meta property="og:see_also" content="http://www.mattbritt.com/posts/kubernetes-the-hard-way-resources-certs-and-config/">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Kubernetes The Hard Way - Preparing machines with Ansible">
   <meta name="twitter:description" content="In preparation for working through the “Kubernetes the Hard Way” series, I need to configure my 4 host machines… with Ansible.">
 
-    <link rel="stylesheet" href="/css/root.css">
-    <link rel="stylesheet" href="/css/bundle.css">
+      <link rel="stylesheet" href="/css/root.min.0e732b812b9751962e01a7c4798a1211cd5f8ac8abec7f99793fe306989e459f.css" integrity="sha256-DnMrgSuXUZYuAafEeYoSEc1fisir7H&#43;ZeT/jBpieRZ8=" crossorigin="anonymous">
+      <link rel="stylesheet" href="/css/bundle.min.5767648b8d898c5ca1a59e9b24e003743f0bace258fa42774834a237a2408fc5.css" integrity="sha256-V2dki42JjFyhpZ6bJOADdD8LrOJY&#43;kJ3SDSiN6JAj8U=" crossorigin="anonymous">
 
-      <script src="/js/bundle.js"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
+      <script src="/js/bundle.995e4ec99401021e081ec256bee66154ef7f4e5136809432513b2e6d014b4b1d.js" integrity="sha256-mV5OyZQBAh4IHsJWvuZhVO9/TlE2gJQyUTsubQFLSx0=" crossorigin="anonymous"></script><script defer src="/js/search/flexsearch.compact.64594b125f7b78bdf4fa8316955922bbebb1cd6baef3f16654bfca20309f18f8.js" integrity="sha256-ZFlLEl97eL30&#43;oMWlVkiu&#43;uxzWuu8/FmVL/KIDCfGPg="></script>
 <script defer src="/js/search/search.1d980f84df11f3eb7c8c5f17f541d49a0611608df179dd74fa7f06225eb56ace.js" integrity="sha256-HZgPhN8R8&#43;t8jF8X9UHUmgYRYI3xed10&#43;n8GIl61as4="></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@
   <div id="container">
     <header id="main-header"><div role="navigation" aria-label="Main">
   <div class="nav-left">
-    <a href="http://localhost:1313/" style="color: inherit;">Matt Britt</a>
+    <a href="http://www.mattbritt.com/" style="color: inherit;">Matt Britt</a>
   </div>
   <div class="nav-right">
     <div style="position:absolute;width:0px;height:0px;">
@@ -87,14 +87,14 @@
         <main id="main-content"><div class="single-header">
 <ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="http://localhost:1313/">
+      <a itemprop="item" href="http://www.mattbritt.com/">
         <span itemprop="name">Home</span>
       </a>
       <meta itemprop="position" content='1' />
     </li>
     <span>&nbsp»&nbsp</span>
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-      <a itemprop="item" href="http://localhost:1313/posts/">
+      <a itemprop="item" href="http://www.mattbritt.com/posts/">
         <span itemprop="name">Posts</span>
       </a>
       <meta itemprop="position" content='2' />
@@ -102,7 +102,7 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Kubernetes The Hard Way - Preparing machines with Ansible</h1><time class="dim" datetime="2025-07-21T15:41:31&#43;02:00">July 21, 2025</time><div class="term-container"><div class="tag">
-        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+        <a href="http://www.mattbritt.com/tags/k8s/">#K8S</a>
       </div></ol></div>
   <section class="page-section"><p>In preparation for working through the &ldquo;Kubernetes the Hard Way&rdquo; series, I need to configure my 4 host machines&hellip; with Ansible.</p>
 <p>I&rsquo;m planning on working through the series by Kelsey Hightower, as I&rsquo;d like a deep dive into the workings of Kubernetes. I have 5 machines that I have installed a K3S cluster onto already, so I need to clean that up before proceeding. <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">https://github.com/kelseyhightower/kubernetes-the-hard-way</a></p>
@@ -160,10 +160,10 @@
     <span>297 words</span>
     <span>2 - 2 minutes read</span><div class="side-details-taxonomy">
         <small>authors: 
-          <span class="details-taxonomy"><a href="http://localhost:1313/authors/matt-britt">Matt Britt</a></span></small>
+          <span class="details-taxonomy"><a href="http://www.mattbritt.com/authors/matt-britt">Matt Britt</a></span></small>
       </div><div class="side-details-taxonomy">
         <small>series: 
-          <span class="details-taxonomy"><a href="http://localhost:1313/series/kubernetes-the-hard-way">Kubernetes The Hard Way</a></span></small>
+          <span class="details-taxonomy"><a href="http://www.mattbritt.com/series/kubernetes-the-hard-way">Kubernetes The Hard Way</a></span></small>
       </div></div></aside></div>
   </div>
 </body>
