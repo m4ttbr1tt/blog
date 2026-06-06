@@ -15,7 +15,7 @@
     <meta property="article:published_time" content="2025-06-21T12:45:39+02:00">
     <meta property="article:modified_time" content="2025-06-21T12:45:39+02:00">
     <meta property="article:tag" content="Homelab">
-    <meta property="article:tag" content="K3s">
+    <meta property="article:tag" content="K3S">
     <meta property="article:tag" content="GitOps">
 
   <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
 <h1>Exposing our application to the internet</h1><time class="dim" datetime="2025-06-21T12:45:39&#43;02:00">June 21, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/homelab/">#homelab</a>
       </div><div class="tag">
-        <a href="http://localhost:1313/tags/k3s/">#k3s</a>
+        <a href="http://localhost:1313/tags/k3s/">#K3S</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/gitops/">#GitOps</a>
       </div></ol></div>
@@ -112,36 +112,36 @@
 <p>Cloudflare offers a nice free solution (if you host a domain with them) called Cloudflare tunnels.</p>
 <p>They work by opening a connection from the client (application end) to Cloudflare, that stays open and allows traffic to route from Cloudflare to your network - after you setup a CNAME record.</p>
 <p>First we need to install and configure the <em><strong>cloudflared</strong></em> app.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S cloudflared
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S cloudflared
 </span></span><span style="display:flex;"><span>cloudflared tunnel login
 </span></span></code></pre></div><p>We then need to create a tunnel named <em><strong>ldpi</strong></em>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># will createe a json file /home/matt/.cloudflared</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># will createe a json file /home/matt/.cloudflared</span>
 </span></span><span style="display:flex;"><span>cloudflared tunnel create ldpi
 </span></span></code></pre></div><p>We then use the generated file to create a secret in K3S.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret generic tunnel-credentials <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>credentials.json<span style="color:#ff7b72;font-weight:bold">=</span>58c97568-9eda-4dbf-9857-b6cf9cf91259.json
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret generic tunnel-credentials <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>credentials.json<span style="color:#ff7b72;font-weight:bold">=</span>58c97568-9eda-4dbf-9857-b6cf9cf91259.json
 </span></span></code></pre></div><p>Using the application id in the json file we need to add a CNAME record to Cloudflare (with proxying)</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># The CNAME needs to point to this record (our cname is links)</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># The CNAME needs to point to this record (our cname is links)</span>
 </span></span><span style="display:flex;"><span>58c97568-9eda-4dbf-0857-b6cf9cf91259.cfargotunnel.com
 </span></span></code></pre></div><p>We now need to add a kubernetes service that will be configured to point to our deployment.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># in service.yaml (base layer of linkding)</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#8b949e;font-style:italic"># and edit kustomization file!</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Service</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># in service.yaml (base layer of linkding)</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># and edit kustomization file!</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Service</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">spec</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">spec</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">ports</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span>- <span style="color:#7ee787">port</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">9090</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">selector</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">app</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">linkding</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">type</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">ClusterIP</span><span style="color:#6e7681">
 </span></span></span></code></pre></div><p>We then create a new deployment that will run the cloudflared image and make the initial call to Cloudflare to setup the tunnel.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">apps/v1</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Deployment</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">apps/v1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Deployment</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">cloudflared</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">spec</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">spec</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">selector</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">matchLabels</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">      </span><span style="color:#7ee787">app</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">cloudflared</span><span style="color:#6e7681">
@@ -183,12 +183,12 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">items</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span>- <span style="color:#7ee787">key</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">config.yaml</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">            </span><span style="color:#7ee787">path</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">config.yaml</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#ff7b72">---</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">ConfigMap</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff7b72">---</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">ConfigMap</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">cloudflared</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">data</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">data</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">  </span><span style="color:#7ee787">config.yaml</span>:<span style="color:#6e7681"> </span>|<span style="color:#a5d6ff">
 </span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">    tunnel: ldpi
 </span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">
@@ -201,7 +201,7 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

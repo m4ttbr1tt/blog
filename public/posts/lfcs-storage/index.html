@@ -116,7 +116,7 @@
   <section class="page-section"><p>The last module in my LFCS prep&hellip; storage management!</p>
 <p>Installing Arch with LVM earlier this year was amazing, so this is familiar content, good to brush up on the skills anyway.</p>
 <h4 id="partitioning">Partitioning</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># windows ntfs</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># windows ntfs</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># linux ext4</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>lsblk <span style="color:#8b949e;font-style:italic"># list block devicesj</span>
@@ -136,7 +136,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#gpt guid partition table</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#old hardware mbr/dos</span>
 </span></span></code></pre></div><h4 id="swap-space">Swap Space</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>swapon --show
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>swapon --show
 </span></span><span style="display:flex;"><span>sudo mkswap /dev/vdb3
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo dd <span style="color:#ff7b72">if</span><span style="color:#ff7b72;font-weight:bold">=</span>/dev/zero <span style="color:#79c0ff">of</span><span style="color:#ff7b72;font-weight:bold">=</span>/swap <span style="color:#79c0ff">bs</span><span style="color:#ff7b72;font-weight:bold">=</span>1M <span style="color:#79c0ff">count</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">128</span> <span style="color:#79c0ff">status</span><span style="color:#ff7b72;font-weight:bold">=</span>progress <span style="color:#8b949e;font-style:italic"># write zeros to file</span>
@@ -145,7 +145,7 @@
 </span></span><span style="display:flex;"><span>sudo swapon --verbose /swap
 </span></span><span style="display:flex;"><span>swapon --show
 </span></span></code></pre></div><h4 id="file-systems">File Systems</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ubuntu uses ext4</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ubuntu uses ext4</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo mkfs.xfs /dev/sdb1 <span style="color:#8b949e;font-style:italic"># formats the file system</span>
 </span></span><span style="display:flex;"><span>sudo mkfs.ext4 /dev/sdb1 <span style="color:#8b949e;font-style:italic"># formats the file system (make file system)</span>
@@ -160,7 +160,7 @@
 </span></span><span style="display:flex;"><span>sudo mkfs.ext4 /dev/sdb2 
 </span></span><span style="display:flex;"><span>sude tune2fs -L <span style="color:#a5d6ff">&#34;Second Label&#34;</span> /dev/sdb2
 </span></span></code></pre></div><h4 id="mounting">Mounting</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mount /dev/vdb1 /mnt/
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mount /dev/vdb1 /mnt/
 </span></span><span style="display:flex;"><span>sudo umount /mnt/ 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>lsblk
@@ -173,14 +173,14 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo blkid /dev/vdb1
 </span></span></code></pre></div><h4 id="file-system-and-mount-options">File System and Mount Options</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>findmnt <span style="color:#8b949e;font-style:italic"># shows all mounted items</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>findmnt <span style="color:#8b949e;font-style:italic"># shows all mounted items</span>
 </span></span><span style="display:flex;"><span>findmnt -t xfs,ext4 <span style="color:#8b949e;font-style:italic"># type option</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo mount -o ro /dev/vbd2 /mnt <span style="color:#8b949e;font-style:italic"># mount read only option</span>
 </span></span><span style="display:flex;"><span>man mount <span style="color:#8b949e;font-style:italic"># for options</span>
 </span></span><span style="display:flex;"><span>man xfs <span style="color:#8b949e;font-style:italic"># options for xfs</span>
 </span></span></code></pre></div><h4 id="remote-filesystems---nfs">Remote FileSystems - NFS</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NFS - network file system</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NFS - network file system</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NFS server and client</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># server config</span>
@@ -205,7 +205,7 @@
 </span></span><span style="display:flex;"><span>sudo umount /mnt
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># can add to fstab</span>
 </span></span></code></pre></div><h4 id="block-devices----nbd">Block Devices  - NBD</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NBD - Network Block Device</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NBD - Network Block Device</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># adds a block device that references remote device</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># NBD server</span>
@@ -226,7 +226,7 @@
 </span></span><span style="display:flex;"><span>sudo nbd-client -d /dev/nbd0 <span style="color:#8b949e;font-style:italic"># disconnect</span>
 </span></span><span style="display:flex;"><span>sudo ndb-client -l 192.168.1.8 <span style="color:#8b949e;font-style:italic"># list remote available partitions</span>
 </span></span></code></pre></div><h4 id="managing-lvm-storage">Managing LVM Storage</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Logical Volume Manager</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Logical Volume Manager</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Makes changing partition sizes possible</span>
 </span></span><span style="display:flex;"><span>sudo apt install lvm2
 </span></span><span style="display:flex;"><span>
@@ -262,7 +262,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>man lvm
 </span></span></code></pre></div><h4 id="monitoring-storage-performance">Monitoring Storage Performance</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install sysstat
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install sysstat
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>iostat <span style="color:#8b949e;font-style:italic"># I/O statistics</span>
 </span></span><span style="display:flex;"><span>pidstat <span style="color:#8b949e;font-style:italic"># process id statistics</span>
@@ -285,7 +285,7 @@
 </span></span><span style="display:flex;"><span>iostat <span style="color:#a5d6ff">1</span> <span style="color:#8b949e;font-style:italic"># refreshes every 1 second</span>
 </span></span></code></pre></div><p>iostat:
 ![[Pasted image 20250714055216.png]]</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># determine the process writing</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># determine the process writing</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>pidstat -d <span style="color:#8b949e;font-style:italic"># devices</span>
 </span></span><span style="display:flex;"><span>pidstat -d <span style="color:#a5d6ff">1</span> <span style="color:#8b949e;font-style:italic"># every one second</span>
@@ -304,7 +304,7 @@
 </span></span><span style="display:flex;"><span>man iostat
 </span></span><span style="display:flex;"><span>man pidstat
 </span></span></code></pre></div><h4 id="manage-file-system-permissions">Manage File System Permissions</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># acl (access control lists)</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># acl (access control lists)</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># specific permissions for 2 or more users</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo apt install acl
@@ -334,7 +334,7 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

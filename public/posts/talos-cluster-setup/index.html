@@ -103,7 +103,7 @@
 <h1>Talos Linux Cluster Setup</h1><time class="dim" datetime="2025-07-31T20:11:31&#43;02:00">July 31, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/homelab/">#homelab</a>
       </div><div class="tag">
-        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+        <a href="http://localhost:1313/tags/k8s/">#k8s</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/talos/">#Talos</a>
       </div></ol></div>
@@ -162,46 +162,46 @@
 <p><img src="/posts/talos-cluster-setup/imagefactory.png" alt="image-factory"></p>
 <h3 id="cluster-initialisation">Cluster initialisation</h3>
 <p>Burn the image to a USB drive and boot up the first control plane box. Once the machine is booted, unplug the USB drive! You can configure a static ip and then from the host machine setup the node, and initialise the cluster.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">CONTROL_PLANE_IP</span><span style="color:#ff7b72;font-weight:bold">=</span>192.168.1.51   
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>talosctl get disks --insecure --nodes <span style="color:#79c0ff">$CONTROL_PLANE_IP</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">CONTROL_PLANE_IP</span><span style="color:#ff7b72;font-weight:bold">=</span>192.168.1.51   
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>talosctl get disks --insecure --nodes <span style="color:#79c0ff">$CONTROL_PLANE_IP</span>
 </span></span></code></pre></div><p><img src="/posts/talos-cluster-setup/disks.png" alt="disks"></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">CLUSTER_NAME</span><span style="color:#ff7b72;font-weight:bold">=</span>cowctl
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">CLUSTER_NAME</span><span style="color:#ff7b72;font-weight:bold">=</span>cowctl
 </span></span><span style="display:flex;"><span>export <span style="color:#79c0ff">DISK_NAME</span><span style="color:#ff7b72;font-weight:bold">=</span>sdb
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># generate configs </span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># generate configs </span>
 </span></span><span style="display:flex;"><span>talosctl gen config <span style="color:#79c0ff">$CLUSTER_NAME</span> https://<span style="color:#79c0ff">$CONTROL_PLANE_IP</span>:6443 --install-disk /dev/<span style="color:#79c0ff">$DISK_NAME</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># applies configs</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># applies configs</span>
 </span></span><span style="display:flex;"><span>talosctl apply-config --insecure --nodes <span style="color:#79c0ff">$CONTROL_PLANE_IP</span> --file controlplane.yaml
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># sets endpoints in config file</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># sets endpoints in config file</span>
 </span></span><span style="display:flex;"><span>talosctl --talosconfig<span style="color:#ff7b72;font-weight:bold">=</span>./talosconfig config endpoints <span style="color:#79c0ff">$CONTROL_PLANE_IP</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># bootsrap etcd (once per cluster)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># bootsrap etcd (once per cluster)</span>
 </span></span><span style="display:flex;"><span>talosctl bootstrap --nodes <span style="color:#79c0ff">$CONTROL_PLANE_IP</span> --talosconfig<span style="color:#ff7b72;font-weight:bold">=</span>./talosconfig
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># merge configs</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># merge configs</span>
 </span></span><span style="display:flex;"><span>talosctl kubeconfig --nodes <span style="color:#79c0ff">$CONTROL_PLANE_IP</span> --talosconfig<span style="color:#ff7b72;font-weight:bold">=</span>./talosconfig
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># check cluster health</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># check cluster health</span>
 </span></span><span style="display:flex;"><span>talosctl --nodes <span style="color:#79c0ff">$CONTROL_PLANE_IP</span> --talosconfig<span style="color:#ff7b72;font-weight:bold">=</span>./talosconfig health
 </span></span></code></pre></div><h3 id="additional-control-plane-or-worker-nodes">Additional control plane or worker nodes</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># additional control planes or workers</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># additional control planes or workers</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># you might need to check the drive if it differs from machine to machine</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>talosctl get disks --insecure --nodes <span style="color:#ff7b72;font-weight:bold">[</span>NODE IP<span style="color:#ff7b72;font-weight:bold">]</span>
 </span></span><span style="display:flex;"><span>export <span style="color:#79c0ff">DISK_NAME</span><span style="color:#ff7b72;font-weight:bold">=</span>sda
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>talosctl apply-config --insecure <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --nodes 192.168.1.52 <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --file controlplane.yaml
+</span></span></span><span style="display:flex;"><span>    --nodes 192.168.1.52 <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    --file controlplane.yaml
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#or </span>
 </span></span><span style="display:flex;"><span>talosctl apply-config --insecure <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --nodes 192.168.1.52 <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --file worker.yaml
+</span></span></span><span style="display:flex;"><span>    --nodes 192.168.1.52 <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    --file worker.yaml
 </span></span></code></pre></div><p>Nice we have our cluster up and running!</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get nodes -o wide
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get nodes -o wide
 </span></span></code></pre></div><p><img src="/posts/talos-cluster-setup/talosnodes.png" alt="nodes"></p>
 <p>I plan to run my homelab with this setup for the foreseeable future! But things change, so lets see what happens 😅.</p>
 <p><a href="https://github.com/m4ttbr1tt/homelab">https://github.com/m4ttbr1tt/homelab</a></p></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

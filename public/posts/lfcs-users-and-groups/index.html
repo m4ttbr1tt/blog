@@ -115,7 +115,7 @@
       </div></ol></div>
   <section class="page-section"><p>Continuing with LFCS prep, we are moving on to user and group management&hellip;</p>
 <h4 id="user-management">User management</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo adduser matt <span style="color:#8b949e;font-style:italic"># will be prompted for password and info</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo adduser matt <span style="color:#8b949e;font-style:italic"># will be prompted for password and info</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># adds user and group matt</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># home user is created</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># default shell is /bin/bash</span>
@@ -148,7 +148,7 @@
 </span></span><span style="display:flex;"><span>sudo chage --maxdays -1 matt <span style="color:#8b949e;font-style:italic"># never expires</span>
 </span></span><span style="display:flex;"><span>sudo chage --list matt
 </span></span></code></pre></div><h4 id="local-groups-and-group-membership">Local Groups and Group Membership</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># each user can belong to one or more groups</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># each user can belong to one or more groups</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># used to manage permissions</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># user has primary / login group</span>
 </span></span><span style="display:flex;"><span>sudo groupadd developers 
@@ -161,7 +161,7 @@
 </span></span><span style="display:flex;"><span>sudo groupmod --new-name programmers developers <span style="color:#8b949e;font-style:italic"># rename group name or -n</span>
 </span></span><span style="display:flex;"><span>sudo groupdel programmers
 </span></span></code></pre></div><h4 id="manage-system-wide-environment-profiles">Manage System-Wide Environment Profiles</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>printenv <span style="color:#8b949e;font-style:italic"># or env</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>printenv <span style="color:#8b949e;font-style:italic"># or env</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># user specific env vars .bashrc</span>
 </span></span><span style="display:flex;"><span>sudo vim /etc/environment <span style="color:#8b949e;font-style:italic"># system wide vars</span>
 </span></span><span style="display:flex;"><span>
@@ -172,9 +172,9 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo vim /etc/profile.d/lastlogin.sh <span style="color:#8b949e;font-style:italic"># create file</span>
 </span></span></code></pre></div><h4 id="manage-template-user-environment">Manage Template User Environment</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo vim /etc/skel/README <span style="color:#8b949e;font-style:italic"># edit or create new files</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo vim /etc/skel/README <span style="color:#8b949e;font-style:italic"># edit or create new files</span>
 </span></span></code></pre></div><h4 id="configure-user-resource-limits">Configure User Resource Limits</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo /vim/etc/security/limits.conf
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo /vim/etc/security/limits.conf
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># domain type item value</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># domain is user or group or *</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># type  - hard, soft or -</span>
@@ -191,7 +191,7 @@
 </span></span><span style="display:flex;"><span>ulimit -a <span style="color:#8b949e;font-style:italic"># see limits</span>
 </span></span><span style="display:flex;"><span>ulimit -u <span style="color:#a5d6ff">5000</span> <span style="color:#8b949e;font-style:italic"># lower limit or raise up to hard value</span>
 </span></span></code></pre></div><h4 id="manage-user-privileges">Manage User Privileges</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>groups <span style="color:#8b949e;font-style:italic"># show groups for user</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>groups <span style="color:#8b949e;font-style:italic"># show groups for user</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># add user to sudo</span>
 </span></span><span style="display:flex;"><span>sudo gpasswd -a matt sudo <span style="color:#8b949e;font-style:italic"># add user to sudo</span>
 </span></span><span style="display:flex;"><span>
@@ -210,7 +210,7 @@
 </span></span><span style="display:flex;"><span>matt <span style="color:#79c0ff">ALL</span><span style="color:#ff7b72;font-weight:bold">=(</span>ALL<span style="color:#ff7b72;font-weight:bold">)</span> /bin/ls, /bin/stat <span style="color:#8b949e;font-style:italic"># only certain commands </span>
 </span></span><span style="display:flex;"><span>matt <span style="color:#79c0ff">ALL</span><span style="color:#ff7b72;font-weight:bold">=</span> /bin/ls, /bin/stat <span style="color:#8b949e;font-style:italic"># only certain commands </span>
 </span></span></code></pre></div><h4 id="manage-access-to-root">Manage Access to Root</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ls /root <span style="color:#8b949e;font-style:italic"># runs command as root</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo ls /root <span style="color:#8b949e;font-style:italic"># runs command as root</span>
 </span></span><span style="display:flex;"><span>sudo --login <span style="color:#8b949e;font-style:italic"># login as root or -i</span>
 </span></span><span style="display:flex;"><span>logout
 </span></span><span style="display:flex;"><span>su - <span style="color:#8b949e;font-style:italic"># will ask for root passwd</span>
@@ -219,7 +219,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>sudo passwd --lock root <span style="color:#8b949e;font-style:italic"># sets password based logins</span>
 </span></span></code></pre></div><h4 id="configure-ldap-user-and-groups">Configure LDAP user and groups</h4>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># user accounts are store in /etc/passwd</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># user accounts are store in /etc/passwd</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># LDAP server (Lightweight Directory Access Protocol)</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Single server change across multiple servers</span>
 </span></span><span style="display:flex;"><span>
@@ -249,7 +249,7 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

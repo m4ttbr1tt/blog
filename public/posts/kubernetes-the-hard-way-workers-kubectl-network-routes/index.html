@@ -102,47 +102,47 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Kubernetes The Hard Way - Workers, kubectl and Network routes</h1><time class="dim" datetime="2025-07-29T19:51:31&#43;02:00">July 29, 2025</time><div class="term-container"><div class="tag">
-        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+        <a href="http://localhost:1313/tags/k8s/">#k8s</a>
       </div></ol></div>
   <section class="page-section"><p>The final part of this series is to get the workers running and to configure connections to the cluster via kubectl.</p>
 <p>Full notes and scripts are available on my <a href="https://github.com/m4ttbr1tt/lab/tree/main/kubernetesthehardway">GitHub</a></p>
 <h3 id="worker-bootstrapping">Worker bootstrapping</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic"></span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Copy the Kubernetes binaries and systemd unit files to each worker instance:</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> HOST in node-0 node-1; <span style="color:#ff7b72">do</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#79c0ff">SUBNET</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>grep <span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span> machines.txt | cut -d <span style="color:#a5d6ff">&#34; &#34;</span> -f 4<span style="color:#ff7b72">)</span>
 </span></span><span style="display:flex;"><span>  sed <span style="color:#a5d6ff">&#34;s|SUBNET|</span><span style="color:#79c0ff">$SUBNET</span><span style="color:#a5d6ff">|g&#34;</span> <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    configs/10-bridge.conf &gt; 10-bridge.conf
+</span></span></span><span style="display:flex;"><span>    configs/10-bridge.conf &gt; 10-bridge.conf
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  sed <span style="color:#a5d6ff">&#34;s|SUBNET|</span><span style="color:#79c0ff">$SUBNET</span><span style="color:#a5d6ff">|g&#34;</span> <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    configs/kubelet-config.yaml &gt; kubelet-config.yaml
+</span></span></span><span style="display:flex;"><span>    configs/kubelet-config.yaml &gt; kubelet-config.yaml
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  scp 10-bridge.conf kubelet-config.yaml <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  root@<span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span>:~/
+</span></span></span><span style="display:flex;"><span>  root@<span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span>:~/
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">done</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> HOST in node-0 node-1; <span style="color:#ff7b72">do</span>
 </span></span><span style="display:flex;"><span>  scp <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    downloads/worker/* <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    downloads/client/kubectl <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    configs/99-loopback.conf <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    configs/containerd-config.toml <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    configs/kube-proxy-config.yaml <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    units/containerd.service <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    units/kubelet.service <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    units/kube-proxy.service <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    root@<span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span>:~/
+</span></span></span><span style="display:flex;"><span>    downloads/worker/* <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    downloads/client/kubectl <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    configs/99-loopback.conf <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    configs/containerd-config.toml <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    configs/kube-proxy-config.yaml <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    units/containerd.service <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    units/kubelet.service <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    units/kube-proxy.service <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    root@<span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span>:~/
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">done</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> HOST in node-0 node-1; <span style="color:#ff7b72">do</span>
 </span></span><span style="display:flex;"><span>  scp <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    downloads/cni-plugins/* <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    root@<span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span>:~/cni-plugins/
+</span></span></span><span style="display:flex;"><span>    downloads/cni-plugins/* <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    root@<span style="color:#a5d6ff">${</span><span style="color:#79c0ff">HOST</span><span style="color:#a5d6ff">}</span>:~/cni-plugins/
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">done</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
@@ -158,18 +158,18 @@
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create the installation directories:</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mkdir -p <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  /etc/cni/net.d <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  /opt/cni/bin <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  /var/lib/kubelet <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  /var/lib/kube-proxy <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  /var/lib/kubernetes <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  /var/run/kubernetes
+</span></span></span><span style="display:flex;"><span>  /etc/cni/net.d <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  /opt/cni/bin <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  /var/lib/kubelet <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  /var/lib/kube-proxy <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  /var/lib/kubernetes <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  /var/run/kubernetes
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Install the worker binaries:</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  mv crictl kube-proxy kubelet runc <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    /usr/local/bin/
+</span></span></span><span style="display:flex;"><span>    /usr/local/bin/
 </span></span><span style="display:flex;"><span>  mv containerd containerd-shim-runc-v2 containerd-stress /bin/
 </span></span><span style="display:flex;"><span>  mv cni-plugins/* /opt/cni/bin/
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
@@ -192,9 +192,9 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  echo <span style="color:#a5d6ff">&#34;net.bridge.bridge-nf-call-iptables = 1&#34;</span> <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    &gt;&gt; /etc/sysctl.d/kubernetes.conf
+</span></span></span><span style="display:flex;"><span>    &gt;&gt; /etc/sysctl.d/kubernetes.conf
 </span></span><span style="display:flex;"><span>  echo <span style="color:#a5d6ff">&#34;net.bridge.bridge-nf-call-ip6tables = 1&#34;</span> <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    &gt;&gt; /etc/sysctl.d/kubernetes.conf
+</span></span></span><span style="display:flex;"><span>    &gt;&gt; /etc/sysctl.d/kubernetes.conf
 </span></span><span style="display:flex;"><span>  sysctl -p /etc/sysctl.d/kubernetes.conf
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
 </span></span><span style="display:flex;"><span>
@@ -234,24 +234,24 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>systemctl is-active kubelet
 </span></span></code></pre></div><h3 id="configure-kubectl">Configure kubectl</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  kubectl config set-cluster kubernetes-the-hard-way <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --certificate-authority<span style="color:#ff7b72;font-weight:bold">=</span>ca.crt <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --embed-certs<span style="color:#ff7b72;font-weight:bold">=</span>true <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --server<span style="color:#ff7b72;font-weight:bold">=</span>https://server.kubernetes.local:6443
+</span></span></span><span style="display:flex;"><span>    --certificate-authority<span style="color:#ff7b72;font-weight:bold">=</span>ca.crt <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    --embed-certs<span style="color:#ff7b72;font-weight:bold">=</span>true <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    --server<span style="color:#ff7b72;font-weight:bold">=</span>https://server.kubernetes.local:6443
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  kubectl config set-credentials admin <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --client-certificate<span style="color:#ff7b72;font-weight:bold">=</span>admin.crt <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --client-key<span style="color:#ff7b72;font-weight:bold">=</span>admin.key
+</span></span></span><span style="display:flex;"><span>    --client-certificate<span style="color:#ff7b72;font-weight:bold">=</span>admin.crt <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    --client-key<span style="color:#ff7b72;font-weight:bold">=</span>admin.key
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  kubectl config set-context kubernetes-the-hard-way <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --cluster<span style="color:#ff7b72;font-weight:bold">=</span>kubernetes-the-hard-way <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    --user<span style="color:#ff7b72;font-weight:bold">=</span>admin
+</span></span></span><span style="display:flex;"><span>    --cluster<span style="color:#ff7b72;font-weight:bold">=</span>kubernetes-the-hard-way <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    --user<span style="color:#ff7b72;font-weight:bold">=</span>admin
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  kubectl config use-context kubernetes-the-hard-way
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
 </span></span></code></pre></div><h3 id="pod-network-routes">Pod network routes</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#79c0ff">SERVER_IP</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>grep server machines.txt | cut -d <span style="color:#a5d6ff">&#34; &#34;</span> -f 1<span style="color:#ff7b72">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#79c0ff">NODE_0_IP</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>grep node-0 machines.txt | cut -d <span style="color:#a5d6ff">&#34; &#34;</span> -f 1<span style="color:#ff7b72">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#79c0ff">NODE_0_SUBNET</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>grep node-0 machines.txt | cut -d <span style="color:#a5d6ff">&#34; &#34;</span> -f 4<span style="color:#ff7b72">)</span>
@@ -273,23 +273,23 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#a5d6ff">EOF</span>
 </span></span></code></pre></div><h3 id="final-tests">Final tests</h3>
 <p>We are ready to test the cluster, verifying that we can create a secret, deployment and service.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create a generic secret:</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create a generic secret:</span>
 </span></span><span style="display:flex;"><span>kubectl create secret generic kubernetes-the-hard-way <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --from-literal<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;mykey=mydata&#34;</span>
+</span></span></span><span style="display:flex;"><span>  --from-literal<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;mykey=mydata&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>ssh root@server <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    <span style="color:#a5d6ff">&#39;etcdctl get /registry/secrets/default/kubernetes-the-hard-way | hexdump -C&#39;</span>
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a5d6ff">&#39;etcdctl get /registry/secrets/default/kubernetes-the-hard-way | hexdump -C&#39;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create a deployment for the nginx web server:</span>
 </span></span><span style="display:flex;"><span>kubectl create deployment nginx <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --image<span style="color:#ff7b72;font-weight:bold">=</span>nginx:latest
+</span></span></span><span style="display:flex;"><span>  --image<span style="color:#ff7b72;font-weight:bold">=</span>nginx:latest
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># List the pod created by the nginx deployment:</span>
 </span></span><span style="display:flex;"><span>kubectl get pods -l <span style="color:#79c0ff">app</span><span style="color:#ff7b72;font-weight:bold">=</span>nginx
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Retrieve the full name of the nginx pod:</span>
 </span></span><span style="display:flex;"><span><span style="color:#79c0ff">POD_NAME</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>kubectl get pods -l <span style="color:#79c0ff">app</span><span style="color:#ff7b72;font-weight:bold">=</span>nginx <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  -o <span style="color:#79c0ff">jsonpath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;{.items[0].metadata.name}&#34;</span><span style="color:#ff7b72">)</span>
+</span></span></span><span style="display:flex;"><span>  -o <span style="color:#79c0ff">jsonpath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;{.items[0].metadata.name}&#34;</span><span style="color:#ff7b72">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Forward port 8080 on your local machine to port 80 of the nginx pod:</span>
 </span></span><span style="display:flex;"><span>kubectl port-forward <span style="color:#79c0ff">$POD_NAME</span> 8080:80
@@ -301,16 +301,16 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Expose the nginx deployment using a NodePort service:</span>
 </span></span><span style="display:flex;"><span>kubectl expose deployment nginx <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --port <span style="color:#a5d6ff">80</span> --type NodePort
+</span></span></span><span style="display:flex;"><span>  --port <span style="color:#a5d6ff">80</span> --type NodePort
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Retrieve the node port assigned to the nginx service:</span>
 </span></span><span style="display:flex;"><span><span style="color:#79c0ff">NODE_PORT</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>kubectl get svc nginx <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --output<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">jsonpath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;{range .spec.ports[0]}{.nodePort}&#39;</span><span style="color:#ff7b72">)</span>
+</span></span></span><span style="display:flex;"><span>  --output<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">jsonpath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#39;{range .spec.ports[0]}{.nodePort}&#39;</span><span style="color:#ff7b72">)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Retrieve the hostname of the node running the nginx pod:</span>
 </span></span><span style="display:flex;"><span><span style="color:#79c0ff">NODE_NAME</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>kubectl get pods <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  -l <span style="color:#79c0ff">app</span><span style="color:#ff7b72;font-weight:bold">=</span>nginx <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  -o <span style="color:#79c0ff">jsonpath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;{.items[0].spec.nodeName}&#34;</span><span style="color:#ff7b72">)</span>
+</span></span></span><span style="display:flex;"><span>  -l <span style="color:#79c0ff">app</span><span style="color:#ff7b72;font-weight:bold">=</span>nginx <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  -o <span style="color:#79c0ff">jsonpath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;{.items[0].spec.nodeName}&#34;</span><span style="color:#ff7b72">)</span>
 </span></span></code></pre></div><h3 id="final-thoughts">Final thoughts</h3>
 <p>Working through this series has given valuable insight into the underlying workings of Kubernetes. The scripts to get this running are so well written and documented that it was relatively easy to get it running.
 The value of working through this comes from further digging into what is being setup and how it works. Always be curious!</p>
@@ -318,7 +318,7 @@ The value of working through this comes from further digging into what is being 
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

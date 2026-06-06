@@ -102,7 +102,7 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Kubernetes The Hard Way - Preparing machines with Ansible</h1><time class="dim" datetime="2025-07-21T15:41:31&#43;02:00">July 21, 2025</time><div class="term-container"><div class="tag">
-        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+        <a href="http://localhost:1313/tags/k8s/">#k8s</a>
       </div></ol></div>
   <section class="page-section"><p>In preparation for working through the &ldquo;Kubernetes the Hard Way&rdquo; series, I need to configure my 4 host machines&hellip; with Ansible.</p>
 <p>I&rsquo;m planning on working through the series by Kelsey Hightower, as I&rsquo;d like a deep dive into the workings of Kubernetes. I have 5 machines that I have installed a K3S cluster onto already, so I need to clean that up before proceeding. <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">https://github.com/kelseyhightower/kubernetes-the-hard-way</a></p>
@@ -110,7 +110,7 @@
 <p>Ansible is an open-source automation tool used for system configuration management, it is agentless, which means there is nothing to install on the machines you are managing, everything is managed through ssh. <a href="https://docs.ansible.com/">https://docs.ansible.com/</a></p>
 <p>I really love its declarative nature, reminds me of using Nix for my system, Im going to setup config of my main machine with Ansible.</p>
 <p>We need an inventory of the machines we are managing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># inventory.ini</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># inventory.ini</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">[all]</span>
 </span></span><span style="display:flex;"><span>node-1 ansible_host<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">192.168.1.51</span>
 </span></span><span style="display:flex;"><span>node-2 ansible_host<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">192.168.1.52</span>
@@ -121,7 +121,7 @@
 </span></span><span style="display:flex;"><span>ansible_user<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">root</span>
 </span></span><span style="display:flex;"><span>ansible_ssh_private_key_file<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">~/.ssh/ansible-key</span>
 </span></span></code></pre></div><p>And then a playbook to execute. This is a simple playbook that will manage the uninstall of K3S from the 4 managed machines:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ssh-keygen -t ed25519 -f ~/.ssh/ansible-key -C &#34;ansible key&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># ssh-keygen -t ed25519 -f ~/.ssh/ansible-key -C &#34;ansible key&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Copy to each target node</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># for host in node-0 node-1 server jump; do</span>
@@ -152,7 +152,7 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

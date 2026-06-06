@@ -102,12 +102,12 @@
     <span>&nbsp»&nbsp</span>
 </ol>
 <h1>Kubernetes The Hard Way - Encryption, Etcd and Controllers</h1><time class="dim" datetime="2025-07-27T11:31:31&#43;02:00">July 27, 2025</time><div class="term-container"><div class="tag">
-        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+        <a href="http://localhost:1313/tags/k8s/">#k8s</a>
       </div></ol></div>
   <section class="page-section"><p>Continuing with the series, next is to get encryption setup and to bootstrap the etcd datastore and cluster controllers.</p>
 <p>Full notes and scripts are available on my <a href="https://github.com/m4ttbr1tt/lab/tree/main/kubernetesthehardway">GitHub</a></p>
 <h3 id="encryption">Encryption</h3>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Generate encryption Key</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Generate encryption Key</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span>export <span style="color:#79c0ff">ENCRYPTION_KEY</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#ff7b72">$(</span>head -c <span style="color:#a5d6ff">32</span> /dev/urandom | base64<span style="color:#ff7b72">)</span>
 </span></span><span style="display:flex;"><span>
@@ -115,7 +115,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># envsubst is a shell command that replaces environment variables in a file</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span>envsubst &lt; configs/encryption-config.yaml <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  &gt; encryption-config.yaml
+</span></span></span><span style="display:flex;"><span>  &gt; encryption-config.yaml
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Copy the encryption-config.yaml encryption config file to each controller instance:</span>
@@ -124,7 +124,7 @@
 </span></span></code></pre></div><h3 id="etcd-datastore">etcd datastore</h3>
 <p>etcd is a high availability key value datastore that Kubernetes uses for all its data.</p>
 <p>After we have copied the binaries and created the systemd unit files we can start the services:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Start the etcd Server</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Start the etcd Server</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  systemctl daemon-reload
@@ -138,34 +138,34 @@
 </span></span><span style="display:flex;"><span>etcdctl member list
 </span></span></code></pre></div><h3 id="bootstrapping-controllers">Bootstrapping controllers</h3>
 <p>Controllers manage the desired state of the cluster, they monitor the current state and make requests to adjust the state if required.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Install the Kubernetes binaries:</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Install the Kubernetes binaries:</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#</span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  mv kube-apiserver <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    kube-controller-manager <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    kube-scheduler kubectl <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    /usr/local/bin/
+</span></span></span><span style="display:flex;"><span>    kube-controller-manager <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    kube-scheduler kubectl <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>    /usr/local/bin/
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
 </span></span></code></pre></div><p>After creating config files in the correct locations, we can start the services&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Start the Controller Services</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Start the Controller Services</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">{</span>
 </span></span><span style="display:flex;"><span>  systemctl daemon-reload
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  systemctl enable kube-apiserver <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    kube-controller-manager kube-scheduler
+</span></span></span><span style="display:flex;"><span>    kube-controller-manager kube-scheduler
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  systemctl start kube-apiserver <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>    kube-controller-manager kube-scheduler
+</span></span></span><span style="display:flex;"><span>    kube-controller-manager kube-scheduler
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
 </span></span></code></pre></div><p>And then we can verify all is good!</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl cluster-info <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --kubeconfig admin.kubeconfig
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl cluster-info <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  --kubeconfig admin.kubeconfig
 </span></span></code></pre></div></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

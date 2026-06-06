@@ -3,36 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/authors/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/gitops/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/homelab/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/k8s/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/authors/matt-britt/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/talos/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/talos-linux-flux-boot-and-troubleshooting/</loc>
-    <lastmod>2025-08-05T20:11:31+02:00</lastmod>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/talos-linux-synology-storage/</loc>
+    <lastmod>2025-08-15T19:11:31+02:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/talos-linux-flux-boot-and-troubleshooting/</loc>
     <lastmod>2025-08-05T20:11:31+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/talos-cluster-setup/</loc>

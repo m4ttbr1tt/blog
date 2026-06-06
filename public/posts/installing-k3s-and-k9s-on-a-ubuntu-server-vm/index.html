@@ -15,7 +15,7 @@
     <meta property="article:published_time" content="2025-05-17T17:21:51+02:00">
     <meta property="article:modified_time" content="2025-05-17T17:21:51+02:00">
     <meta property="article:tag" content="K9S">
-    <meta property="article:tag" content="K3s">
+    <meta property="article:tag" content="K3S">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Installing K3S and K9S on an Ubuntu Server VM">
@@ -102,29 +102,29 @@
 <h1>Installing K3S and K9S on an Ubuntu Server VM</h1><time class="dim" datetime="2025-05-17T17:21:51&#43;02:00">May 17, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/k9s/">#K9S</a>
       </div><div class="tag">
-        <a href="http://localhost:1313/tags/k3s/">#k3s</a>
+        <a href="http://localhost:1313/tags/k3s/">#K3S</a>
       </div></ol></div>
   <section class="page-section"><p>K3S is a lightweight version of Kubernetes and is used for running on resource constrained environments.</p>
 <h6 id="to-install-run-the-following">To install run the following</h6>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sfL https://get.k3s.io | sh - 
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sfL https://get.k3s.io | sh - 
 </span></span></code></pre></div><p>There is an interesting output to note after the install, K3S installs a single binary and creates 3 symlinks.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Installing k3s to /usr/local/bin/k3s
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Installing k3s to /usr/local/bin/k3s
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Creating /usr/local/bin/kubectl symlink to k3s
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Creating /usr/local/bin/crictl symlink to k3s
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">[</span>INFO<span style="color:#ff7b72;font-weight:bold">]</span>  Creating /usr/local/bin/ctr symlink to k3s
 </span></span></code></pre></div><h6 id="check-that-the-cluster-is-running">Check that the cluster is running</h6>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo k3s kubectl get node
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo k3s kubectl get node
 </span></span></code></pre></div><p><img src="/posts/installing-k3s-k9s-on-a-vm/k3s.png" alt="k3s install"></p>
 <h3 id="k9s-is-a-cli-application-that-manages-your-kubernetes-cluster">K9S is a CLI application that manages your Kubernetes cluster</h3>
 <h6 id="to-start-k9s-run-the-following">To start K9S run the following</h6>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>k9s --kubeconfig /etc/rancher/k3s/k3s.yaml
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>k9s --kubeconfig /etc/rancher/k3s/k3s.yaml
 </span></span></code></pre></div><p>K9S showing currently running pods on the newly installed K3S cluster:</p>
 <p><img src="/posts/installing-k3s-k9s-on-a-vm/k9s.png" alt="k9s cli application"></p>
 </section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

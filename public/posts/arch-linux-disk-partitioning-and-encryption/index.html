@@ -105,8 +105,8 @@
 <p>The layout of the partitions and volumes will look like this:</p>
 <p><img src="/posts/arch-linux-disk-partitioning-and-encryption/plan.png" alt="the planned layout"></p>
 <p>The size of the SSD is 128GB so I&rsquo;ll be arranging the partitions/volumes like below:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /proc/meminfo <span style="color:#8b949e;font-style:italic"># how much memory on the system</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># Memtotal 8010000 kB = 8GB
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat /proc/meminfo <span style="color:#8b949e;font-style:italic"># how much memory on the system</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># Memtotal 8010000 kB = 8GB
 </span></span><span style="display:flex;"><span># So swap will be 4GB (50%)
 </span></span><span style="display:flex;"><span># sda is 128GB
 </span></span><span style="display:flex;"><span>#     par boot 1GB
@@ -117,10 +117,10 @@
 <p>GPT (GUID Partition Table) is a newer partition table schema that allows for unlimited partitions and larger drives and is used with UEFI firmware, which is a newer version of BIOS. The older MBR (Master Boot Record) partition table is legacy format.</p>
 <h3 id="check-the-system-boot-type">Check the system boot type</h3>
 <p>We need to verify that the system is using UEFI firmware, which replaces BIOS, and is typically used with GPT partitions.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># if the below dir exists its an uefi system</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># if the below dir exists its an uefi system</span>
 </span></span><span style="display:flex;"><span>ls /sys/firmware/efi
 </span></span></code></pre></div><p>To determine the current disk partition table we run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fdisk -l
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fdisk -l
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># youll see Disklabel type: gpt or dos(mbr)</span>
 </span></span><span style="display:flex;"><span>
@@ -132,7 +132,7 @@
 </span></span><span style="display:flex;"><span>g <span style="color:#8b949e;font-style:italic">#to create a new GPT partition table</span>
 </span></span></code></pre></div><h3 id="partitioning-the-disks">Partitioning the Disks</h3>
 <p>We will setup two disk partitions that will be the EFI and LVM partitions. Arch wiki suggests boot partition size of 1GB, and rest of the disk will be for LVM (Logical Volume Manager). LVM allows for more flexible management of disks space and our partitions will be setup within this layer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk <span style="color:#8b949e;font-style:italic"># list block devices (shows current disk layout)</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>lsblk <span style="color:#8b949e;font-style:italic"># list block devices (shows current disk layout)</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>fdisk /dev/vda
 </span></span><span style="display:flex;"><span>
@@ -167,11 +167,11 @@
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>p <span style="color:#8b949e;font-style:italic"># print partition table  </span>
 </span></span><span style="display:flex;"><span>w <span style="color:#8b949e;font-style:italic"># write changes to the disk</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fdisk -l
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fdisk -l
 </span></span></code></pre></div><p><img src="/posts/arch-linux-disk-partitioning-and-encryption/disk.png" alt="disk partitions"></p>
 <h3 id="encryption--lvm">Encryption &amp; LVM</h3>
 <p>Using LVM makes managing encryption of the disk more straightforward as you only required one key / password to unlock the data.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create the encrypted container on the Linux LVM partition</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Create the encrypted container on the Linux LVM partition</span>
 </span></span><span style="display:flex;"><span>cryptsetup luksFormat /dev/vda2
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>YES
@@ -196,7 +196,7 @@
 </span></span><span style="display:flex;"><span>lvdisplay
 </span></span></code></pre></div><h3 id="file-systems">File systems</h3>
 <p>Now that we have or disk arranged how we have planned, we need to setup a file system on each logical volume, we will be using ext4.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># setup the file system</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mkfs.ext4 /dev/phoenix/root
@@ -212,8 +212,9 @@
 </span></span></code></pre></div><h3 id="mounting-the-volumes">Mounting the volumes</h3>
 <p>For our system to access the new partitions / volumes we need to mount them first.</p>
 <blockquote>
-<p>Order of mount matters we must map root, boot  and then home.</p></blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
+<p>Order of mount matters we must map root, boot  and then home.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># mnt will be the install systems root / directory</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mount /dev/phoenix/root /mnt
@@ -229,7 +230,7 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

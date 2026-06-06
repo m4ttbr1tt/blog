@@ -104,7 +104,7 @@
 <h1>Talos Linux Synology storage</h1><time class="dim" datetime="2025-08-15T19:11:31&#43;02:00">August 15, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/homelab/">#homelab</a>
       </div><div class="tag">
-        <a href="http://localhost:1313/tags/k8s/">#K8S</a>
+        <a href="http://localhost:1313/tags/k8s/">#k8s</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/talos/">#Talos</a>
       </div><div class="tag">
@@ -114,28 +114,28 @@
 <p>First step was to create a new Synology user on the NAS, and then to setup the manifests in the homelab repo.</p>
 <h3 id="synology-csi-talos-driver--configs">Synology CSI Talos Driver &amp; configs</h3>
 <p>There is a repo that you need to clone in order to get the driver installed onto the cluster.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone https://github.com/zebernst/synology-csi-talos.git
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone https://github.com/zebernst/synology-csi-talos.git
 </span></span></code></pre></div><p>After editing the config we create a secret with the NAS connection and user details.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#8b949e;font-style:italic"># create secret </span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#8b949e;font-style:italic"># create secret </span>
 </span></span><span style="display:flex;"><span> kubectl create secret -n synology-csi generic client-info-secret 
 </span></span><span style="display:flex;"><span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>../synology-csi-talos/config/client-info-template.yml
 </span></span></code></pre></div><p>We build a docker image from the make file, first setting up a GitHub auth token so that docker can push and pull from the container registry.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">GITHUB_TOKEN</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">2234234234234234</span> <span style="color:#8b949e;font-style:italic"># Token from GitHub with package read and write permissions</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">GITHUB_TOKEN</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">2234234234234234</span> <span style="color:#8b949e;font-style:italic"># Token from GitHub with package read and write permissions</span>
 </span></span><span style="display:flex;"><span>echo <span style="color:#79c0ff">$GITHUB_TOKEN</span> | docker login ghcr.io -u m4ttbr1tt --password-stdin
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># from synology-csi-talos repo</span>
 </span></span><span style="display:flex;"><span>make docker-build
 </span></span></code></pre></div><p>We also need to create a secret that will be used from within the cluster in order to pull the image and provision the pods</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret docker-registry ghcr-login-secret --docker-server<span style="color:#ff7b72;font-weight:bold">=</span>https://ghcr.io
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret docker-registry ghcr-login-secret --docker-server<span style="color:#ff7b72;font-weight:bold">=</span>https://ghcr.io
 </span></span><span style="display:flex;"><span>--docker-username<span style="color:#ff7b72;font-weight:bold">=</span>m4ttbr1tt 
 </span></span><span style="display:flex;"><span>--docker-password<span style="color:#ff7b72;font-weight:bold">=</span>PASS_WITH_WRITE_AND_READ_PACKAGES --docker-email<span style="color:#ff7b72;font-weight:bold">=</span>mb@mattybritt.com -n synology-csi
 </span></span></code></pre></div><h3 id="troubleshooting-pod-failures">Troubleshooting pod failures</h3>
 <p>The install had issues, for some reason the iscsi-tools extension had not been installed correctly. I had created a Talos Linux ISO including the extension but when I checked the nodes it was not installed.</p>
 <p>Checking a Talos Linux node for installed binaries:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># The extension was not listed!</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># The extension was not listed!</span>
 </span></span><span style="display:flex;"><span>talosctl ls -r /usr/local -n 192.168.1.51
 </span></span></code></pre></div><p>I regenerated an image (including siderolabs/iscsi-tools) and upgraded each node, pointing to the provided url:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># for each node</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># for each node</span>
 </span></span><span style="display:flex;"><span>talosctl upgrade --image factory.talos.dev/metal-installer/c9078f9419961640c712a8bf2bb9174933dfcf1da383fd8ea2b7dc21493f8bac:v1.10.6 -n 192.168.1.51
 </span></span></code></pre></div><p>The pvc for the linkding data then appeared on the Synology NAS!</p>
 <p><img src="/posts/talos-linux-synology-storage/synology.png" alt="synology"></p>
@@ -144,7 +144,7 @@
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

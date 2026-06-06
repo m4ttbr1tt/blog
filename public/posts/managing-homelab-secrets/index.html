@@ -15,7 +15,7 @@
     <meta property="article:published_time" content="2025-06-25T18:45:39+02:00">
     <meta property="article:modified_time" content="2025-06-25T18:45:39+02:00">
     <meta property="article:tag" content="Homelab">
-    <meta property="article:tag" content="K3s">
+    <meta property="article:tag" content="K3S">
     <meta property="article:tag" content="GitOps">
 
   <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
 <h1>Managing homelab secrets</h1><time class="dim" datetime="2025-06-25T18:45:39&#43;02:00">June 25, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/homelab/">#homelab</a>
       </div><div class="tag">
-        <a href="http://localhost:1313/tags/k3s/">#k3s</a>
+        <a href="http://localhost:1313/tags/k3s/">#K3S</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/gitops/">#GitOps</a>
       </div></ol></div>
@@ -112,35 +112,36 @@
 a secure way.</p>
 <p>I am using sops (with age encryption) <a href="https://github.com/getsops/sops">https://github.com/getsops/sops</a></p>
 <p>First setup sops and age, for me thats&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo pacman -S sops age
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo pacman -S sops age
 </span></span></code></pre></div><p>Then generate a key pair and  save to your password manager. (we will be deleting the age.agekey file after we are done)</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>age-keygen -o age.agekey
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>age-keygen -o age.agekey
 </span></span><span style="display:flex;"><span>cat age.agekey
 </span></span></code></pre></div><p>The contents of the file will look something like this&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Public key: age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Public key: age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># created: 2025-06-24T10:04:52+02:00</span>
 </span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># public key: age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv</span>
 </span></span><span style="display:flex;"><span>AGE-SECRET-KEY-13HMN4HPFLZ60ECZUHHYT5JW75WNG3AL3JCYJ36H90209PKRRYWHQ0320ZS
 </span></span></code></pre></div><p>Make sure you set an environment variable with your public key:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">AGE_PUBLIC</span><span style="color:#ff7b72;font-weight:bold">=</span>age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">AGE_PUBLIC</span><span style="color:#ff7b72;font-weight:bold">=</span>age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv
 </span></span></code></pre></div><p>Next we will generate a secret manifest that uses our points to our Cloudflare credentials file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret generic tunnel-credentials <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>credentials.json<span style="color:#ff7b72;font-weight:bold">=</span>58c97568-9eda-4dbf-9857-b6cf9cf91259.json <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--dry-run<span style="color:#ff7b72;font-weight:bold">=</span>client -o yaml &gt; cloudflare-secret.yaml
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl create secret generic tunnel-credentials <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>credentials.json<span style="color:#ff7b72;font-weight:bold">=</span>58c97568-9eda-4dbf-9857-b6cf9cf91259.json <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>--dry-run<span style="color:#ff7b72;font-weight:bold">=</span>client -o yaml &gt; cloudflare-secret.yaml
 </span></span></code></pre></div><blockquote>
-<p>Kubernetes secrets are NOT secret. We have to enrcypt the content still.</p></blockquote>
+<p>Kubernetes secrets are NOT secret. We have to enrcypt the content still.</p>
+</blockquote>
 <p>The below command references your env variable with the public key, targets the specifice section of your yaml with regex, and makes an in-place edit of the secret file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sops --age<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">$AGE_PUBLIC</span> <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--encrypt --encrypted-regex <span style="color:#a5d6ff">&#39;^(data|stringData)$&#39;</span> --in-place cloudflare-secret.yaml
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sops --age<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">$AGE_PUBLIC</span> <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>--encrypt --encrypted-regex <span style="color:#a5d6ff">&#39;^(data|stringData)$&#39;</span> --in-place cloudflare-secret.yaml
 </span></span></code></pre></div><p>If you cat the file you will now see the contents of the credintials file have been encrypted in place</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">data</span>:<span style="color:#6e7681">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#7ee787">apiVersion</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">v1</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">data</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">credentials.json</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">ENC[AES256_GCM,data:aHXoMNZSR1mzMrnWMrpwNVJ65MF3axL43OanZnmdjYKViSphDBl491s+tMhI0G3xeQiFBKcBFsHmKT7c8PaV+WgfJG7yg6J36QtJxLz7xG87d9Z5PkWfSo390tPxSr8GLpbi3Qgr+AVxvwjY3F3E8H19uFEyJQQxWDS/sTSNm/wDIdhpIsuTzqUZvVuZLlJmV4Unj5TaZUk1/divBvivShLLdPh1smFjqdH+r1f5uTb2lr6sM82U5do0A89FOOwM+yd6J2c7P9kGQJ+yMktEW0hF/gJkSYRjsB/8YEAZ+JvhEkE69Njoxtmu4jDSbZSN5Ndr13yhYWNviVZwnMUNa1x/fGv6JoA4A2VVGT65OYY4jZvl/xQBsD8uuq1YvtGz8tmGoZHIjFT8U0MGY8Mu6l5uN8sB44k8LhEHTq2+HC+34o6GqYZX7y5zQWJlrJ2NOW4fFVZCr+U6YvWr1BxCdhX6rk6GOMnZ18zWvY6LNHr+RaUH+AR50fmW+IO19NC2v3spxrSjBHH+oSmdksXVU4FVxLJskwyCbNXfcTVG9OIH3FnB3lilxvvy6b1CA5WA6Z5LXSNUxLEi99IqDjQz5SyY7LclRXOgJxz3kh4Zq0m+RaAMJTaSO4JKPoTpDtfbECYnMxYWeJhrKdOVQLNuOZWIg6S9O6CuxmOOezkq/9M=,iv:2h/BVKyWDyQIRYarBlYYraXjD2hENDyA9HfjMnu5eg0=,tag:bMC3lUKS/9gnX4BJT9Q/qQ==,type:str]</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Secret</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">kind</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">Secret</span><span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">metadata</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">creationTimestamp</span>:<span style="color:#6e7681"> </span><span style="color:#79c0ff">null</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">name</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">tunnel-credentials</span><span style="color:#6e7681">
-</span></span></span><span style="display:flex;"><span><span style="color:#6e7681"></span><span style="color:#7ee787">sops</span>:<span style="color:#6e7681">
+</span></span></span><span style="display:flex;"><span><span style="color:#7ee787">sops</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">age</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">        </span>- <span style="color:#7ee787">recipient</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">age1j6pyg3y73pt5leldl2csjk8a369fa2xxmuanywx6mn0mfhwc4dzs0lvthv </span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">          </span><span style="color:#7ee787">enc</span>:<span style="color:#6e7681"> </span>|<span style="color:#a5d6ff">
@@ -156,12 +157,12 @@ a secure way.</p>
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">encrypted_regex</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">^(data|stringData)$</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">version</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">3.10.2</span><span style="color:#6e7681">
 </span></span></span></code></pre></div><p>In order for sops do decrypt our secret it needs the private key (this is a manual step when setting up your cluster)</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat age.agekey |
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cat age.agekey |
 </span></span><span style="display:flex;"><span>kubectl create secret generic sops-age <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--namespace<span style="color:#ff7b72;font-weight:bold">=</span>flux-system <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>age.agekey<span style="color:#ff7b72;font-weight:bold">=</span>/dev/stdin
+</span></span></span><span style="display:flex;"><span>--namespace<span style="color:#ff7b72;font-weight:bold">=</span>flux-system <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>--from-file<span style="color:#ff7b72;font-weight:bold">=</span>age.agekey<span style="color:#ff7b72;font-weight:bold">=</span>/dev/stdin
 </span></span></code></pre></div><p>The last thing is to amend our apps.yaml file to include sops  for decryption.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># update spec of apps.yaml so decryption works</span><span style="color:#6e7681">
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># update spec of apps.yaml so decryption works</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681"> </span><span style="color:#7ee787">decryption</span>:<span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">provider</span>:<span style="color:#6e7681"> </span><span style="color:#a5d6ff">sops</span><span style="color:#6e7681">
 </span></span></span><span style="display:flex;"><span><span style="color:#6e7681">    </span><span style="color:#7ee787">secretRef</span>:<span style="color:#6e7681">
@@ -170,7 +171,7 @@ a secure way.</p>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>

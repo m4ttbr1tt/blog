@@ -15,7 +15,7 @@
     <meta property="article:published_time" content="2025-06-11T16:45:39+02:00">
     <meta property="article:modified_time" content="2025-06-11T16:45:39+02:00">
     <meta property="article:tag" content="Homelab">
-    <meta property="article:tag" content="K3s">
+    <meta property="article:tag" content="K3S">
     <meta property="article:tag" content="GitOps">
 
   <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
 <h1>GitOps with Flux</h1><time class="dim" datetime="2025-06-11T16:45:39&#43;02:00">June 11, 2025</time><div class="term-container"><div class="tag">
         <a href="http://localhost:1313/tags/homelab/">#homelab</a>
       </div><div class="tag">
-        <a href="http://localhost:1313/tags/k3s/">#k3s</a>
+        <a href="http://localhost:1313/tags/k3s/">#K3S</a>
       </div><div class="tag">
         <a href="http://localhost:1313/tags/gitops/">#GitOps</a>
       </div></ol></div>
@@ -111,7 +111,8 @@
 <h3 id="what-is-gitops">What is GitOps?</h3>
 <p>GitOps is a best practice for code delivery of applications and infrastructure. It uses git as the source of truth and a controller that runs on the cluster, constantly checking the git repo for any changes and reconciling the declared state with the cluster.</p>
 <blockquote>
-<p>GitOps enables declarative cluster state</p></blockquote>
+<p>GitOps enables declarative cluster state</p>
+</blockquote>
 <p>When I first used Kubernetes in production in 2018, we did not have GitOps. The deployments and manifests were written in bash scripts and it was difficult to maintain, there was often drift or uncertainty as to the state the cluster was in. GitOps is a modern way to resolve this, and its beautiful 😍.</p>
 <h3 id="which-gitops-tool-to-choose">Which GitOps tool to choose?</h3>
 <p>There are two main tools in this space Flux and Argo.</p>
@@ -124,25 +125,25 @@
 <p><a href="https://fluxcd.io">https://fluxcd.io</a></p>
 <h3 id="installing-flux">Installing Flux</h3>
 <p>First create a personal token on GitHub and export the token, as well as your GitHub username, as an environment variable.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">GITHUB_TOKEN</span><span style="color:#ff7b72;font-weight:bold">=</span>ghp_234234234234234234234
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export <span style="color:#79c0ff">GITHUB_TOKEN</span><span style="color:#ff7b72;font-weight:bold">=</span>ghp_234234234234234234234
 </span></span><span style="display:flex;"><span>export <span style="color:#79c0ff">GITHUB_USER</span><span style="color:#ff7b72;font-weight:bold">=</span>m4ttbr1tt
 </span></span></code></pre></div><p>Next check your cluster meets the prerequisites&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>flux check --pre
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>flux check --pre
 </span></span></code></pre></div><p>..and install Flux.</p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># will install to cluster and then push manifests to github</span>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># will install to cluster and then push manifests to github</span>
 </span></span><span style="display:flex;"><span>flux bootstrap github <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --owner<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">$GITHUB_USER</span> <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --repository<span style="color:#ff7b72;font-weight:bold">=</span>homelab <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --branch<span style="color:#ff7b72;font-weight:bold">=</span>master <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --path<span style="color:#ff7b72;font-weight:bold">=</span>./clusters/staging <span style="color:#79c0ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#79c0ff"></span>  --personal
+</span></span></span><span style="display:flex;"><span>  --owner<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#79c0ff">$GITHUB_USER</span> <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  --repository<span style="color:#ff7b72;font-weight:bold">=</span>homelab <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  --branch<span style="color:#ff7b72;font-weight:bold">=</span>master <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  --path<span style="color:#ff7b72;font-weight:bold">=</span>./clusters/staging <span style="color:#79c0ff">\
+</span></span></span><span style="display:flex;"><span>  --personal
 </span></span></code></pre></div><p>You will now see Flux pods on the cluster&hellip;
 <img src="/posts/homelab-gitops-with-flux/pods.png" alt="pods"></p>
 <p><a href="https://github.com/m4ttbr1tt/homelab">https://github.com/m4ttbr1tt/homelab</a></p></section></main>
         <footer id="main-footer"><div class="footer">
   <a href="#">Scroll to Top</a>
   <div class="footer-copyright">
-    <div class="dim">© 2025 Matt Britt</div>
+    <div class="dim">© 2026 Matt Britt</div>
   </div>
 </div>
 </footer>
