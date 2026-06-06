@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Software Engineering &amp; DevOps - Matt Britt</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 15 Aug 2025 19:11:31 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 21:50:00 +0200</lastBuildDate>
     <atom:link href="http://www.mattbritt.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fedora and declarative setup: coming full circle</title>
+      <link>http://www.mattbritt.com/posts/fedora-declarative-setup-coming-full-circle/</link>
+      <pubDate>Sat, 06 Jun 2026 21:50:00 +0200</pubDate>
+      <guid>http://www.mattbritt.com/posts/fedora-declarative-setup-coming-full-circle/</guid>
+      <description>&lt;p&gt;After moving from &lt;a href=&#34;http://www.mattbritt.com/posts/18-months-on-nixos-and-im-done-moving-to-bluefin/&#34;&gt;NixOS to Bluefin&lt;/a&gt; and then tweaking my &lt;a href=&#34;http://www.mattbritt.com/posts/bluefin-and-dotfiles-management-changes/&#34;&gt;dotfiles and dev environment&lt;/a&gt;, I have ended up somewhere that feels obvious in hindsight: plain Fedora, with my own declarative setup layered on top.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Talos Linux Synology storage</title>
       <link>http://www.mattbritt.com/posts/talos-linux-synology-storage/</link>
